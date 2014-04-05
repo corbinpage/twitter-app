@@ -12,6 +12,22 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# Twitter Gem
+gem 'twitter', '~>5.x'
+gem 'twitter-text'
+
+#Asynchronous Processing
+gem 'beanstalk-client'
+gem 'stalker'
+gem 'private_pub'
+gem 'thin'
+
+# Profanity Checker
+gem 'obscenity'
+
+# Sentiment Analysis
+gem 'sentimental'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
