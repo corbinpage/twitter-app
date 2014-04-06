@@ -7,10 +7,12 @@
       <div class="inner cover">
         <h1 class="cover-heading">Your Twitter App</h1>
         <p class="lead">Let's get started</p>
+        <ul class="header">
+        </ul>
         <p class="lead">
-          <%=button_to "Get Started", about_path, method: "get", class: "btn btn-lg btn-default btn-block cover-button"%>
         </p>
       </div>
     </div>
   </div>
 </div>
+<%= subscribe_to '/tweets/new' %>

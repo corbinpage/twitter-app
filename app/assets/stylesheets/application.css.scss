@@ -38,36 +38,12 @@ body * {
 
 }
 
-/*body.background-dark {
-  background-image: url("bgnoise_lg_dark.png");
-  background-color: rgba(102, 105, 104, 0.9);
-  background: radial-gradient(farthest-side ellipse at 10% 0, rgba(102, 105, 104, 0.9), rgba(93, 112, 119, 0.89), rgba(160, 174, 150, 0.9)), url("bgnoise_lg_dark.png");
-  background: -webkit-radial-gradient(10% 0, farthest-side ellipse, rgba(102, 105, 104, 0.9), rgba(93, 112, 119, 0.89), rgba(160, 174, 150, 0.9)), url("bgnoise_lg_dark.png");
-  background: -moz-radial-gradient(10% 0, farthest-side ellipse, rgba(102, 105, 104, 0.9), rgba(93, 112, 119, 0.89), rgba(160, 174, 150, 0.9)), url("bgnoise_lg_dark.png");
-  height: 100%;
-}*/
-
 body > .container {
   padding: 50px 15px 0;
 }
 
 main {
   height: 100%;
-}
-
-.navbar {
-  background-color: #2ecc71;
-  border: 0px;
-}
-
-.navbar .navbar-nav > li > a {
-  color:black;
-  text-decoration:none;
-}
-
-.navbar .navbar-nav > li:hover {
-  background-color: #27ae60;
-  border-color: #27ae60;
 }
 
 .alert {
@@ -91,6 +67,26 @@ main {
   color: #f8f8f8;
 }
 
+#coverbutton {
+  width: 300px;
+}
+
+/*--------Footer--------*/
+
+.navbar {
+  background-color: #51a3f0;
+  border: 0px;
+}
+
+.navbar .navbar-nav > li > a {
+  color:black;
+  text-decoration:none;
+}
+
+.navbar .navbar-nav > li:hover {
+  background-color: #51a3f0;
+  border-color: #51a3f0;
+}
 
 #footer {
   position: absolute;
@@ -98,8 +94,8 @@ main {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 40px;
-  background-color: #2ecc71;
-  border-color: #2ecc71;
+  background-color: #51a3f0;
+  border-color: #51a3f0;
   z-index: 1000;
 }
 
@@ -125,26 +121,4 @@ main {
 .footer-list a:hover {
   color:white;
   text-decoration:none;
-}
-
-/*------Scans/new------*/
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-
-.btn-block {
-  margin-top: 10px;
-}
-/*---------------------*/
-
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
-}
-
-.theme-showcase > p > .btn {
-  margin: 5px 0;
 }

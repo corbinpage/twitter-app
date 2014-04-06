@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'home' => 'application#home', as: :home
   get 'about' => 'application#about', as: :about
+  get 'update' => 'application#update'
   root "application#home" 
 
   # The priority is based upon order of creation: first created -> highest priority.
