@@ -3,44 +3,22 @@ class Scan < ActiveRecord::Base
   # has_many :tweets, :dependent => :destroy
   # has_one :twitter_detail, :dependent => :destroy
 
-  @@stream_running
-
-  def self.pub
-    # @tweet = Tweet.last
-    # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>' + 'Hello World' + '</li>');")
-    # PrivatePub.publish_to("/tweets/new","alert('#{@tweet.text}')")
-    # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>#{@tweet.text}</li>')")
-    Scan.initialize_twitter_stream
-  end
-
-  def self.initialize_twitter_stream
+  def run_twitter_stream
     @client = Tweet.initialize_streaming_twitter_client
 
     topics = ["newyork","coffee","tea"]
     i = 0
-    @@stream_running = true
     @client.filter(:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
-        puts  object.text
-        # new_tweet = parse_and_save_tweet(object)
-        puts i.to_s
+        puts i.to_s + " - " + object.text
+        new_tweet = parse_and_save_tweet(object)
         cleaned = object.text.gsub(/[\u0080-\u00ff]/,'').gsub("'",'&quot')
-        # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>' + #{"'" + cleaned + "'"} + '</li>');")
-        # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>' + 'Hello World' + '</li>');")
         i += 1
       end
-      break if i >= 5
+      # break if i >= 20
     end
-    @@stream_running = false
   end
-
-  def stream_running
-    @@stream_running
-  end
-
-  def stream_running=(bool)
-    @@stream_running = bool
-  end
+  handle_asynchronously :run_twitter_stream
 
   def run
     @client = Tweet.initialize_twitter_client
@@ -131,13 +109,13 @@ class Scan < ActiveRecord::Base
     new_tweet.has_geo = twitter_object.geo? ? new_tweet.record_geolocation(twitter_object.geo) : false
 
     # Scan for Sentimentality
-    new_tweet.score_sentimentality(sentiment_analyzer)
+    #new_tweet.score_sentimentality(sentiment_analyzer)
 
     # Scan for Obscenities
-    new_tweet.count_obscenities
+    #new_tweet.count_obscenities
 
     # Scan for Hashtags, Mentions, and Links
-    new_tweet.start_twitter_text_scan
+    #new_tweet.start_twitter_text_scan
 
     # Find popular links - instagram, twitpic
     # Find all people mentioned

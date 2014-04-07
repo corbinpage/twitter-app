@@ -8,17 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def update
-    # Stalker.enqueue("scan.pub")
-    # Scan.pub
-
-    # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>' + 'Hello World' + '</li>');")
-    # s = Scan.new()
-    # s.initialize_twitter_stream
-    # puts "||||Doneski"
-    # Scan.initialize_twitter_stream
-    # Scan.pub
-    # @tweet = Tweet.last
-    # PrivatePub.publish_to("/tweets/new",tweet: @tweet)
   end
 
   def about

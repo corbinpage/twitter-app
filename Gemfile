@@ -18,6 +18,7 @@ gem 'twitter-text'
 
 # Asynchronous Processing
 gem 'delayed_job_active_record'
+gem "daemons"
 
 # OLD
 # gem 'beanstalk-client'
