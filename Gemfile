@@ -16,11 +16,14 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'twitter', '~>5.x'
 gem 'twitter-text'
 
-#Asynchronous Processing
-gem 'beanstalk-client'
-gem 'stalker'
-gem 'private_pub'
-gem 'thin'
+# Asynchronous Processing
+gem 'delayed_job_active_record'
+
+# OLD
+# gem 'beanstalk-client'
+# gem 'stalker'
+# gem 'private_pub'
+# gem 'thin'
 
 # Profanity Checker
 gem 'obscenity'

@@ -1,7 +1,8 @@
 require File.expand_path("../environment", __FILE__)
 
 job "scan.pub" do |args|
-  Scan.find(args["id"]).run
+  # Scan.find(args["id"]).run
+  Scan.pub
 end
 
 # beanstalkd

@@ -4,11 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def home
+
   end
 
   def update
-    # Stalker.enqueue("scan.pub", id: @scan.id)
+    # Stalker.enqueue("scan.pub")
+    # Scan.pub
 
+    # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>' + 'Hello World' + '</li>');")
     # s = Scan.new()
     # s.initialize_twitter_stream
     # puts "||||Doneski"

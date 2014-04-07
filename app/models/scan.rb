@@ -6,24 +6,28 @@ class Scan < ActiveRecord::Base
   @@stream_running
 
   def self.pub
-    @tweet = Tweet.last
+    # @tweet = Tweet.last
+    # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>' + 'Hello World' + '</li>');")
     # PrivatePub.publish_to("/tweets/new","alert('#{@tweet.text}')")
-    PrivatePub.publish_to("/tweets/new","$('.header').append('<li>#{@tweet.text}</li>')")
+    # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>#{@tweet.text}</li>')")
+    Scan.initialize_twitter_stream
   end
 
   def self.initialize_twitter_stream
     @client = Tweet.initialize_streaming_twitter_client
 
-    topics = ["newyork"]
+    topics = ["newyork","coffee","tea"]
     i = 0
     @@stream_running = true
     @client.filter(:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
-        puts object.text
+        puts  object.text
         # new_tweet = parse_and_save_tweet(object)
         puts i.to_s
-        PrivatePub.publish_to("/tweets/new","$('.header').append('<li>' + #{object.text} + '</li>');")
-        i+= 5
+        cleaned = object.text.gsub(/[\u0080-\u00ff]/,'').gsub("'",'&quot')
+        # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>' + #{"'" + cleaned + "'"} + '</li>');")
+        # PrivatePub.publish_to("/tweets/new","$('.header').append('<li>' + 'Hello World' + '</li>');")
+        i += 1
       end
       break if i >= 5
     end
