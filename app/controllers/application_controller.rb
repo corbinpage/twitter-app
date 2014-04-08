@@ -23,4 +23,9 @@ class ApplicationController < ActionController::Base
   def about
   end
 
+  def heatmap
+      @tweet_array = Tweet.where("id > ?", params[:after].to_i).order(created_at: :desc).limit(10)
+      render :json => @tweet_array
+  end
+
 end
