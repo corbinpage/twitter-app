@@ -24,28 +24,8 @@ window.onload = function(){
     };
     // we'll use the heatmapArea 
     var map = new google.maps.Map($("#heatmapArea")[0], myOptions);
-    map.set('styles', [
-      {
-        featureType: 'water',
-        stylers: [
-          { saturation: -90 },
-          { lightness: 90 },
-          { color: '#ffdddd' }
-        ]
-      }, {
-        featureType: 'administrative',
-        elementType: 'geometry',
-        stylers: [
-          { "color": "#ff2080" },
-          { "weight": 1 }
-        ]
-      }, {
-        stylers: [
-          { "hue": "#ff005d" },
-          { "invert_lightness": true }
-        ]
-      }
-    ]);
+
+        map.set('styles', styleSet(0));
     // let's create a heatmap-overlay
     // with heatmap config properties
     var heatmap = new HeatmapOverlay(map, {
@@ -113,6 +93,64 @@ window.onload = function(){
         return console.log("hey");
         HeatmapOverlay.toggle();
     });
+
+    pulse();
+
+    function pulse () {
+      pulseDown(50);
+    }
+
+    function pulseDown (num) {
+      if (num > -50){
+        map.set('styles', styleSet(num));
+        setTimeout(function() {pulseDown(num - 20)},100)
+      } else {
+        pulseUp(num);
+      }
+    }
+
+    function pulseUp (num) {
+      if (num < 50){
+        map.set('styles', styleSet(num));
+        setTimeout(function() {pulseUp(num + 20)},100)
+      } else {
+        pulseDown(num);
+      }
+    }
+
+    function styleSet (num) {
+      num = typeof num !== 'undefined' ? num : 0;
+
+      return [
+        {
+          featureType: 'water',
+          stylers: [
+            { saturation: -90 },
+            { lightness: 90 },
+            { color: '#ffdddd' }
+          ]
+        }, {
+          featureType: 'administrative',
+          elementType: 'geometry',
+          stylers: [
+            { "color": "#ff2080" },
+            { "weight": 1 }
+          ]
+        }, {
+          stylers: [
+            { "hue": "#ff005d" },
+            { "saturation": num },
+            { "invert_lightness": true }
+          ]
+        }, {
+          featureType: 'road',
+          stylers: [
+            { "saturation": num },
+          ]
+        }
+      ]
+    }
+
 
 
     // var i = 0;
