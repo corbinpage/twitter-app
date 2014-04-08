@@ -30,10 +30,8 @@ ActiveRecord::Schema.define(version: 20140407005204) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "scans", force: true do |t|
-    t.string   "username"
     t.integer  "score"
     t.string   "error"
-    t.integer  "user_id"
     t.float    "average_sentiment"
     t.datetime "created_at"
     t.datetime "updated_at"
