@@ -11,24 +11,12 @@ class Tweet < ActiveRecord::Base
   # has_many :links, through: :link_tweets
   # scope :chart1, -> {select("count(id)").where('scan_id = 3').group('STRFTIME("%m-%Y",tweet_time)').order(tweet_time: :asc)}
 
-  SKETCH_METER_CONSUMER_KEY = ENV['SKETCH_METER_CONSUMER_KEY']
-  SKETCH_METER_CONSUMER_SECRET = ENV['SKETCH_METER_CONSUMER_SECRET']
-  TWITTER_CORBIN_PAGE_ACCESS_TOKEN = ENV['TWITTER_CORBIN_PAGE_ACCESS_TOKEN']
-  TWITTER_CORBIN_PAGE_ACCESS_TOKEN_SECRET = ENV['TWITTER_CORBIN_PAGE_ACCESS_TOKEN_SECRET']
-
-  def self.initialize_twitter_client
-    @@client = Twitter::REST::Client.new do |config|
-      config.consumer_key     = SKETCH_METER_CONSUMER_KEY
-      config.consumer_secret  = SKETCH_METER_CONSUMER_SECRET
-    end
-  end
-
   def self.initialize_streaming_twitter_client
     client = Twitter::Streaming::Client.new do |config|
-      config.consumer_key        = SKETCH_METER_CONSUMER_KEY
-      config.consumer_secret     = SKETCH_METER_CONSUMER_SECRET
-      config.access_token        = TWITTER_CORBIN_PAGE_ACCESS_TOKEN
-      config.access_token_secret = TWITTER_CORBIN_PAGE_ACCESS_TOKEN_SECRET
+      config.consumer_key        = ENV['TWITTER_API_KEY']
+      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET']
+      config.access_token        = ENV['TWITTER_USER_API_KEY']
+      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET']
     end
   end
 

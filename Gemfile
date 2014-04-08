@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'heroku'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0.rc2'
 # Use SCSS for stylesheets
@@ -31,6 +31,9 @@ gem 'obscenity'
 
 # Sentiment Analysis
 gem 'sentimental'
+
+# Google Maps gems
+gem 'geocoder'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -75,3 +78,4 @@ group :production do
 end
 
 gem "bootstrap-sass", "~> 3.1.1"
+gem "figaro", github: 'laserlemon/figaro'
