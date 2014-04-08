@@ -4,6 +4,8 @@
 <script type="text/javascript" src="assets/heatmap-gmaps.js"></script>
 <script type="text/javascript">
 
+var markers = [];
+
 window.onload = function(){
     // standard gmaps initialization
     var myLatlng = new google.maps.LatLng(40.7055269, -74.014346);
@@ -58,6 +60,7 @@ window.onload = function(){
             max: 46,
             data: [
             {lat: 40.7055269, lng:-74.014346, count: 1},
+            {lat: 40.7055272, lng:-74.014346, count: 1},
             {lat: 33.5608, lng:-117.24, count: 1},
             {lat: 38, lng:-97, count: 1},
             {lat: 38.9358, lng:-77.1621, count: 1}
@@ -68,6 +71,38 @@ window.onload = function(){
 
             ]
     };
+
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(40.705526, -74.01434),
+      map: map,
+      zIndex: 100,
+      icon: "http://maps.google.com/mapfiles/dir_39.png"
+    });
+
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(40.705522, -74.014343),
+      map: map,
+      zIndex: 100,
+      icon: "http://maps.google.com/mapfiles/dir_39.png"
+    });
+
+    // Sets the map on all markers in the array.
+    function setAllMap(map) {
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+      }
+    }
+
+    // Removes the markers from the map, but keeps them in the array.
+    function clearMarkers() {
+      setAllMap(null);
+    }
+
+    // Shows any markers currently in the array.
+    function showMarkers() {
+      setAllMap(map);
+    }
+
  
     // now we can set the data
     google.maps.event.addListenerOnce(map, "idle", function(){
@@ -76,5 +111,17 @@ window.onload = function(){
         return console.log("hey");
         HeatmapOverlay.toggle();
     });
+
+
+    // var i = 0;
+
+    // $('#heatmapArea').on("click", function () {
+    //   if (i < 2) {
+    //     clearMarkers();
+    //   } else {
+    //     showMarkers();
+    //   }
+    //   i++;
+    // });
 };
 </script>
