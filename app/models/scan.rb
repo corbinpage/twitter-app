@@ -6,9 +6,13 @@ class Scan < ActiveRecord::Base
   def run_twitter_stream
     @client = Tweet.initialize_streaming_twitter_client
 
-    topics = ["newyork","coffee","tea"]
+    # Old Code, svaing as examples 
+    # topics = ["newyork","coffee","tea"]
+    # @client.filter(:track => topics.join(",")) do |object|
+
+    locations = [-74,40,-73,41]
     i = 0
-    @client.filter(:track => topics.join(",")) do |object|
+    @client.filter(:locations => locations.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts i.to_s + " - " + object.text
         new_tweet = parse_and_save_tweet(object)
