@@ -133,6 +133,7 @@ HeatmapOverlay.prototype.setDataSet = function(data){
         dlen = d.length,
         projection = me.getProjection(),
         latlng, point;
+
     me.latlngs = [];
    
     while(dlen--){  
@@ -162,5 +163,4 @@ HeatmapOverlay.prototype.addDataPoint = function(lat, lng, count){
 
 HeatmapOverlay.prototype.toggle = function(){
     this.heatmap.toggleDisplay();
-    console.log("Hello");
 }
