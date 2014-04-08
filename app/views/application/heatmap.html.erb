@@ -6,10 +6,10 @@
 
 window.onload = function(){
     // standard gmaps initialization
-    var myLatlng = new google.maps.LatLng(48.3333, 16.35);
+    var myLatlng = new google.maps.LatLng(40.7055269, -74.014346);
     // define map properties
     var myOptions = {
-      zoom: 3,
+      zoom: 12,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: false,
@@ -26,7 +26,9 @@ window.onload = function(){
       {
         featureType: 'water',
         stylers: [
-          { saturation: -90 }
+          { saturation: -90 },
+          { lightness: 90 },
+          { color: '#ffdddd' }
         ]
       }, {
         featureType: 'administrative',
