@@ -13,7 +13,7 @@ $(document).ready(function(){
             updateViews(data);
           }
       });
-      setTimeout(getNewTweets,1000);  
+      setTimeout(getNewTweets,10000);  
     }
     function updateMap(data){
       $("#tweet_list").append("<li data-id=" + data['id'] + ">" + data['id']+ ": Feeling " + data['sentiment_summary'] + " - " +data['text'] + "</li>")
