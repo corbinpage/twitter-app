@@ -72,19 +72,21 @@ window.onload = function(){
             ]
     };
 
-    marker = new google.maps.Marker({
+    marker1 = new google.maps.Marker({
       position: new google.maps.LatLng(40.705526, -74.01434),
       map: map,
       zIndex: 100,
       icon: "http://maps.google.com/mapfiles/dir_39.png"
     });
+    markers.push(marker1);
 
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(40.705522, -74.014343),
+    marker2 = new google.maps.Marker({
+      position: new google.maps.LatLng(40.705, -74),
       map: map,
       zIndex: 100,
       icon: "http://maps.google.com/mapfiles/dir_39.png"
     });
+    markers.push(marker2);
 
     // Sets the map on all markers in the array.
     function setAllMap(map) {
