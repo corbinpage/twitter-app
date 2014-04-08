@@ -1,6 +1,6 @@
 class Tweet < ActiveRecord::Base
   include Twitter::Extractor
-  # belongs_to :scan
+  belongs_to :scan
   # has_many :word_tweets
   # has_many :words, through: :word_tweets
   # has_many :mention_tweets
@@ -9,19 +9,11 @@ class Tweet < ActiveRecord::Base
   # has_many :hashtags, through: :hashtag_tweets
   # has_many :link_tweets
   # has_many :links, through: :link_tweets
-  # scope :chart1, -> {select("count(id)").where('scan_id = 3').group('STRFTIME("%m-%Y",tweet_time)').order(tweet_time: :asc)}
 
   SKETCH_METER_CONSUMER_KEY = ENV['SKETCH_METER_CONSUMER_KEY']
   SKETCH_METER_CONSUMER_SECRET = ENV['SKETCH_METER_CONSUMER_SECRET']
   TWITTER_CORBIN_PAGE_ACCESS_TOKEN = ENV['TWITTER_CORBIN_PAGE_ACCESS_TOKEN']
   TWITTER_CORBIN_PAGE_ACCESS_TOKEN_SECRET = ENV['TWITTER_CORBIN_PAGE_ACCESS_TOKEN_SECRET']
-
-  def self.initialize_twitter_client
-    @@client = Twitter::REST::Client.new do |config|
-      config.consumer_key     = SKETCH_METER_CONSUMER_KEY
-      config.consumer_secret  = SKETCH_METER_CONSUMER_SECRET
-    end
-  end
 
   def self.initialize_streaming_twitter_client
     client = Twitter::Streaming::Client.new do |config|
@@ -30,27 +22,6 @@ class Tweet < ActiveRecord::Base
       config.access_token        = TWITTER_CORBIN_PAGE_ACCESS_TOKEN
       config.access_token_secret = TWITTER_CORBIN_PAGE_ACCESS_TOKEN_SECRET
     end
-  end
-
-
-
-  def self.get_all_tweets_for_user(username)
-    all_tweets = @@client.user_timeline(username, count: 200, exclude_replies: true, include_rts: false)
-    # :max_id
-    # since_id - Gets tweets since a given ID
-
-    more_tweets_available = all_tweets.count >= 3
-
-    while more_tweets_available
-      more_tweets = @@client.user_timeline(username, count: 200, max_id: all_tweets.last.id, exclude_replies: true, include_rts: false)
-      all_tweets += more_tweets
-      more_tweets_available = more_tweets.count >= 3
-    end
-    all_tweets
-  end
-
-  def self.client
-    @@client
   end
 
   def count_obscenities
@@ -114,7 +85,6 @@ class Tweet < ActiveRecord::Base
       puts "Tweet scanned"
     rescue
       puts "Tweet scan fail"
-      # raise "HTML scan limit reached for embedded Tweets."
     end
   end
 
