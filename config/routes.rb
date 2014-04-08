@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'home' => 'application#home', as: :home
   get 'about' => 'application#about', as: :about
+  get 'realtime' => 'application#realtime', as: :realtime
   get 'update' => 'application#update'
   root "application#home" 
 

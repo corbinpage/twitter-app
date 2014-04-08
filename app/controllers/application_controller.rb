@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
   def update
   end
 
+  def realtime
+  end
+
   def about
   end
 
