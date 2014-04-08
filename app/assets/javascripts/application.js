@@ -14,3 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require google
+//= require heatmap
+//= require heatmap-gmaps
+//= require realtime
