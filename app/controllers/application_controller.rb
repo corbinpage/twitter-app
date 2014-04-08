@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
   end
 
   def update
+    if params[:after].nil? # First time the page loads
+      @tweet = tweet.last
+    else
+      tweet_array = Tweet.where("id > ?", params[:after].to_i).order(created_at: :desc).limit(1)
+      @tweet = tweet_array.empty? ? {id: -1} : tweet_array.first
+    end
+    render :json => @tweet
   end
 
   def realtime

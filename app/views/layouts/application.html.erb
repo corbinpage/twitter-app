@@ -9,7 +9,7 @@
   <%= analytics_init if Rails.env.production? %>
   
 </head>
-<body role="document" class="background-dark">
+<body role="document" class="<%= controller_name %> <%= action_name %> background-dark" >
   <main role="main" class="container">
        <%= yield %>
   </main>
