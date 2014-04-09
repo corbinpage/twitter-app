@@ -8,6 +8,8 @@
  
      
      <script>
+     var after = 1;
+     var countries = [];
        //basic map config with custom fills, mercator projection
       var map = new Datamap({
         scope: 'world',
@@ -31,10 +33,28 @@
           COL: {fillKey: 'unhappy' },
           AUS: {fillKey: 'happy' },
           ZAF: {fillKey: 'nodata' },
-          MAD: {fillKey: 'unhappy' }       
+          MAD: {fillKey: 'unhappy' },
+          CHN: {fillKey: 'unhappy'}       
         }
       })
+    setTimeout(getNewTweets,1000);  
     
+    function getNewTweets(){
+      console.log(after);
+      $.getJSON("update.json?after=" + after, function(data){
+          console.log(data)
+          if(data['id'] != -1) { 
+            if (data['has_geo']) {
+              after = data['id'];
+              geo = Geocoder.search("#{data['lat']},#{data['lng']}")
+              country_code = geo[0].data['address_components'][3]['short_name']
+              console.log(country_code);
+              countries.push(country_code);
+          }
+        }
+      });
+      setTimeout(getNewTweets,10000);  
+    }
       
        //bubbles, custom popup on hover template
      map.bubbles([
