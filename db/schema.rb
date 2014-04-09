@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407005204) do
+ActiveRecord::Schema.define(version: 20140409223947) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140407005204) do
     t.boolean  "has_geo"
     t.float    "lat"
     t.float    "lng"
+    t.string   "country"
   end
 
   add_index "tweets", ["scan_id"], name: "index_tweets_on_scan_id"
