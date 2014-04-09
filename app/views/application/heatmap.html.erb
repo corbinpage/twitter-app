@@ -33,7 +33,7 @@ window.onload = function(){
       scaleControl: true,
       disableDoubleClickZoom: false
     };
-    
+
     // we'll use the heatmapArea 
     var map = new google.maps.Map($("#heatmapArea")[0], myOptions);
 
@@ -58,7 +58,7 @@ window.onload = function(){
 
     heatmap = new HeatmapOverlay(map, {"radius":15, 
       "visible":true, 
-      "opacity":60,
+      "opacity":50,
       "gradient": { 1.0: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)"}
     });
 
@@ -164,25 +164,26 @@ window.onload = function(){
           stylers: [
             { saturation: -90 },
             { lightness: 90 },
-            { color: '#ffdddd' }
+            { color: '#ffcccc' }
           ]
         }, {
           featureType: 'administrative',
           elementType: 'geometry',
           stylers: [
-            { "color": "#ff2080" },
+            { "color": "#ffdddd" },
             { "weight": 1 }
           ]
         }, {
           stylers: [
-            { "hue": "#ff005d" },
+            { "hue": "#ff2080" },
             { "saturation": num },
             { "invert_lightness": true }
           ]
         }, {
           featureType: 'road',
           stylers: [
-            { "saturation": num },
+            { "hue": "#ff005d" },
+            { "visibility": "off" }
           ]
         }
       ]
