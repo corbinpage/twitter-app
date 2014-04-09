@@ -28,6 +28,8 @@ class ApplicationController < ActionController::Base
   end
 
   def experiment
-    render 'experiment'
+    tweet_array = Tweet.where("id > ?", params[:after].to_i).order(created_at: :desc).limit(1)
+    @tweet = tweet_array.empty? ? {id: -1} : tweet_array.first
+    render :json => @tweet
   end
 end
