@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "sqlite3"
+
 gem 'heroku'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0.rc2'
@@ -70,12 +72,10 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "simplecov"
   gem "database_cleaner"
-  gem "sqlite3"
   gem "pry"
 end
 
 group :production do
-  gem "sqlite3"
   gem "pg"
   gem "google-analytics-rails"
   gem "rails_12factor"
