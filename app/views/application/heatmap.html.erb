@@ -95,7 +95,7 @@ window.onload = function(){
     pulse();
 
     function pulse () {
-      pulseDown(50);
+      pulseDown(30);
     }
 
     function pulseDown (num) {
@@ -110,7 +110,7 @@ window.onload = function(){
     function pulseUp (num) {
       if (num < 0){
         map.set('styles', styleSet(num));
-        setTimeout(function() {pulseUp(num + 40)},325)
+        setTimeout(function() {pulseUp(num + 20)},325)
       } else {
         pulseDown(num);
       }

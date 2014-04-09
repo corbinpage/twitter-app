@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="http://datamaps.github.io/scripts/datamaps.world.min.js?v=1"></script>
+  <div id="container1" style="position: relative; width: 100%; max-height: 100%;"></div>
+ 
+     
+     <script>
+       //basic map config with custom fills, mercator projection
+      var map = new Datamap({
+        scope: 'world',
+        element: document.getElementById('container1'),
+        projection: 'mercator',
+        
+        fills: {
+          defaultFill: '#f0af0a',
+          nodata: 'rgba(0,244,244,0.9)',
+          unhappy: 'red',
+          happy: 'green',
+          neutral: '#f0af0a'
+        },
+        
+        data: {
+          USA: {fillKey: 'happy' },
+          RUS: {fillKey: 'unhappy' },
+          CAN: {fillKey: 'neutral' },
+          BRA: {fillKey: 'unhappy' },
+          ARG: {fillKey: 'unhappy'},
+          COL: {fillKey: 'unhappy' },
+          AUS: {fillKey: 'happy' },
+          ZAF: {fillKey: 'nodata' },
+          MAD: {fillKey: 'unhappy' }       
+        }
+      })
+    
+      
+       //bubbles, custom popup on hover template
+     map.bubbles([
+       {name: 'Hot', latitude: 21.32, longitude: 5.32, radius: 10, fillKey: 'unhappy'},
+       {name: 'Chilly', latitude: -25.32, longitude: 120.32, radius: 18, fillKey: 'lt50'},
+       {name: 'Hot again', latitude: 21.32, longitude: -84.32, radius: 8, fillKey: 'unhappy'},
+
+     ], {
+       popupTemplate: function(geo, data) {
+         return "<div class='hoverinfo'>It is " + data.name + "</div>";
+       }
+     });
+     </script>
+</body>

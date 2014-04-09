@@ -27,4 +27,7 @@ class ApplicationController < ActionController::Base
         render 'heatmap'
   end
 
+  def experiment
+    render 'experiment'
+  end
 end
