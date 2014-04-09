@@ -51,16 +51,7 @@ window.onload = function(){
     var testData={
             max: 46,
             data: [
-            {lat: 40.7055269, lng:-74.014346, count: 1},
-            {lat: 40.7055272, lng:-74.014346, count: 1},
-            {lat: 33.5608, lng:-117.24, count: 1},
-            {lat: 38, lng:-97, count: 1},
-            {lat: 38.9358, lng:-77.1621, count: 1}
-            // {lat: 40.7055269, lng:-74.014346, count: 3},
-            // {lat: 40.7055279, lng:-74.014326, count: 8},
-            // {lat: 40.7055169, lng:-74.014446, count: 14},
-            // {lat: 40.7055261, lng:-74.014349, count: 23}
-
+            {lat: 40.7055269, lng:-74.014346, count: 1}
             ]
     };
 
@@ -140,6 +131,7 @@ window.onload = function(){
     // }
 
     pulse();
+    // pulseDown(50);
 
     function pulse () {
       pulseDown(50);
@@ -155,9 +147,9 @@ window.onload = function(){
     }
 
     function pulseUp (num) {
-      if (num < 50){
+      if (num < 0){
         map.set('styles', styleSet(num));
-        setTimeout(function() {pulseUp(num + 20)},100)
+        setTimeout(function() {pulseUp(num + 40)},325)
       } else {
         pulseDown(num);
       }
