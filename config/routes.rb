@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'about' => 'application#about', as: :about
   get 'realtime' => 'application#realtime', as: :realtime
   get 'update' => 'application#update', as: :update
+  get 'heatmap' => 'application#heatmap', as: :heatmap
   root "application#home" 
 
   # The priority is based upon order of creation: first created -> highest priority.

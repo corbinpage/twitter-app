@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def home
-    render 'heatmap'
+
   end
 
   def update
@@ -24,8 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def heatmap
-      @tweet_array = Tweet.where("id > ?", params[:after].to_i).order(created_at: :desc).limit(10)
-      render :json => @tweet_array
+        render 'heatmap'
   end
 
 end
