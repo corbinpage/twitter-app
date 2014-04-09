@@ -35,4 +35,4 @@ namespace :db do
 	end
 end
 
-before deploy:restart, db:migrate
+before "deploy:restart", "db:migrate"
