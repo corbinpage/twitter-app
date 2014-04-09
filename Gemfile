@@ -12,6 +12,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# Updating netssh gem version for deploy troubleshoot
+gem "net-ssh", "~> 2.7.0"
+
 # Twitter Gem
 gem 'twitter', '~>5.x'
 gem 'twitter-text'

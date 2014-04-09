@@ -1,7 +1,7 @@
 require 'bundler/capistrano' # for bundler support
 
 set :application, "hivepulse"
-set :repository,  "git@github.com:corbinpage/twitter-app.git"
+set :repository,  "git@github.com:joanieS/twitter-app.git"
 
 set :user, 'joan'
 set :deploy_to, "/home/#{ user }/#{ application }"
