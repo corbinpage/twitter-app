@@ -41,18 +41,18 @@ class Tweet < ActiveRecord::Base
   def record_geolocation(geo)
     self.lat = geo.coordinates[0]
     self.lng = geo.coordinates[1]
-    self.country = get_country_name(self.lat, self.lng)
+    # self.country = get_country_name(self.lat, self.lng)
     true
   end
 
-  def get_country_name(lat, lng)
-    search_string = "#{lat},#{lng}"
-    search_results = Geocoder.search(search_string).first.data['address_components']
-    country = search_results.select do |country_data|
-      country_data['types'].first=='country'
-    end
-      country.first['long_name']
-  end
+  # def get_country_name(lat, lng)
+  #   search_string = "#{lat},#{lng}"
+  #   search_results = Geocoder.search(search_string).first.data['address_components']
+  #   country = search_results.select do |country_data|
+  #     country_data['types'].first=='country'
+  #   end
+  #     country.first['long_name']
+  # end
 
   def start_twitter_text_scan
     # Extract Mentions
