@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
+  adapter: sqlite3
   pool: 5
   timeout: 5000
 
@@ -27,4 +27,12 @@ test:
 #   sqlite3://myuser:mypass@localhost/full/path/to/somedatabase
 #
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  adapter: postgresql
+  encoding: utf8
+  database: twitdb
+  username: joan
+  password: flatiron
+  host: 107.170.117.122
+  port: 5432
+  pool: 10
+
