@@ -41,6 +41,7 @@ class Tweet < ActiveRecord::Base
   def record_geolocation(geo)
     self.lat = geo.coordinates[0]
     self.lng = geo.coordinates[1]
+    self.country = Geocoder.search("#{self.lat},#{self.lng}")
     true
   end
 
