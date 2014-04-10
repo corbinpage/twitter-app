@@ -5,8 +5,8 @@ var heat = [];
 var map;
 var heatmap;
 
-$(document).ready(function(){
-    
+function injectMap(){
+
     var myLatlng = new google.maps.LatLng(40.7055269, -74.014346);
     
     var myOptions = {
@@ -146,4 +146,9 @@ $(document).ready(function(){
         }
       ]
     }
+  
+}
+$(document).ready(function(){
+    
+
 });
