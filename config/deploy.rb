@@ -27,6 +27,9 @@ namespace :deploy do
  task :restart, :roles => :app, :except => { :no_release => true } do
    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
  end
+ task :symlink_keys do
+ 	run "#{try_sudo} ln -s #{shared_path}/application.yml #{release_path}/config/application.yml"
+ end
 end
 
 namespace :db do
@@ -34,5 +37,7 @@ namespace :db do
 		run "cd #{release_path} && #{try_sudo} rake db:migrate RAILS_ENV=production"
 	end
 end
+
+after "deploy:update", "deploy:symlink_keys"
 
 before "deploy:restart", "db:migrate"
