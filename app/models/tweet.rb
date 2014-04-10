@@ -1,6 +1,8 @@
 class Tweet < ActiveRecord::Base
   include Twitter::Extractor
   belongs_to :scan
+  has_many :beverage_tweets
+  has_many :beverages, through: :beverage_tweets
   # has_many :word_tweets
   # has_many :words, through: :word_tweets
   # has_many :mention_tweets
@@ -80,6 +82,15 @@ class Tweet < ActiveRecord::Base
       puts "Tweet scanned"
     rescue
       puts "Tweet scan fail"
+    end
+  end
+
+  def scan_for_beverages(beverage_list)
+    beverage_list.each do |bev_text|
+      if self.text.include? bev_text
+        bev = Beverage.find_or_create_by(text: bev_text)
+        self.beverages.push(bev)
+      end
     end
   end
 

@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407005204) do
+ActiveRecord::Schema.define(version: 20140409204555) do
+
+  create_table "beverage_tweets", force: true do |t|
+    t.integer  "beverage_id"
+    t.integer  "tweet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "beverage_tweets", ["beverage_id"], name: "index_beverage_tweets_on_beverage_id"
+  add_index "beverage_tweets", ["tweet_id"], name: "index_beverage_tweets_on_tweet_id"
+
+  create_table "beverages", force: true do |t|
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -35,7 +51,10 @@ ActiveRecord::Schema.define(version: 20140407005204) do
     t.float    "average_sentiment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "category"
   end
+
+  add_index "scans", ["category"], name: "index_scans_on_category"
 
   create_table "tweets", force: true do |t|
     t.text     "text"

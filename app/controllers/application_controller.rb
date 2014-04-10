@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
         render 'heatmap'
   end
 
+
+
+  # Beverage.joins(:beverage_tweets).group("beverage.id").count
+
 end
