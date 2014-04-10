@@ -15,6 +15,6 @@
 //= require bootstrap
 //= require google
 //= require heatmap
-// require heatmap-gmaps
+//= require heatmap-gmaps
 // require heatmap-override
 //= require_self
