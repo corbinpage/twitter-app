@@ -17,4 +17,4 @@
 //= require google
 //= require heatmap
 //= require heatmap-gmaps
-//= require realtime
+//= require heatmap-override

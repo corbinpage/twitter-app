@@ -1,6 +1,8 @@
 class Tweet < ActiveRecord::Base
   include Twitter::Extractor
   belongs_to :scan
+  has_many :beverage_tweets
+  has_many :beverages, through: :beverage_tweets
   # has_many :word_tweets
   # has_many :words, through: :word_tweets
   # has_many :mention_tweets
@@ -41,8 +43,18 @@ class Tweet < ActiveRecord::Base
   def record_geolocation(geo)
     self.lat = geo.coordinates[0]
     self.lng = geo.coordinates[1]
+    # self.country = get_country_name(self.lat, self.lng)
     true
   end
+
+  # def get_country_name(lat, lng)
+  #   search_string = "#{lat},#{lng}"
+  #   search_results = Geocoder.search(search_string).first.data['address_components']
+  #   country = search_results.select do |country_data|
+  #     country_data['types'].first=='country'
+  #   end
+  #     country.first['long_name']
+  # end
 
   def start_twitter_text_scan
     # Extract Mentions
@@ -80,6 +92,15 @@ class Tweet < ActiveRecord::Base
       puts "Tweet scanned"
     rescue
       puts "Tweet scan fail"
+    end
+  end
+
+  def scan_for_beverages(beverage_list)
+    beverage_list.each do |bev_text|
+      if self.text.include? bev_text
+        bev = Beverage.find_or_create_by(text: bev_text)
+        self.beverages.push(bev)
+      end
     end
   end
 

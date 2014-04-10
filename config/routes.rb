@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   get 'home' => 'application#home', as: :home
   get 'about' => 'application#about', as: :about
   get 'realtime' => 'application#realtime', as: :realtime
+  get 'beverage' => 'application#beverage', as: :beverage
+  get 'jsonbev' => 'application#jsonbev', as: :jsonbev
   get 'update' => 'application#update', as: :update
   get 'heatmap' => 'application#heatmap', as: :heatmap
+  get 'experiment' => 'application#experiment', as: :experiment
   root "application#home" 
 
   # The priority is based upon order of creation: first created -> highest priority.
