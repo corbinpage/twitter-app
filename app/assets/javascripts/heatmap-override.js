@@ -22,7 +22,7 @@ window.onload = function(){
       disableDoubleClickZoom: false
     };
     
-    var map = new google.maps.Map($("#heatmapArea")[0], myOptions);
+    var map = new google.maps.Map(jQuery("#heatmapArea")[0], myOptions);
 
         map.set('styles', styleSet(0));
 
@@ -51,7 +51,7 @@ window.onload = function(){
     
     function getNewTweets(){
       console.log(after);
-      $.getJSON("update.json?after=" + after, function(data){
+      jQuery.getJSON("update.json?after=" + after, function(data){
           console.log(data)
           if(data['id'] != -1) { 
             if (data['has_geo']) {
