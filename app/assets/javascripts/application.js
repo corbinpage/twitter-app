@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require google
-//= require heatmap
-//= require heatmap-gmaps
-//= require heatmap-override
+// require google
+// require heatmap
+// require heatmap-gmaps
+// require heatmap-override
 //= require_self
