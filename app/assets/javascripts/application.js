@@ -18,3 +18,7 @@
 //= require heatmap
 //= require heatmap-gmaps
 //= require heatmap-override
+
+(function ($) {
+   $(document);
+}(jQuery));
