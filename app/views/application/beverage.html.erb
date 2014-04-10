@@ -71,18 +71,14 @@ d3.select(self.frameElement).style("height", diameter + "px");
 
 setTimeout(getNewTweets,1000);
 var after = 1;
-
+  
 function getNewTweets(){
     d3.json("beverage.json?after=", function(error, root) {
-      // root[children].each child
-      //   select(circle).attr(text) == child.name
-      //     set this.r == child.size
-      //   end
-      //   .attr("r")
-       console.log(root);
-        });
-    console.log(testjson);
-
+      console.log(root)
+      root["children"].map( function(item) {
+        $('circle#' + item['name']).attr('r',item['size']);
+      })
+    });
   setTimeout(getNewTweets,1000);  
 }
 
