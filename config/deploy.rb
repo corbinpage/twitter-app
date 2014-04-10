@@ -30,9 +30,6 @@ namespace :deploy do
  task :symlink_keys do
  	run "#{try_sudo} ln -s #{shared_path}/application.yml #{release_path}/config/application.yml"
  end
- task :clean_assets do
- 	run "cd #{release_path} && #{try_sudo} rake assets:clean"
- end
 end
 
 namespace :db do
@@ -41,6 +38,5 @@ namespace :db do
 	end
 end
 
-before "deploy:assets:precompile", "deploy:clean_assets"
 before "deploy:finalize_update", "deploy:symlink_keys"
 before "deploy:restart", "db:migrate"
