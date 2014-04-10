@@ -33,6 +33,7 @@ d3.json("", function(error, root) {
       .data(bubble.nodes(classes(testjson))
       .filter(function(d) { return !d.children; }))
     .enter().append("g")
+      .attr("id", function(d) {return d.className})
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
@@ -76,6 +77,7 @@ function getNewTweets(){
     d3.json("beverage.json?after=", function(error, root) {
       console.log(root)
       root["children"].map( function(item) {
+        $('g#' + item['name']).attr('r', function(d) { return "translate(" + d.x + "," + d.y + ")"; });
         $('circle#' + item['name']).attr('r',item['size']);
       })
     });
