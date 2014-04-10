@@ -27,4 +27,12 @@ test:
 #   sqlite3://myuser:mypass@localhost/full/path/to/somedatabase
 #
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  adapter: postgresql
+  encoding: utf8
+  database: twitdb
+  username: joan
+  password: flatiron
+  host: localhost
+  port: 5432
+  pool: 10
+

@@ -28,3 +28,11 @@ namespace :deploy do
    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
  end
 end
+
+namespace :db do
+	task :migrate do
+		run "cd #{release_path} && #{try_sudo} rake db:migrate RAILS_ENV=production"
+	end
+end
+
+before "deploy:restart", "db:migrate"
