@@ -24,12 +24,22 @@ class ApplicationController < ActionController::Base
   end
 
   def heatmap
-        render 'heatmap'
+    render 'heatmap'
   end
 
   def experiment
     tweet_array = Tweet.where("id > ?", params[:after].to_i).order(created_at: :desc).limit(1)
     @tweet = tweet_array.empty? ? {id: -1} : tweet_array.first
     render :json => @tweet
+  end
+
+  def beverage
+    
+  end
+
+  def jsonbev
+    respond_to do |f|
+      f.js
+    end
   end
 end
