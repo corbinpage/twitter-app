@@ -12,6 +12,8 @@ text {
 
 var testjson = <%= @jsonbevs %>
 
+// begin d3 
+
 var diameter = 960,
     format = d3.format(",d"),
     color = d3.scale.category20c();
@@ -38,6 +40,7 @@ d3.json("", function(error, root) {
       .text(function(d) { return d.className + ": " + format(d.value); });
 
   node.append("circle")
+      .attr("id", function(d) {return d.className})
       .attr("r", function(d) { return d.r; })
       .style("fill", function(d) { return color(d.packageName); });
 
@@ -62,17 +65,24 @@ function classes(root) {
 
 d3.select(self.frameElement).style("height", diameter + "px");
 
+// end d3
+
+// begin get tweets
+
 setTimeout(getNewTweets,1000);
-after = 1;
+var after = 1;
 
 function getNewTweets(){
-  console.log(after);
-  $.getJSON("thirsty.json?after=" + after, function(data){
-    console.log(data)
-    if(data['id'] != -1) { 
-      
-    }
-  });
+    d3.json("beverage.json?after=", function(error, root) {
+      // root[children].each child
+      //   select(circle).attr(text) == child.name
+      //     set this.r == child.size
+      //   end
+      //   .attr("r")
+       console.log(root);
+        });
+    console.log(testjson);
+
   setTimeout(getNewTweets,1000);  
 }
 
