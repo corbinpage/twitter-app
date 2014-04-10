@@ -34,7 +34,8 @@ class ApplicationController < ActionController::Base
   end
 
   def beverage
-    
+    @jsonbevs = {name: 'bevs',children: Beverage.joins(:beverage_tweets).group('beverages.text').count.map{|k,v| [{'name'=> k,'size'=> v}]}.flatten}.to_json.html_safe
+    # Beverage.joins(:beverage_tweets).group('beverages.text').count
   end
 
   def jsonbev

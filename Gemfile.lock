@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/laserlemon/figaro.git
-  revision: b1ee70e456782180e10f240de6f943ee44e95c34
+  revision: ed7244bbbe3c4135c4a068abdb417a4ad9cf1ff0
   specs:
     figaro (0.7.0)
       rails (>= 3, < 5)
