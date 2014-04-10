@@ -16,5 +16,5 @@
 //= require google
 //= require heatmap
 //= require heatmap-gmaps
-// require heatmap-override
+//= require heatmap-override
 //= require_self
