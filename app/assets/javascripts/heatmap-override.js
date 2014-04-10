@@ -5,7 +5,7 @@ var heat = [];
 var map;
 var heatmap;
 
-jQuery(document).ready(function(){
+$(document).ready(function(){
     
     var myLatlng = new google.maps.LatLng(40.7055269, -74.014346);
     
@@ -22,7 +22,7 @@ jQuery(document).ready(function(){
       disableDoubleClickZoom: false
     };
     
-    var map = new google.maps.Map(jQuery("#heatmapArea")[0], myOptions);
+    var map = new google.maps.Map($("#heatmapArea")[0], myOptions);
 
         map.set('styles', styleSet(0));
 
@@ -51,7 +51,7 @@ jQuery(document).ready(function(){
     
     function getNewTweets(){
       console.log(after);
-      jQuery.getJSON("update.json?after=" + after, function(data){
+      $.getJSON("update.json?after=" + after, function(data){
           console.log(data)
           if(data['id'] != -1) { 
             if (data['has_geo']) {
