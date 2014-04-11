@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_self
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
@@ -18,7 +17,4 @@
 //= require heatmap
 //= require heatmap-gmaps
 //= require heatmap-override
-
-(function ($) {
-   $(document);
-}(jQuery));
+//= require_self

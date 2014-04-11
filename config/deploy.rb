@@ -31,6 +31,9 @@ namespace :deploy do
  task :restart, :roles => :app, :except => { :no_release => true } do
    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
  end
+ task :symlink_keys do
+ 	run "#{try_sudo} ln -s #{shared_path}/application.yml #{release_path}/config/application.yml"
+ end
 end
 
 namespace :db do
@@ -61,3 +64,6 @@ after "deploy:stop",    "delayed_job:stop"
 after "deploy:start",   "delayed_job:start"
 after "deploy:restart", "delayed_job:restart"
 after "delayed_job:start",   "twitter_prod:start_nyc"
+
+before "deploy:finalize_update", "deploy:symlink_keys"
+before "deploy:restart", "db:migrate"
