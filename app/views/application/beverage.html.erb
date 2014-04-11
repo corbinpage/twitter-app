@@ -1,4 +1,6 @@
-<%#= link_to "make bubbles", "/jsonbev", :remote => true %>
+<%#= link_to "clear bubbles", "/clearbev", :method => :post %>
+<%= button_to "Clear Bubbles", clearbev_path, :class => "clearbev", :remote => true, :method => :delete %>
+<%= button_to "Refresh Bubbles", beverage_path, :method => :get %>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <style>
@@ -10,13 +12,25 @@ text {
 </style>
 <script>
 
+$('.clearbev').click(function(e){
+  e.preventDefault();
+  $.ajax({
+    url: '/clearbev',
+    type: 'DELETE',
+    success: function(result) {
+      location.reload();
+    }
+  })
+  return location.reload();
+});
+
 var testjson = <%= @jsonbevs %>
 
 // begin d3 
 
 var diameter = 960,
     format = d3.format(",d"),
-    color = d3.scale.category20c();
+    color = d3.scale.category10();
 
 var bubble = d3.layout.pack()
     .sort(null)
@@ -47,7 +61,7 @@ d3.json("", function(error, root) {
   node.append("circle")
       .attr("id", function(d) {return d.className})
       .attr("r", function(d) { return d.r; })
-      .style("fill", function(d) { return color(d.packageName); });
+      .style("fill", function(d) { return color(d.className); });
 
   node.append("text")
       .attr("dy", ".3em")
@@ -90,22 +104,26 @@ var after = 1;
   
 function getNewTweets(){
     d3.json("beverage.json?after=", function(error, root) {
-      // console.log(root);
+      console.log(root);
       var total = 0;
       root["children"].forEach(function(child) {  total = total + child.size });
       console.log("Total is "+ total);
       root["children"].map( function(item) {
-        // console.log(item['size']);
+        // console.log(item['name'],item['size']);
         // $('g#' + item['name']).attr('transform', function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-        // $('circle#' + item['name']).attr('r', function(d) { return d.r });
+        // $('circle#' + item['name']).attr('r', item["size"]);
         // transitionNodes();
-        console.log("Percentage for " + item['name'] +" is " + (((item["size"])/total)*100).toFixed(2) + "%");
-        // $('circle#' + item['name']).attr('r', function(d) { return } );
+        // console.log("Percentage for " + item['name'] +" is " + (((item["size"])/total)*100).toFixed(2) + "%");
+        $('circle#' + item['name']).attr('r', function(d) { return d.r } );
         console.log((item["size"])/total);
         console.log()
       })
     });
   setTimeout(getNewTweets,1000);  
+}
+
+function clearBubbles(){
+  $.post("clearbev");
 }
 
 </script>
