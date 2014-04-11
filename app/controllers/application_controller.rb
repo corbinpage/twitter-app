@@ -45,4 +45,12 @@ class ApplicationController < ActionController::Base
   def jsonbev
 
   end
+
+  def clearbev
+    BeverageTweet.delete_all
+
+    respond_to do |f|
+      f.js
+    end
+  end
 end
