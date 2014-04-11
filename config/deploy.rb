@@ -42,28 +42,10 @@ namespace :db do
 	end
 end
 
-namespace :twitter_prod do
-  desc "Start NYC Beverages Scan"
-  task :start_nyc_beverages => :environment do
-    s = Scan.new(category: "nyc_beverages")
-    s.save
-    s.run_twitter_stream_nyc_beverages_without_delay
-  end
-
-  desc "Start NYC Scan"
-  task :start_nyc => :environment do
-    s = Scan.new(category: "nyc")
-    s.run_twitter_stream_nyc_without_delay
-  end
-
-end
-
-
 before "deploy:restart", "db:migrate"
 after "deploy:stop",    "delayed_job:stop"
 after "deploy:start",   "delayed_job:start"
 after "deploy:restart", "delayed_job:restart"
-after "delayed_job:start",   "twitter_prod:start_nyc"
 
 before "deploy:finalize_update", "deploy:symlink_keys"
 before "deploy:restart", "db:migrate"

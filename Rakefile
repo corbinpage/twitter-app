@@ -26,6 +26,23 @@ namespace :twitter do
     `cd ./ && RAILS_ENV=development bin/delayed_job stop`
     `ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs kill`
   end
+
+  # ----------For Production Use-------------
+
+
+  desc "Start NYC Beverages Scan in Production"
+  task :start_prod_nyc_beverages => :environment do
+    s = Scan.new(category: "nyc_beverages")
+    s.save
+    s.run_twitter_stream_nyc_beverages_without_delay
+  end
+
+  desc "Start NYC Scan in Production"
+  task :start_prod_nyc => :environment do
+    s = Scan.new(category: "nyc")
+    s.run_twitter_stream_nyc_without_delay
+  end
+
 end
 
 

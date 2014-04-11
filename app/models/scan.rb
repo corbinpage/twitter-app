@@ -35,7 +35,7 @@ class Scan < ActiveRecord::Base
     i = 0
     @client.filter(:locations => locations.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
-        puts i.to_s + " - " + object.text
+        # puts i.to_s + " - " + object.text
         new_tweet = parse_and_save_tweet(object)
         i += 1
       end
