@@ -5,7 +5,7 @@ var heat = [];
 var map;
 var heatmap;
 
-$(document).ready(function(){
+$(document).ready(function() {
     
     var myLatlng = new google.maps.LatLng(40.7055269, -74.014346);
     
@@ -46,7 +46,7 @@ $(document).ready(function(){
       "opacity":50,
       "gradient": { 1.0: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)"}
     });
-
+  
     setTimeout(getNewTweets,1000);  
     
     function getNewTweets(){

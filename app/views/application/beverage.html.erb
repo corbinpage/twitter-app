@@ -1,4 +1,4 @@
-<%= link_to "make bubbles", "/jsonbev", :remote => true %>
+<%#= link_to "make bubbles", "/jsonbev", :remote => true %>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <style>
@@ -28,9 +28,13 @@ var svg = d3.select("body").append("svg")
     .attr("height", diameter)
     .attr("class", "bubble");
 
+var nodeKey = function (d) {
+  return d.id;
+}
+
 d3.json("", function(error, root) {
   var node = svg.selectAll(".node")
-      .data(bubble.nodes(classes(testjson))
+      .data(bubble.nodes(classes(testjson), bubble.nodeKey)
       .filter(function(d) { return !d.children; }))
     .enter().append("g")
       .attr("id", function(d) {return d.className})
@@ -49,7 +53,18 @@ d3.json("", function(error, root) {
       .attr("dy", ".3em")
       .style("text-anchor", "middle")
       .text(function(d) { return d.className.substring(0, d.r / 3); });
+
+  node.transition()
+      .attr("r", 100);
+      
 });
+
+// function transitionNodes() {
+//   var child = svg.selectAll(".node")
+//     child.transition()
+//     .attr("r", 100);
+//   console.log(child);
+// }
 
 // Returns a flattened hierarchy containing all leaf nodes under the root.
 function classes(root) {
@@ -75,10 +90,19 @@ var after = 1;
   
 function getNewTweets(){
     d3.json("beverage.json?after=", function(error, root) {
-      console.log(root)
+      // console.log(root);
+      var total = 0;
+      root["children"].forEach(function(child) {  total = total + child.size });
+      console.log("Total is "+ total);
       root["children"].map( function(item) {
-        $('g#' + item['name']).attr('r', function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-        $('circle#' + item['name']).attr('r',item['size']);
+        // console.log(item['size']);
+        // $('g#' + item['name']).attr('transform', function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+        // $('circle#' + item['name']).attr('r', function(d) { return d.r });
+        // transitionNodes();
+        console.log("Percentage for " + item['name'] +" is " + (((item["size"])/total)*100).toFixed(2) + "%");
+        // $('circle#' + item['name']).attr('r', function(d) { return } );
+        console.log((item["size"])/total);
+        console.log()
       })
     });
   setTimeout(getNewTweets,1000);  
