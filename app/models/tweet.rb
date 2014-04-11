@@ -95,11 +95,20 @@ class Tweet < ActiveRecord::Base
     end
   end
 
-  def scan_for_beverages(beverage_list)
-    beverage_list.each do |bev_text|
+  def scan_for_beverages
+    Scan::TWITTER_NYC_BEVERAGE_TOPICS.each do |bev_text|
       if self.text.include? bev_text
         bev = Beverage.find_or_create_by(text: bev_text)
         self.beverages.push(bev)
+      end
+    end
+  end
+
+  def scan_for_frameworks
+    Scan::FRAMEWORK_TOPICS.each do |framework|
+      if self.text.include? framework
+        framework_obj = Framework.find_or_create_by(text: framework)
+        self.frameworks.push(framework_obj)
       end
     end
   end

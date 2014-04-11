@@ -45,4 +45,13 @@ class ApplicationController < ActionController::Base
   def jsonbev
 
   end
+
+  def frameworks
+
+  end
+
+  def frameworks_update
+
+  end
+
 end

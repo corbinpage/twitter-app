@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409223947) do
+ActiveRecord::Schema.define(version: 20140411180241) do
 
   create_table "beverage_tweets", force: true do |t|
     t.integer  "beverage_id"
@@ -44,6 +44,22 @@ ActiveRecord::Schema.define(version: 20140409223947) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "framework_tweets", force: true do |t|
+    t.integer  "tweet_id"
+    t.integer  "framework_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "framework_tweets", ["framework_id"], name: "index_framework_tweets_on_framework_id"
+  add_index "framework_tweets", ["tweet_id"], name: "index_framework_tweets_on_tweet_id"
+
+  create_table "frameworks", force: true do |t|
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "scans", force: true do |t|
     t.integer  "score"
