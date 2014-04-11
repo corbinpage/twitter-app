@@ -9,9 +9,9 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
  *= require_tree .
  *= require_self
+ //= require_tree ../../../vendor/assets/.
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
@@ -28,7 +28,6 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 50px;
-  background: url('background.jpg');
   padding-top: 70px;
   padding-bottom: 30px;
 }
@@ -53,6 +52,10 @@ main {
   margin-bottom: 10px;
   margin-top: 5px;
   border-radius: 1px;
+}
+
+#twitteriron{
+  padding: 25%;
 }
 
 .alert-success {
