@@ -43,9 +43,9 @@ namespace :db do
 end
 
 before "deploy:restart", "db:migrate"
-after "deploy:stop",    "delayed_job:stop"
-after "deploy:start",   "delayed_job:start"
-after "deploy:restart", "delayed_job:restart"
+# after "deploy:stop",    "delayed_job:stop"
+# after "deploy:start",   "delayed_job:start"
+# after "deploy:restart", "delayed_job:restart"
 
 before "deploy:finalize_update", "deploy:symlink_keys"
 before "deploy:restart", "db:migrate"
