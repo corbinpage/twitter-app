@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def beverage
-    @jsonbevs = {name: 'bevs',children: Beverage.joins(:beverage_tweets).limit(50).group('beverages.text').count.map{|k,v| [{'name'=> k,'size'=> v}]}.flatten}.to_json.html_safe
+    @jsonbevs = {name: 'bevs',children: beverage_counts = Beverage.joins(:beverage_tweets).where('beverage_tweets.created_at > ?',Time.now - 10.seconds).group('beverages.text').count.map{|k,v| [{'name'=> k,'size'=> v}]}.flatten}.to_json.html_safe
     respond_to do |f|
       f.json { render :json => @jsonbevs }
       f.html
