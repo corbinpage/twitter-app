@@ -8,11 +8,10 @@ Rails.application.load_tasks
 namespace :twitter do
   desc "Start All Scans"
   task :start_all => :environment do
-    system 'rake twitter:start_tech_companies &'
-    system 'rake twitter:start_nyc &'
-    system 'rake twitter:start_beverages &'
-    system 'rake twitter:start_languages &'
-
+    system 'rake twitter:start_beverages RAILS_ENV=development &'
+    system 'rake twitter:start_languages RAILS_ENV=development &'
+    system 'rake twitter:start_tech_companies RAILS_ENV=development &'
+    system 'rake twitter:start_nyc RAILS_ENV=development &'
   end
 
   desc "Start NYC Scan"
@@ -50,24 +49,23 @@ namespace :twitter do
   desc "Stop Scan"
   task :stop => :environment do
     `cd ./ && RAILS_ENV=development bin/delayed_job stop`
-    `ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs kill`
+    `ps xu | grep twitter:start | grep -v grep  | awk '{print $2}' | xargs kill`
   end
 
   # ----------For Production Use-------------
 
-  desc "Start NYC Beverages Scan in Production"
-  task :start_prod_nyc => :environment do
-    s = Scan.new(category: "nyc_beverages")
-    s.save
-    s.run_twitter_stream_nyc_without_delay
-    `cd ./ && RAILS_ENV=production bin/delayed_job start`
+  desc "Start All Scans in Production"
+  task :start_all_prod => :environment do
+    system 'rake twitter:start_beverages RAILS_ENV=production &'
+    system 'rake twitter:start_languages RAILS_ENV=production &'
+    system 'rake twitter:start_tech_companies RAILS_ENV=production &'
+    system 'rake twitter:start_nyc RAILS_ENV=production &'
   end
 
-  desc "Start NYC Scan in Production"
-  task :start_prod_nyc => :environment do
-    s = Scan.new(category: "nyc")
-    s.run_twitter_stream_nyc_without_delay
-    `cd ./ && RAILS_ENV=production bin/delayed_job start`
+  desc "Stop Scans in Production"
+  task :stop => :environment do
+    `cd ./ && RAILS_ENV=production bin/delayed_job stop`
+    `ps xu | grep twitter:start | grep -v grep  | awk '{print $2}' | xargs kill`
   end
 
 end
