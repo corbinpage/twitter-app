@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vertical - Build Up</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
+		
+		<!-- bootstrap magic -->
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+		<!-- jquery -->
+		<script type="text/javascript" src="assets/js/jquery-1.11.0.min.js"></script>
+
+		<!-- fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Exo+2:400,200,800' rel='stylesheet' type='text/css'>
+		
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="assets/js/html5shiv.js"></script>
+          <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+
+		<!-- theme custom -->
+		<link rel="stylesheet" href="assets/css/styles.css">
+		<!-- link rel="stylesheet/less" type="text/css" href="assets/less/styles.less" />
+		
+		<script type="text/javascript">
+			less = {
+				env: "development", // or "production"
+				async: false,       // load imports async
+				fileAsync: false,   // load imports async when in a page under
+									// a file protocol
+				poll: 1000,         // when in watch mode, time in ms between polls
+				functions: {},      // user functions, keyed by name
+				dumpLineNumbers: "comments" // or "mediaQuery" or "all"
+			};
+		</script>
+		<script type="text/javascript" src="assets/js/less-1.6.1.min.js"></script -->				
+
+	</head>
+	<body>	
+<!-- HEADER SECTION -->
+<div class="header-wrap" id="top">
+	<div class="container head-container">
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6 logo-container text-center">
+				<div class="logo"><%= image_tag("/assets/icons/twitteriron.png", id: 'twitteriron') %></div>
+			</div>
+		</div>
+		<div class="row title">
+			<div class="col-md-offset-3 col-md-6 text-center">
+				<h1>Make Twitter interesting. <br> Channel the stream.</h1>
+			</div>
+		</div>
+		<div class="row action">
+			<div class="col-md-offset-3 col-md-6 text-center">
+				<!-- <a href="#services" class="btn btn-lg btn-primary">Our Services</a> -->
+				<a href="#work" class="btn btn-lg btn-primary">View Our Work</a>
+			</div>
+		</div>			
+	</div>
+</div>
+
+<%#= render 'services' %>
+<%= render 'works' %>
+<%= render 'aboutus' %>
+<%= render 'contact' %>
+
+		<!-- google maps api -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATqBxcpfJ8QPIVPnDwEd0SPVC1Wmyk-4Q&sensor=false"></script>
+
+		<script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script>
+
+		<!-- link scroller -->
+		<script type="text/javascript" src="assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+		<script src="assets/js/jquery.localscroll-1.2.7-min.js"></script>		
+
+		<!-- bootstrap js -->
+		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
+		<!-- our custom scripts -->
+		<script type="text/javascript" src="assets/js/custom.js"></script>
+	</body>
+</html>

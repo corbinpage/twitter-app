@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def home
-
+    render :index
   end
 
   def update
@@ -62,4 +62,11 @@ class ApplicationController < ActionController::Base
     render :json => data_hash
   end
 
+  def clearbev
+    BeverageTweet.delete_all
+
+    respond_to do |f|
+      f.js
+    end
+  end
 end

@@ -62,6 +62,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    commonjs (0.2.7)
     daemons (1.1.9)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
@@ -109,6 +110,13 @@ GEM
     json (1.8.1)
     launchy (2.4.2)
       addressable (~> 2.3)
+    less (2.5.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.5.0)
+      actionpack (>= 3.1)
+      less (~> 2.5.0)
+    less-rails-bootstrap (3.1.1.1)
+      less-rails (~> 2.5.0)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -264,6 +272,7 @@ DEPENDENCIES
   heroku
   jbuilder (~> 2.0)
   jquery-rails
+  less-rails-bootstrap
   net-ssh (~> 2.7.0)
   obscenity
   pg
