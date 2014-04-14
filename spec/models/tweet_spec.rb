@@ -9,8 +9,10 @@ describe Tweet do
   		beer = Beverage.find_by(text: "beer")
   		expect(tweet.beverages).to include(beer)
   	end
-  	context "does not have beverage in text" do
-  	end
+  end
+
+	context "does not have beverage in text" do
+
 	end
 
 end
