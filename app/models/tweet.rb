@@ -1,7 +1,7 @@
 class Tweet < ActiveRecord::Base
   include Twitter::Extractor
   belongs_to :scan
-  has_many :word_tweets
+  has_many :word_tweets, dependent: :destroy
   has_many :words, through: :word_tweets
 
   def self.initialize_streaming_twitter_client
