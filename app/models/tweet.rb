@@ -3,6 +3,8 @@ class Tweet < ActiveRecord::Base
   belongs_to :scan
   has_many :beverage_tweets
   has_many :beverages, through: :beverage_tweets
+  has_many :framework_tweets
+  has_many :frameworks, through: :framework_tweets
   # has_many :word_tweets
   # has_many :words, through: :word_tweets
   # has_many :mention_tweets

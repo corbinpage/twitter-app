@@ -51,7 +51,15 @@ class ApplicationController < ActionController::Base
   end
 
   def frameworks_update
+    data_hash = {id: 1}
+    
+    framework_counts = Framework.joins(:framework_tweets).
+                                  where('framework_tweets.created_at > ?',Time.now - 1.minutes).
+                                  group('frameworks.text').
+                                  count
+    framework_counts.each {|k,v| data_hash[k.downcase.to_sym] = v}
 
+    render :json => data_hash
   end
 
 end

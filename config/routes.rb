@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'heatmap' => 'application#heatmap', as: :heatmap
   get 'experiment' => 'application#experiment', as: :experiment
   get 'frameworks' => 'application#frameworks', as: :frameworks
+  get 'frameworks_update' => 'application#frameworks_update', as: :frameworks_update
   root "application#home" 
 
   # The priority is based upon order of creation: first created -> highest priority.

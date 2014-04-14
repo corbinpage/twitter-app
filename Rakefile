@@ -21,6 +21,13 @@ namespace :twitter do
     `cd ./ && RAILS_ENV=development bin/delayed_job -m -n 2 start`
   end
 
+  desc "Start Framework Scan"
+  task :start_framework => :environment do
+    s = Scan.new(category: "frameworks")
+    s.run_twitter_stream_frameworks_without_delay
+    `cd ./ && RAILS_ENV=development bin/delayed_job -m -n 2 start`
+  end
+
   desc "Stop Scan"
   task :stop => :environment do
     `cd ./ && RAILS_ENV=development bin/delayed_job stop`

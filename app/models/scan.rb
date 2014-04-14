@@ -2,7 +2,8 @@ class Scan < ActiveRecord::Base
   has_many :tweets, :dependent => :destroy
 
   TWITTER_NYC_BEVERAGE_TOPICS = ["coffee","tea","beer","wine", "red bull","coca-cola", "whiskey", "gatorade", "orangina", "fanta"]
-  FRAMEWORK_TOPICS = ["Ruby on Rails","Node.js","jQuery","PHP"]
+  FRAMEWORK_TOPICS = ["Ruby", "Rails", "PHP", "Java", "Python", "Javascript"]
+  # FRAMEWORK_TOPICS = ["Google","Apple","Microsoft","Facebook","Amazon"]
 
 
   def run_twitter_stream_nyc_beverages
@@ -40,6 +41,7 @@ class Scan < ActiveRecord::Base
     topics = FRAMEWORK_TOPICS
     @client.filter(:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
+        puts object.text
         new_tweet = parse_and_save_tweet(object)
       end
     end
