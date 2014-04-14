@@ -12,7 +12,13 @@ describe Tweet do
   end
 
 	context "does not have beverage in text" do
-
+		it "won't add other tweets" do
+			count = tweet.beverages.count
+			tweet = create(:tweet, :text => "Other things!")
+			beverage_list = Scan::TWITTER_NYC_BEVERAGE_TOPICS
+			tweet.scan_for_beverages(beverage_list)
+			expect(tweet.beverages.count).to eq(count)
+		end
 	end
 
 end
