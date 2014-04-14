@@ -11,23 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409223947) do
-
-  create_table "beverage_tweets", force: true do |t|
-    t.integer  "beverage_id"
-    t.integer  "tweet_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "beverage_tweets", ["beverage_id"], name: "index_beverage_tweets_on_beverage_id"
-  add_index "beverage_tweets", ["tweet_id"], name: "index_beverage_tweets_on_tweet_id"
-
-  create_table "beverages", force: true do |t|
-    t.string   "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140414180241) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -75,5 +59,28 @@ ActiveRecord::Schema.define(version: 20140409223947) do
 
   add_index "tweets", ["scan_id"], name: "index_tweets_on_scan_id"
   add_index "tweets", ["twitter_id"], name: "index_tweets_on_twitter_id"
+
+  create_table "word_tweets", force: true do |t|
+    t.integer  "tweet_id"
+    t.integer  "word_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "word_tweets", ["tweet_id"], name: "index_word_tweets_on_tweet_id"
+  add_index "word_tweets", ["word_id"], name: "index_word_tweets_on_word_id"
+
+  create_table "word_types", force: true do |t|
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "words", force: true do |t|
+    t.string   "text"
+    t.integer  "word_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

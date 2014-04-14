@@ -16,5 +16,8 @@
 //= require google
 //= require heatmap
 //= require heatmap-gmaps
-//= require heatmap-override
+//= require highcharts
+//= require highcharts-more
+//= require themes/dark-blue
+//= require frameworks
 //= require_self

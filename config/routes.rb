@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'update' => 'application#update', as: :update
   get 'heatmap' => 'application#heatmap', as: :heatmap
   get 'experiment' => 'application#experiment', as: :experiment
-  delete 'clearbev' => 'application#clearbev', as: :clearbev
+  get 'frameworks' => 'application#frameworks', as: :frameworks
+  get 'frameworks_update' => 'application#frameworks_update', as: :frameworks_update
+delete 'clearbev' => 'application#clearbev', as: :clearbev
   root "application#home" 
 
   # The priority is based upon order of creation: first created -> highest priority.

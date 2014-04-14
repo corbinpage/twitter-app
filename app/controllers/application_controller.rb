@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     render :index
   end
 
+  def heatmap
+    render 'heatmap'
+  end
+
   def update
     if params[:after].nil? # First time the page loads
       @tweet = tweet.last
@@ -21,10 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def about
-  end
-
-  def heatmap
-    render 'heatmap'
   end
 
   def experiment
@@ -44,6 +44,22 @@ class ApplicationController < ActionController::Base
 
   def jsonbev
 
+  end
+
+  def frameworks
+
+  end
+
+  def frameworks_update
+    data_hash = {id: 1}
+    language_counts = WordType.joins(words: :word_tweets)
+                              .where("word_Types.text ='languages'")
+                              .where('word_tweets.created_at > ?',Time.now - 1.minutes)
+                              .group('words.text')
+                              .count
+    language_counts.each {|k,v| data_hash[k.downcase.to_sym] = v}
+
+    render :json => data_hash
   end
 
   def clearbev
