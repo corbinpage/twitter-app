@@ -1,0 +1,95 @@
+Twitter::Tweet.new(
+{:created_at=>"Mon Apr 14 23:46:41 +0000 2014",
+ :id=>455854686768484352,
+ :id_str=>"455854686768484352",
+ :text=>"@Alpaca_nV it should be a reality show",
+ :source=>
+  "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+ :truncated=>false,
+ :in_reply_to_status_id=>455854464986284032,
+ :in_reply_to_status_id_str=>"455854464986284032",
+ :in_reply_to_user_id=>1325978744,
+ :in_reply_to_user_id_str=>"1325978744",
+ :in_reply_to_screen_name=>"Alpaca_nV",
+ :user=>
+  {:id=>361594361,
+   :id_str=>"361594361",
+   :name=>"Sean Harrington",
+   :screen_name=>"irishboy52",
+   :location=>"New York",
+   :url=>nil,
+   :description=>
+    "Volleyball, Sachem east, Livbc, state finalist, long island&suffolk champions, hoping for a future c
+   :protected=>false,
+   :followers_count=>363,
+   :friends_count=>842,
+   :listed_count=>0,
+   :created_at=>"Thu Aug 25 01:14:13 +0000 2011",
+   :favourites_count=>2210,
+   :utc_offset=>nil,
+   :time_zone=>nil,
+   :geo_enabled=>true,
+   :verified=>false,
+   :statuses_count=>9621,
+   :lang=>"en",
+   :contributors_enabled=>false,
+   :is_translator=>false,
+   :is_translation_enabled=>false,
+   :profile_background_color=>"030000",
+   :profile_background_image_url=>
+    "http://pbs.twimg.com/profile_background_images/378800000077711554/e41839cfee0eafee55415a074ae2c65f.j
+   :profile_background_image_url_https=>
+    "https://pbs.twimg.com/profile_background_images/378800000077711554/e41839cfee0eafee55415a074ae2c65f.
+   :profile_background_tile=>true,
+   :profile_image_url=>
+    "http://pbs.twimg.com/profile_images/452551912127475713/lmq6Ne2m_normal.jpeg",
+   :profile_image_url_https=>
+    "https://pbs.twimg.com/profile_images/452551912127475713/lmq6Ne2m_normal.jpeg",
+   :profile_banner_url=>
+    "https://pbs.twimg.com/profile_banners/361594361/1396731759",
+   :profile_link_color=>"51ED1D",
+   :profile_sidebar_border_color=>"FFFFFF",
+   :profile_sidebar_fill_color=>"DDEEF6",
+   :profile_text_color=>"333333",
+   :profile_use_background_image=>true,
+   :default_profile=>false,
+   :default_profile_image=>false,
+   :following=>nil,
+   :follow_request_sent=>nil,
+   :notifications=>nil},
+ :geo=>{:type=>"Point", :coordinates=>[40.7898047, -73.06722119]},
+ :coordinates=>{:type=>"Point", :coordinates=>[-73.06722119, 40.7898047]},
+ :place=>
+  {:id=>"2afca7824544bb6d",
+   :url=>"https://api.twitter.com/1.1/geo/id/2afca7824544bb6d.json",
+   :place_type=>"city",
+   :name=>"Holbrook",
+   :full_name=>"Holbrook, NY",
+   :country_code=>"US",
+   :country=>"United States",
+   :contained_within=>[],
+   :bounding_box=>
+    {:type=>"Polygon",
+     :coordinates=>
+      [[[-73.098001, 40.764538],
+        [-73.098001, 40.832337],
+        [-73.042268, 40.832337],
+        [-73.042268, 40.764538]]]},
+   :attributes=>{}},
+ :contributors=>nil,
+ :retweet_count=>0,
+ :favorite_count=>0,
+ :entities=>
+  {:hashtags=>[],
+   :symbols=>[],
+   :urls=>[],
+   :user_mentions=>
+    [{:screen_name=>"Alpaca_nV",
+      :name=>"Alex / Alpaca nV",
+      :id=>1325978744,
+      :id_str=>"1325978744",
+      :indices=>[0, 10]}]},
+ :favorited=>false,
+ :retweeted=>false,
+ :filter_level=>"medium",
+ :lang=>"en"})
