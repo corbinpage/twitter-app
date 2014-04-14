@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem "sqlite3"
 gem "less-rails-bootstrap"
 gem 'heroku'
-gem 'capistrano-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0.rc2'
 # Use SCSS for stylesheets
