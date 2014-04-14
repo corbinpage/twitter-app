@@ -21,9 +21,6 @@ class ApplicationController < ActionController::Base
     render :json => @tweet
   end
 
-  def realtime
-  end
-
   def about
   end
 
@@ -39,11 +36,6 @@ class ApplicationController < ActionController::Base
       f.json { render :json => @jsonbevs }
       f.html
     end
-    # Beverage.joins(:beverage_tweets).group('beverages.text').count
-  end
-
-  def jsonbev
-
   end
 
   def frameworks
@@ -62,11 +54,4 @@ class ApplicationController < ActionController::Base
     render :json => data_hash
   end
 
-  def clearbev
-    BeverageTweet.delete_all
-
-    respond_to do |f|
-      f.js
-    end
-  end
 end

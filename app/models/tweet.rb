@@ -26,11 +26,12 @@ class Tweet < ActiveRecord::Base
   end
 
   def scan_for_keywords(category)
-    if category == 'beverages'
+    case category
+    when 'beverages'
       topics = Scan::BEVERAGE_TOPICS
-    elsif category == 'languages'
+    when 'languages'
       topics = Scan::LANGUAGE_TOPICS 
-    elsif category == 'tech_companies'
+    when 'tech_companies'
       topics = Scan::TECH_COMPANY_TOPICS
     end
 
