@@ -97,7 +97,7 @@ class Tweet < ActiveRecord::Base
 
   def scan_for_beverages(beverage_list)
     beverage_list.each do |bev_text|
-      if self.text.include? bev_text
+      if self.text.downcase.include? bev_text
         bev = Beverage.find_or_create_by(text: bev_text)
         self.beverages.push(bev)
       end
