@@ -42,10 +42,11 @@ $(function () {
                                       console.log(data)
                                       x = (new Date()).getTime(); 
                                       // x = data['read_time']; 
-                                      series1.addPoint([x, data['java']], true, true);
-                                      series2.addPoint([x, data['ruby']], true, true);
-                                      series3.addPoint([x, data['php']], true, true);
-                                      series4.addPoint([x, data['python']], true, true);
+                                      var animate = { duration: 100, easing: 'easeInOutExpo' };
+                                      series1.addPoint([x, data['java']], true, true, animate);
+                                      series2.addPoint([x, data['ruby']], true, true, animate);
+                                      series3.addPoint([x, data['php']], true, true, animate);
+                                      series4.addPoint([x, data['python']], true, true, animate);
                                       // series5.addPoint([x, data['amazon']], true, true);
                                     }
                                     else {
@@ -165,26 +166,7 @@ $(function () {
                     return data;
                 })(),
                 marker: {enabled: false}
-            }
-            // ,{
-            //     name: 'Amazon',
-            //     data: (function() {
-            //         // generate an array of random data
-            //         var data = [],
-            //             time = (new Date()).getTime(),
-            //             i;
-    
-            //         for (i = -19; i <= 0; i++) {
-            //             data.push({
-            //                 x: time + i * 1000,
-            //                 y: 0
-            //             });
-            //         }
-            //         return data;
-            //     })(),
-            //     marker: {enabled: false}
-            // }
-            ]
+            }]
         });
     });
     

@@ -1,27 +1,10 @@
 class Scan < ActiveRecord::Base
   has_many :tweets, :dependent => :destroy
 
-  TWITTER_NYC_BEVERAGE_TOPICS = ["coffee","tea","beer","wine", "red bull","coca-cola", "whiskey", "gatorade", "orangina", "fanta"]
-  FRAMEWORK_TOPICS = ["Ruby", "Rails", "PHP", "Java", "Python", "Javascript"]
-  # FRAMEWORK_TOPICS = ["Google","Apple","Microsoft","Facebook","Amazon"]
-
-
-  def run_twitter_stream_nyc_beverages
-    @client = Tweet.initialize_streaming_twitter_client
-
-    # Old Code, saving as examples
-    # topics = ["newyork","coffee","tea"]
-    # @client.filter(:track => topics.join(",")) do |object|
-
-    topics = TWITTER_NYC_BEVERAGE_TOPICS
-    locations = [-74,40,-73,41] #NYC Coordinates
-    @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
-      if object.is_a?(Twitter::Tweet)
-        new_tweet = parse_and_save_tweet(object)
-      end
-    end
-  end
-  handle_asynchronously :run_twitter_stream_nyc_beverages
+  BEVERAGE_TOPICS = ["coffee","tea","beer","wine", "red bull","coca-cola", "whiskey", "gatorade", "orangina", "fanta"]
+  LANGUAGE_TOPICS = ["ruby", "php", "java", "python", "javascript"]
+  TECH_COMPANY_TOPICS = ["google","apple","microsoft","facebook","amazon"]
+  VENTURE_CAPITAL_TOPICS = ["union square"]
 
   def run_twitter_stream_nyc
     @client = Tweet.initialize_streaming_twitter_client
@@ -29,24 +12,54 @@ class Scan < ActiveRecord::Base
     locations = [-74,40,-73,41] #NYC Coordinates
     @client.filter(:locations => locations.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
+        puts object.text
         new_tweet = parse_and_save_tweet(object)
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_nyc
+  handle_asynchronously :run_twitter_stream_nyc, :queue => 'nyc'
 
-  def run_twitter_stream_frameworks
+  def run_twitter_stream_beverages
     @client = Tweet.initialize_streaming_twitter_client
 
-    topics = FRAMEWORK_TOPICS
-    @client.filter(:track => topics.join(",")) do |object|
+    topics = BEVERAGE_TOPICS
+    locations = [-74,40,-73,41] #NYC Coordinates
+    @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
         new_tweet = parse_and_save_tweet(object)
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_frameworks
+  handle_asynchronously :run_twitter_stream_beverages, :queue => 'beverages'
+
+  def run_twitter_stream_languages
+    @client = Tweet.initialize_streaming_twitter_client
+
+    topics = LANGUAGE_TOPICS
+    locations = [-74,40,-73,41] #NYC Coordinates
+    @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
+      if object.is_a?(Twitter::Tweet)
+        puts object.text
+        new_tweet = parse_and_save_tweet(object)
+      end
+    end
+  end
+  handle_asynchronously :run_twitter_stream_languages, :queue => 'languages'
+
+  def run_twitter_stream_tech_companies
+    @client = Tweet.initialize_streaming_twitter_client
+
+    topics = TECH_COMPANY_TOPICS
+    locations = [-74,40,-73,41] #NYC Coordinates
+    @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
+      if object.is_a?(Twitter::Tweet)
+        puts object.text
+        new_tweet = parse_and_save_tweet(object)
+      end
+    end
+  end
+  handle_asynchronously :run_twitter_stream_tech_companies, :queue => 'tech_companies'
 
 
   def parse_and_save_tweet(twitter_object)
@@ -71,18 +84,9 @@ class Scan < ActiveRecord::Base
 
     # Scan for Hashtags, Mentions, and Links
     #new_tweet.start_twitter_text_scan
-
-    # Find popular links - instagram, twitpic
-    # Find all people mentioned
-    # Common words used
-
-    if self.category == "nyc_beverages"
-      new_tweet.scan_for_beverages
-    end
-
-    if self.category == "frameworks"
-      new_tweet.scan_for_frameworks
-    end
+ 
+    # Scan for any keywords
+    new_tweet.scan_for_keywords(self.category) unless self.category == 'nyc'
 
     new_tweet.save
     new_tweet
