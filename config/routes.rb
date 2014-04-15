@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'frameworks_update' => 'application#frameworks_update', as: :frameworks_update
   delete 'clearbev' => 'application#clearbev', as: :clearbev
   root "application#home"
+  get 'showreel' => 'application#showreel', as: :showreel
+  get 'stocks' => 'application#stocks', as: :stocks
 
   mount Sidekiq::Web, at: '/sidekiq'
 

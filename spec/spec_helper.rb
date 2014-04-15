@@ -1,4 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
@@ -14,8 +17,10 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.include WebMock::API
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
@@ -24,6 +29,9 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
+   stub_request(:get, "https://api.twitter.com/1.1/search/tweets.json?q=%whiskey").
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'stream.twitter.com', 'User-Agent'=>'Ruby'}).
+         to_return(:status => 200, :body => "", :headers => {})
   end
 
   config.before(:each, :js => true) do

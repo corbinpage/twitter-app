@@ -5,6 +5,7 @@ gem 'sinatra', require: false
 gem 'slim'
 gem 'sqlite3'
 gem 'less-rails-bootstrap'
+gem 'webmock'
 gem 'heroku'
 gem 'capistrano', '~>2.x'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
