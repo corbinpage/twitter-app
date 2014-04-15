@@ -52,7 +52,7 @@ end
 
 namespace :twitter do
   task :start_all do
-    run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_all"
+    run "cd #{release_path} && #{try_sudo} rake stream:start_all"
   end
 
   # task :start_nyc do
