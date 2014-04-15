@@ -17,7 +17,6 @@ class Scan < ActiveRecord::Base
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_nyc, :queue => 'nyc'
 
   def run_twitter_stream_beverages
     @client = Tweet.initialize_streaming_twitter_client
@@ -31,7 +30,6 @@ class Scan < ActiveRecord::Base
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_beverages, :queue => 'beverages'
 
   def run_twitter_stream_languages
     @client = Tweet.initialize_streaming_twitter_client
@@ -45,7 +43,6 @@ class Scan < ActiveRecord::Base
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_languages, :queue => 'languages'
 
   def run_twitter_stream_tech_companies
     @client = Tweet.initialize_streaming_twitter_client
@@ -59,7 +56,6 @@ class Scan < ActiveRecord::Base
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_tech_companies, :queue => 'tech_companies'
 
 
   def parse_and_save_tweet(twitter_object)
