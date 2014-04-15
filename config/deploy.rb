@@ -44,16 +44,16 @@ end
 
 namespace :twitter do
   task :start_all do
-    run "cd #{release_path} && #{try_sudo} ruby bin/start_twitter_streams.rb"
+    run "cd #{release_path} && #{try_sudo} nohup ruby bin/start_twitter_streams.rb"
   end
 
-  task :start_nyc do
-    run "cd #{release_path} && #{try_sudo} rake twitter:start_nyc RAILS_ENV=production &"
-  end
+  # task :start_nyc do
+  #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_nyc RAILS_ENV=production &"
+  # end
 
-  task :start_beverages do
-    run "cd #{release_path} && #{try_sudo} rake twitter:start_beverages RAILS_ENV=production &"
-  end
+  # task :start_beverages do
+  #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_beverages RAILS_ENV=production &"
+  # end
 end
 
 before "deploy:restart", "db:migrate"

@@ -19,6 +19,22 @@ namespace :stream do
     system 'bin/delayed_job -n 2 --queues=beverages,languages,tech_companies start'
   end
 
+  desc "Start NYC Scan"
+  task :start_nyc => :environment do
+    s = Scan.new(category: "nyc")
+    s.save
+    s.run_twitter_stream_nyc_without_delay
+    `bin/delayed_job --queue=nyc start`
+  end
+
+  desc "Start Beverages Scan"
+  task :start_beverages => :environment do
+    s = Scan.new(category: "beverages")
+    s.save
+    s.run_twitter_stream_beverages_without_delay
+    `bin/delayed_job --queue=beverages start`
+  end
+
   desc "Start Language Scan"
   task :start_languages => :environment do
 
@@ -26,6 +42,24 @@ namespace :stream do
     Scan.create(category: "languages").run_twitter_stream_languages
 
     system 'bin/delayed_job -n 1 --queues=languages start'
+    s = Scan.new(category: "languages")
+    s.save
+    s.run_twitter_stream_languages_without_delay
+    `bin/delayed_job --queue=languages start`
+  end
+
+  desc "Start Tech Companies Scan"
+  task :start_tech_companies => :environment do
+    s = Scan.new(category: "tech_companies")
+    s.save
+    s.run_twitter_stream_tech_companies_without_delay
+    `bin/delayed_job --queue=tech_companies start`
+  end
+
+  desc "Stop Scan"
+  task :stop => :environment do
+    `bin/delayed_job stop`
+    `ps xu | grep twitter:start | grep -v grep  | awk '{print $2}' | xargs kill`
   end
 
   desc "Start Tech Company Scan"
@@ -36,13 +70,6 @@ namespace :stream do
 
     system 'bin/delayed_job -n 1 --queues=tech_companies start'
   end
-
-  desc "Stop All Scans"
-  task :stop_all => :environment do
-    # Delayed::Command.new('stop').daemonize
-    system "ps xu | grep delayed_job | grep -v grep  | awk '{print $2}' | xargs kill"
-  end
-
 end
 
 # namespace :twitter do
