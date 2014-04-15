@@ -44,7 +44,7 @@ function update (data){
     .style('opacity', 0)
     .style ('fill', 'black')
     .style('text-anchor', 'middle')
-    .text(function(d) { return d.name + " ("+d.value+")"; });
+    .text(function(d) { return d.name + " ("+d.value/100+"%"+")"; });
 
   // UPDATE
   var update = node.transition()
@@ -55,7 +55,7 @@ function update (data){
 
   update.select('text')
     .style('font-size', function(d) {return d.r / 3 + 'px';})
-    .text(function(d) { return d.name + " ("+d.value+")"; })
+    .text(function(d) { return d.name + " ("+d.value+"%"+")"; })
     .style('opacity', 1);
 
   // EXIT
