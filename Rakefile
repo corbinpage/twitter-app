@@ -8,42 +8,27 @@ Rails.application.load_tasks
 namespace :twitter do
   desc "Start All Scans"
   task :start_all => :environment do
-    system 'rake twitter:start_beverages RAILS_ENV=development &'
-    system 'rake twitter:start_languages RAILS_ENV=development &'
-    system 'rake twitter:start_tech_companies RAILS_ENV=development &'
-    system 'rake twitter:start_nyc RAILS_ENV=development &'
+    StreamWorker.perform_async
   end
 
   desc "Start NYC Scan"
   task :start_nyc => :environment do
-    s = Scan.new(category: "nyc")
-    s.save
-    s.run_twitter_stream_nyc_without_delay
-    `bin/delayed_job --queue=nyc start`
+    StreamWorker.perform_async(:nyc)
   end
 
   desc "Start Beverages Scan"
   task :start_beverages => :environment do
-    s = Scan.new(category: "beverages")
-    s.save
-    s.run_twitter_stream_beverages_without_delay
-    `bin/delayed_job --queue=beverages start`
+    StreamWorker.perform_async(:beverages)
   end
 
   desc "Start Languages Scan"
   task :start_languages => :environment do
-    s = Scan.new(category: "languages")
-    s.save
-    s.run_twitter_stream_languages_without_delay
-    `bin/delayed_job --queue=languages start`
+    StreamWorker.perform_async(:languages)
   end
 
   desc "Start Tech Companies Scan"
   task :start_tech_companies => :environment do
-    s = Scan.new(category: "tech_companies")
-    s.save
-    s.run_twitter_stream_tech_companies_without_delay
-    `bin/delayed_job --queue=tech_companies start`
+    StreamWorker.perform_async(:tech_companies)
   end
 
   desc "Stop Scan"
