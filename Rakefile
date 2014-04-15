@@ -10,29 +10,28 @@ namespace :stream do
   desc "Start All Scans"
   task :start_all => :environment do
 
-    # Queue up the jobs to start
-    Scan.create(category: "nyc").run_twitter_stream_nyc
-    Scan.create(category: "beverages").run_twitter_stream_beverages
-    Scan.create(category: "languages").run_twitter_stream_languages
-    Scan.create(category: "tech_companies").run_twitter_stream_tech_companies
+    # # Queue up the jobs to start
+    # Scan.create(category: "nyc").run_twitter_stream_nyc
+    # Scan.create(category: "beverages").run_twitter_stream_beverages
+    # Scan.create(category: "languages").run_twitter_stream_languages
+    # Scan.create(category: "tech_companies").run_twitter_stream_tech_companies
 
-    system 'bin/delayed_job -n 2 --queues=beverages,languages,tech_companies start'
+    # system 'bin/delayed_job -n 2 --queues=beverages,languages,tech_companies start'
+
+    NYCWorker.perform_async
+    LanguageWorker.perform_async
+    TechCompanyWorker.perform_async
+    BeverageWorker.perform_async
   end
 
-  desc "Start NYC Scan"
-  task :start_nyc => :environment do
-    s = Scan.new(category: "nyc")
-    s.save
-    s.run_twitter_stream_nyc_without_delay
-    `bin/delayed_job --queue=nyc start`
-  end
+  # desc "Start NYC Scan"
+  # task :start_nyc => :environment do
+  #   StreamWorker.perform_async(:nyc)
+  # end
 
   desc "Start Beverages Scan"
   task :start_beverages => :environment do
-    s = Scan.new(category: "beverages")
-    s.save
-    s.run_twitter_stream_beverages_without_delay
-    `bin/delayed_job --queue=beverages start`
+    BeverageWorker.perform_async
   end
 
   desc "Start Language Scan"
@@ -48,13 +47,15 @@ namespace :stream do
     `bin/delayed_job --queue=languages start`
   end
 
-  desc "Start Tech Companies Scan"
-  task :start_tech_companies => :environment do
-    s = Scan.new(category: "tech_companies")
-    s.save
-    s.run_twitter_stream_tech_companies_without_delay
-    `bin/delayed_job --queue=tech_companies start`
-  end
+  # desc "Start Languages Scan"
+  # task :start_languages => :environment do
+  #   StreamWorker.perform_async(:languages)
+  # end
+
+  # desc "Start Tech Companies Scan"
+  # task :start_tech_companies => :environment do
+  #   StreamWorker.perform_async(:tech_companies)
+  # end
 
   desc "Stop Scan"
   task :stop => :environment do

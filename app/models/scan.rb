@@ -13,11 +13,13 @@ class Scan < ActiveRecord::Base
     @client.filter(:locations => locations.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
-        new_tweet = parse_and_save_tweet(object)
+        begin
+          new_tweet = parse_and_save_tweet(object)
+        rescue
+        end
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_nyc, :queue => 'nyc'
 
   def run_twitter_stream_beverages
     @client = Tweet.initialize_streaming_twitter_client_beverages
@@ -27,11 +29,13 @@ class Scan < ActiveRecord::Base
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
-        new_tweet = parse_and_save_tweet(object)
+        begin
+          new_tweet = parse_and_save_tweet(object)
+        rescue
+        end
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_beverages, :queue => 'beverages'
 
   def run_twitter_stream_languages
     @client = Tweet.initialize_streaming_twitter_client_languages
@@ -41,11 +45,13 @@ class Scan < ActiveRecord::Base
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
-        new_tweet = parse_and_save_tweet(object)
+        begin
+          new_tweet = parse_and_save_tweet(object)
+        rescue
+        end
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_languages, :queue => 'languages'
 
   def run_twitter_stream_tech_companies
     @client = Tweet.initialize_streaming_twitter_client_tech_companies
@@ -55,11 +61,13 @@ class Scan < ActiveRecord::Base
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
-        new_tweet = parse_and_save_tweet(object)
+        begin
+          new_tweet = parse_and_save_tweet(object)
+        rescue
+        end
       end
     end
   end
-  handle_asynchronously :run_twitter_stream_tech_companies, :queue => 'tech_companies'
 
 
   def parse_and_save_tweet(twitter_object)

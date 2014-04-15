@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
 
   # Home Page
@@ -14,7 +16,9 @@ Rails.application.routes.draw do
   # Echo Chamber Page
   get 'frameworks' => 'application#frameworks', as: :frameworks
   get 'frameworks_update' => 'application#frameworks_update', as: :frameworks_update
- 
+  get 'showreel' => 'application#showreel', as: :showreel
+  get 'stocks' => 'application#stocks', as: :stocks
+  mount Sidekiq::Web, at: '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

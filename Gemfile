@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 
-gem "sqlite3"
-gem "less-rails-bootstrap"
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+gem 'sqlite3'
+gem 'less-rails-bootstrap'
+gem 'webmock'
 gem 'heroku'
 gem 'capistrano', '~>2.x'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -16,7 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer',  platforms: :ruby
 
 # Updating netssh gem version for deploy troubleshoot
-gem "net-ssh", "~> 2.7.0"
+gem 'net-ssh', '~> 2.7.0'
 
 # Twitter Gem
 gem 'twitter', '~>5.x'

@@ -49,4 +49,31 @@ class ApplicationController < ActionController::Base
     render :json => data_hash
   end
 
+  def showreel
+    @mentions = WordTweet.get_tech_tweets
+    #binding.pry
+    respond_to do |f|
+      f.csv { render text: to_csv(@mentions) }
+      f.json { render :json => @mentions.to_json.html_safe }
+      f.html
+    end
+  end
+
+  def stocks
+    render 'stocks.csv'
+  end
+
+  private
+  def to_csv(array)
+    column_names = ["name", "date", "mentions"]
+
+    CSV.generate do |csv|
+      csv << column_names
+      array.each do |company_data|
+        csv << company_data
+        # csv << word_tweet.attributes.values_at(*column_names)
+      end
+    end
+  end
+
 end

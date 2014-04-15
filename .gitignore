@@ -26,3 +26,6 @@
 
 # Ignore coverage files
 /coverage/*
+
+# Ignore Redis dump
+dump.rdb
