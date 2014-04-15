@@ -1,6 +1,13 @@
 require 'bundler/capistrano' # for bundler support
-# require 'sidekiq/capistrano'
-require 'delayed/recipes'
+require 'sidekiq/capistrano'
+# require 'delayed/recipes'
+
+set(:sidekiq_cmd) {"bundle exec sidekiq"}
+set(:sidekiqctl_cmd) {"bundle exec sidekiqctl"}
+set(:sidekiq_timeout) {10}
+set(:sidekiq_role) {:app}
+set(:sidekiq_pid) { "#{current_path}/tmp/pids/sidekiq.pid"}
+set(:sidekiq_processes) {5}
 
 set :application, "hivepulse"
 set :repository,  "git@github.com:twizards/twitter-app.git"
@@ -57,13 +64,24 @@ namespace :twitter do
   # end
 end
 
+namespace :async do 
+  task :redis do
+    run "cd #{release_path} && #{try_sudo} nohup redis-server /etc/redis/redis.conf"
+  end
+
+  task :sidekiq do
+    run "cd #{release_path} && #{try_sudo} bundle exec sidekiq -d -e production -P #{shared_path}/pids/sidekiq.pid -L #{release_path}/log/sidekiq.log"
+  end
+end
+
 before "deploy:restart", "db:migrate"
 # after "deploy:stop",    "delayed_job:stop"
 # after "deploy:start",   "delayed_job:start"
 # after "deploy:restart", "delayed_job:restart"
  
 before "deploy:finalize_update", "deploy:symlink_keys"
-before "deploy:restart", "db:migrate"
+# before "deploy:restart", "async:redis"
+# before "deploy:restart", "async:sidekiq"
 before "deploy:restart", "twitter:start_all"
 # before "deploy:restart", "twitter:start_nyc"
 # before "deploy:restart", "twitter:start_beverages"
