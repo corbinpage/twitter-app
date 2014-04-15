@@ -44,11 +44,11 @@ end
 
 namespace :twitter do
   task :start_nyc do
-    run "cd #{release_path} && #{try_sudo} rake twitter:start_nyc RAILS_ENV=production"
+    run "cd #{release_path} && #{try_sudo} rake twitter:start_nyc RAILS_ENV=production &"
   end
 
   task :start_beverages do
-    run "cd #{release_path} && #{try_sudo} rake twitter:start_beverages RAILS_ENV=production"
+    run "cd #{release_path} && #{try_sudo} rake twitter:start_beverages RAILS_ENV=production &"
   end
 end
 
