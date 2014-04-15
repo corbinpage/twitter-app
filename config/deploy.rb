@@ -37,18 +37,32 @@ namespace :deploy do
 end
 
 namespace :db do
-	task :migrate do
-		run "cd #{release_path} && #{try_sudo} rake db:migrate RAILS_ENV=production"
-	end
+  task :migrate do
+    run "cd #{release_path} && #{try_sudo} rake db:migrate RAILS_ENV=production"
+  end
+end
+
+namespace :twitter do
+  task :start_all do
+    run "cd #{release_path} && #{try_sudo} nohup ruby bin/start_twitter_streams.rb"
+  end
+
+  # task :start_nyc do
+  #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_nyc RAILS_ENV=production &"
+  # end
+
+  # task :start_beverages do
+  #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_beverages RAILS_ENV=production &"
+  # end
 end
 
 before "deploy:restart", "db:migrate"
 # after "deploy:stop",    "delayed_job:stop"
 # after "deploy:start",   "delayed_job:start"
 # after "deploy:restart", "delayed_job:restart"
-
+ 
 before "deploy:finalize_update", "deploy:symlink_keys"
 before "deploy:restart", "db:migrate"
-before "deploy:restart", "twitter:stop"
-before "deploy:restart", "twitter:start_nyc"
-before "deploy:restart", "twitter:start_beverages"
+before "deploy:restart", "twitter:start_all"
+# before "deploy:restart", "twitter:start_nyc"
+# before "deploy:restart", "twitter:start_beverages"

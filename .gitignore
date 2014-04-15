@@ -15,7 +15,7 @@
 /log/*.log
 /tmp
 
-#Ignore public things
+# Ignore public things
 /public/*
 
 # Ignore application configuration
@@ -23,3 +23,6 @@
 
 #Ignore notes
 /notes/*
+
+# Ignore coverage files
+/coverage/*
