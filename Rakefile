@@ -8,28 +8,31 @@ Rails.application.load_tasks
 namespace :twitter do
   desc "Start All Scans"
   task :start_all => :environment do
-    StreamWorker.perform_async
+    NYCWorker.perform_async
+    LanguageWorker.perform_async
+    TechCompanyWorker.perform_async
+    BeverageWorker.perform_async
   end
 
-  desc "Start NYC Scan"
-  task :start_nyc => :environment do
-    StreamWorker.perform_async(:nyc)
-  end
+  # desc "Start NYC Scan"
+  # task :start_nyc => :environment do
+  #   StreamWorker.perform_async(:nyc)
+  # end
 
   desc "Start Beverages Scan"
   task :start_beverages => :environment do
-    StreamWorker.perform_async(:beverages)
+    BeverageWorker.perform_async
   end
 
-  desc "Start Languages Scan"
-  task :start_languages => :environment do
-    StreamWorker.perform_async(:languages)
-  end
+  # desc "Start Languages Scan"
+  # task :start_languages => :environment do
+  #   StreamWorker.perform_async(:languages)
+  # end
 
-  desc "Start Tech Companies Scan"
-  task :start_tech_companies => :environment do
-    StreamWorker.perform_async(:tech_companies)
-  end
+  # desc "Start Tech Companies Scan"
+  # task :start_tech_companies => :environment do
+  #   StreamWorker.perform_async(:tech_companies)
+  # end
 
   desc "Stop Scan"
   task :stop => :environment do
