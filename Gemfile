@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 gem 'sqlite3'
 gem 'less-rails-bootstrap'
 gem 'heroku'
