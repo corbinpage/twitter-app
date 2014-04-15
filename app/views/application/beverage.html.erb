@@ -1,18 +1,6 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-$('.clearbev').click(function(e){
-  e.preventDefault();
-  $.ajax({
-    url: '/clearbev',
-    type: 'DELETE',
-    success: function(result) {
-      location.reload();
-    }
-  })
-  return location.reload();
-});
-
 var SIZE = 600;
 
 updateBubbles();
