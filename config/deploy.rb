@@ -1,5 +1,6 @@
 require 'bundler/capistrano' # for bundler support
-require "delayed/recipes"  
+require 'sidekiq/capistrano'
+require 'delayed/recipes'
 
 set :application, "hivepulse"
 set :repository,  "git@github.com:twizards/twitter-app.git"
