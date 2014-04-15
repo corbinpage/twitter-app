@@ -19,7 +19,7 @@ namespace :twitter do
     s = Scan.new(category: "nyc")
     s.save
     s.run_twitter_stream_nyc_without_delay
-    `cd ./ && RAILS_ENV=development bin/delayed_job --queue=beverages start`
+    `RAILS_ENV=development bin/delayed_job --queue=beverages start`
   end
 
   desc "Start Beverages Scan"
@@ -27,7 +27,7 @@ namespace :twitter do
     s = Scan.new(category: "beverages")
     s.save
     s.run_twitter_stream_beverages_without_delay
-    `cd ./ && RAILS_ENV=development bin/delayed_job --queue=beverages start`
+    `RAILS_ENV=development bin/delayed_job --queue=beverages start`
   end
 
   desc "Start Languages Scan"
@@ -35,7 +35,7 @@ namespace :twitter do
     s = Scan.new(category: "languages")
     s.save
     s.run_twitter_stream_languages_without_delay
-    `cd ./ && RAILS_ENV=development bin/delayed_job --queue=languages start`
+    `RAILS_ENV=development bin/delayed_job --queue=languages start`
   end
 
   desc "Start Tech Companies Scan"
@@ -43,12 +43,12 @@ namespace :twitter do
     s = Scan.new(category: "tech_companies")
     s.save
     s.run_twitter_stream_tech_companies_without_delay
-    `cd ./ && RAILS_ENV=development bin/delayed_job --queue=tech_companies start`
+    `RAILS_ENV=development bin/delayed_job --queue=tech_companies start`
   end
 
   desc "Stop Scan"
   task :stop => :environment do
-    `cd ./ && RAILS_ENV=development bin/delayed_job stop`
+    `RAILS_ENV=development bin/delayed_job stop`
     `ps xu | grep twitter:start | grep -v grep  | awk '{print $2}' | xargs kill`
   end
 
@@ -64,7 +64,7 @@ namespace :twitter do
 
   desc "Stop Scans in Production"
   task :stop => :environment do
-    `cd ./ && RAILS_ENV=production bin/delayed_job stop`
+    `RAILS_ENV=production bin/delayed_job stop`
     `ps xu | grep twitter:start | grep -v grep  | awk '{print $2}' | xargs kill`
   end
 
@@ -74,12 +74,12 @@ end
 namespace :jobs do
   desc "Start workers"
   task :start_workers do
-    `cd ./ && RAILS_ENV=development bin/delayed_job -m -n 2 start`
+    `RAILS_ENV=development bin/delayed_job -m -n 2 start`
   end
 
   desc "Stop workers"
   task :stop_workers do
     `ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs kill`
-    `cd ./ && RAILS_ENV=development bin/delayed_job stop`
+    `RAILS_ENV=development bin/delayed_job stop`
   end
 end
