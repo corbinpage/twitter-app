@@ -13,6 +13,42 @@ class Tweet < ActiveRecord::Base
     end
   end
 
+  def self.initialize_streaming_twitter_client_nyc
+    client = Twitter::Streaming::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_API_KEY']
+      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET']
+      config.access_token        = ENV['TWITTER_USER_API_KEY']
+      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET']
+    end
+  end
+
+  def self.initialize_streaming_twitter_client_beverages
+    client = Twitter::Streaming::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_API_KEY_2']
+      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET_2']
+      config.access_token        = ENV['TWITTER_USER_API_KEY_2']
+      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET_2']
+    end
+  end
+
+  def self.initialize_streaming_twitter_client_languages
+    client = Twitter::Streaming::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_API_KEY_3']
+      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET_3']
+      config.access_token        = ENV['TWITTER_USER_API_KEY_3']
+      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET_3']
+    end
+  end
+
+  def self.initialize_streaming_twitter_client_tech_companies
+    client = Twitter::Streaming::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_API_KEY_4']
+      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET_4']
+      config.access_token        = ENV['TWITTER_USER_API_KEY_4']
+      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET_4']
+    end
+  end
+
   def score_sentimentality(sentiment_analyzer)
     self.sentiment_summary = sentiment_analyzer.get_sentiment(self.text)
     self.sentiment_score = sentiment_analyzer.get_score(self.text)

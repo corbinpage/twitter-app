@@ -7,7 +7,7 @@ class Scan < ActiveRecord::Base
   VENTURE_CAPITAL_TOPICS = ["union square"]
 
   def run_twitter_stream_nyc
-    @client = Tweet.initialize_streaming_twitter_client
+    @client = Tweet.initialize_streaming_twitter_client_nyc
 
     locations = [-74,40,-73,41] #NYC Coordinates
     @client.filter(:locations => locations.join(",")) do |object|
@@ -19,7 +19,7 @@ class Scan < ActiveRecord::Base
   end
 
   def run_twitter_stream_beverages
-    @client = Tweet.initialize_streaming_twitter_client
+    @client = Tweet.initialize_streaming_twitter_client_beverages
 
     topics = BEVERAGE_TOPICS
     locations = [-74,40,-73,41] #NYC Coordinates
@@ -32,7 +32,7 @@ class Scan < ActiveRecord::Base
   end
 
   def run_twitter_stream_languages
-    @client = Tweet.initialize_streaming_twitter_client
+    @client = Tweet.initialize_streaming_twitter_client_languages
 
     topics = LANGUAGE_TOPICS
     locations = [-74,40,-73,41] #NYC Coordinates
@@ -45,7 +45,7 @@ class Scan < ActiveRecord::Base
   end
 
   def run_twitter_stream_tech_companies
-    @client = Tweet.initialize_streaming_twitter_client
+    @client = Tweet.initialize_streaming_twitter_client_tech_companies
 
     topics = TECH_COMPANY_TOPICS
     locations = [-74,40,-73,41] #NYC Coordinates
