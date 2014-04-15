@@ -6,7 +6,7 @@ set :repository,  "git@github.com:twizards/twitter-app.git"
 
 set :user, 'joan'
 set :deploy_to, "/home/#{ user }/#{ application }"
-set :use_sudo, false
+set :use_sudo, true
 
 set :scm, :git
 
@@ -48,11 +48,11 @@ namespace :twitter do
   end
 
   task :start_nyc do
-    run "cd #{release_path} && #{try_sudo} rake twitter:start_nyc RAILS_ENV=production &"
+    run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_nyc RAILS_ENV=production &"
   end
 
   task :start_beverages do
-    run "cd #{release_path} && #{try_sudo} rake twitter:start_beverages RAILS_ENV=production &"
+    run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_beverages RAILS_ENV=production &"
   end
 end
 
