@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'experiment' => 'application#experiment', as: :experiment
   get 'frameworks' => 'application#frameworks', as: :frameworks
   get 'frameworks_update' => 'application#frameworks_update', as: :frameworks_update
+  get 'showreel' => 'application#showreel', as: :showreel
+  get 'stocks' => 'application#stocks', as: :stocks
 delete 'clearbev' => 'application#clearbev', as: :clearbev
   root "application#home" 
 

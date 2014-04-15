@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem "sqlite3"
+gem 'webmock'
 gem "less-rails-bootstrap"
 gem 'heroku'
 gem 'capistrano', '~>2.x'

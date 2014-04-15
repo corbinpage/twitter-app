@@ -1,0 +1,16 @@
+HTTP/1.1 401 Authorization Required
+Connection: close
+Cache-Control: must-revalidate,no-cache,no-store
+Content-Type: text/html
+Date: Tue, 15 Apr 2014 14:57:25 UTC
+X-Connection-Hash: 0464f0bde28d31a7cae89ff622dddbb0
+Content-Length: 281
+
+<html>\n<head>\n<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n<title>Error 401 Unauthorized</title>
+</head>
+<body>
+<h2>HTTP ERROR: 401</h2>
+<p>Problem accessing '/1.1/statuses/filter.json?=track=whiskey'. Reason:
+<pre>    Unauthorized</pre>
+</body>
+</html>
