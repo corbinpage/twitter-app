@@ -13,7 +13,10 @@ class Scan < ActiveRecord::Base
     @client.filter(:locations => locations.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
-        new_tweet = parse_and_save_tweet(object)
+        begin
+          new_tweet = parse_and_save_tweet(object)
+        rescue
+        end
       end
     end
   end
@@ -26,7 +29,10 @@ class Scan < ActiveRecord::Base
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
-        new_tweet = parse_and_save_tweet(object)
+        begin
+          new_tweet = parse_and_save_tweet(object)
+        rescue
+        end
       end
     end
   end
@@ -39,7 +45,10 @@ class Scan < ActiveRecord::Base
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
-        new_tweet = parse_and_save_tweet(object)
+        begin
+          new_tweet = parse_and_save_tweet(object)
+        rescue
+        end
       end
     end
   end
@@ -52,7 +61,10 @@ class Scan < ActiveRecord::Base
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
-        new_tweet = parse_and_save_tweet(object)
+        begin
+          new_tweet = parse_and_save_tweet(object)
+        rescue
+        end
       end
     end
   end
