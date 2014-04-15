@@ -1,2 +1,18 @@
-<div id="tog"class="btn">Toggle Pulse</div>
-<div id="heatmapArea" class="well" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HivePulse</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
+    <%= analytics_init if Rails.env.production? %>
+    <%= javascript_include_tag 'application', 'heatmap' %>
+    <%= stylesheet_link_tag    'application', 'heatmap', media: 'all' %>
+    <!-- Custom Fonts-->
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>" > 
+    <div id="tog"class="btn">Toggle Pulse</div>
+    <div id="heatmapArea" class="well" />
+  </body>
+</html>

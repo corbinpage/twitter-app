@@ -9,15 +9,14 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *= require_tree .
  *= require_self
- //= require_tree ../../../vendor/assets/.
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
  */
 @import "bootstrap";
+@import "bootstrap-theme";
 /* Some Style from the Bootstrap Default Theme */
 
 html {
@@ -28,7 +27,6 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 50px;
-  padding-top: 70px;
   padding-bottom: 30px;
 }
 

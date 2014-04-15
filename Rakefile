@@ -11,7 +11,7 @@ namespace :stream do
   task :start_all => :environment do
 
     # Queue up the jobs to start
-    Scan.create(category: "nyc").run_twitter_stream_nyc_without_delay
+    Scan.create(category: "nyc").run_twitter_stream_nyc
     Scan.create(category: "beverages").run_twitter_stream_beverages
     Scan.create(category: "languages").run_twitter_stream_languages
     Scan.create(category: "tech_companies").run_twitter_stream_tech_companies
