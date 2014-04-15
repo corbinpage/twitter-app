@@ -1,5 +1,5 @@
 require 'bundler/capistrano' # for bundler support
-require 'sidekiq/capistrano'
+# require 'sidekiq/capistrano'
 require 'delayed/recipes'
 
 set :application, "hivepulse"
@@ -45,7 +45,7 @@ end
 
 namespace :twitter do
   task :start_all do
-    run "cd #{release_path} && #{try_sudo} nohup ruby bin/start_twitter_streams.rb"
+    run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_all"
   end
 
   # task :start_nyc do
