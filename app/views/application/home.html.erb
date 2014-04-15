@@ -1,22 +1,39 @@
-<div class="site-wrapper">
-
-  <div class="site-wrapper-inner">
-
-    <div class="cover-container">
-
-      <div class="inner cover">
-        <h1 class="cover-heading">Your Twitter App</h1>
-        <p class="lead">Let's get started</p>
-        <ul class="header">
-        </ul>
-        <ul class="list">  
-          <li><a class="link" href=<%= heatmap_path%> target="_blank">Heatmap</a></li>
-          <li><div class="text">|</div></li>
-          <li><a class="link" href="ttps://github.com/corbinpage/twitter-app" target="_blank">Contact</a></li>
-        </ul>
-        <p class="lead">
-        </p>
-      </div>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Visual Twitter Streaming</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
+  	<%= javascript_include_tag 'application', 'home' %>
+  	<%= stylesheet_link_tag    'application', 'home', media: 'all' %>
+	  <%= analytics_init if Rails.env.production? %>
+		<!-- Custom Fonts-->
+		<link href='http://fonts.googleapis.com/css?family=Exo+2:400,200,800' rel='stylesheet' type='text/css'>
+	</head>
+	<body class="<%= controller_name %> <%= action_name %>" >	
+<!-- HEADER SECTION -->
+<div class="header-wrap" id="top">
+	<div class="container head-container">
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6 logo-container text-center">
+				<div class="logo"><%= image_tag("icons/twitteriron.png", id: 'twitteriron') %></div>
+			</div>
+		</div>
+		<div class="row title">
+			<div class="col-md-offset-3 col-md-6 text-center">
+				<h1 id="splash-header-text">Make Twitter interesting. <br> Channel the stream.</h1>
+			</div>
+		</div>
+		<div class="row action">
+			<div class="col-md-offset-3 col-md-6 text-center">
+				<a href="#work" class="btn btn-lg btn-primary">View Our Work</a>
+			</div>
+		</div>			
+	</div>
 </div>
+<%= render 'works' %>
+<%= render 'aboutus' %>
+<%= render 'contact' %>
+	</body>
+</html>

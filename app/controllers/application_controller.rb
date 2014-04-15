@@ -3,10 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # Home Page - Splash page and About page for the App
   def home
-    render :index
   end
+  # -------------------
 
+  # HivePulse Page - One HTML for initial page load and then JSON updates
   def heatmap
     render 'heatmap'
   end
@@ -20,16 +22,9 @@ class ApplicationController < ActionController::Base
     end
     render :json => @tweet
   end
+  # -------------------
 
-  def about
-  end
-
-  def experiment
-    tweet_array = Tweet.where("id > ?", params[:after].to_i).order(created_at: :desc).limit(1)
-    @tweet = tweet_array.empty? ? {id: -1} : tweet_array.first
-    render :json => @tweet
-  end
-
+  # Twibbles Page - One HTML for initial page load and then JSON updates
   def beverage
     @jsonbevs = {name: 'bevs',children: beverage_counts = WordType.joins(:tweets).where(text: 'beverages').where('tweets.created_at > ?',Time.now - 10.seconds).group('words.text').count.map{|k,v| [{'name'=> k,'size'=> v}]}.flatten}.to_json.html_safe
     respond_to do |f|
@@ -37,9 +32,9 @@ class ApplicationController < ActionController::Base
       f.html
     end
   end
+  # -------------------
 
   def frameworks
-
   end
 
   def frameworks_update

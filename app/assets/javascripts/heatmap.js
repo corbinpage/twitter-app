@@ -1,3 +1,6 @@
+//= require heatmap
+//= require heatmap-gmaps
+
 /*
  * heatmap.js 1.0 -    JavaScript Heatmap Library
  *

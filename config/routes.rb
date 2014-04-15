@@ -1,21 +1,23 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
+  # Home Page
   get 'home' => 'application#home', as: :home
-  get 'about' => 'application#about', as: :about
-  get 'realtime' => 'application#realtime', as: :realtime
-  get 'beverage' => 'application#beverage', as: :beverage
-  get 'jsonbev' => 'application#jsonbev', as: :jsonbev
-  get 'update' => 'application#update', as: :update
+  root "application#home"
+  
+  # Heatmap Page
   get 'heatmap' => 'application#heatmap', as: :heatmap
-  get 'experiment' => 'application#experiment', as: :experiment
+  get 'update' => 'application#update', as: :update
+
+  # Beverage Page
+  get 'beverage' => 'application#beverage', as: :beverage
+
+  # Echo Chamber Page
   get 'frameworks' => 'application#frameworks', as: :frameworks
   get 'frameworks_update' => 'application#frameworks_update', as: :frameworks_update
-  delete 'clearbev' => 'application#clearbev', as: :clearbev
-  root "application#home"
   get 'showreel' => 'application#showreel', as: :showreel
   get 'stocks' => 'application#stocks', as: :stocks
-
   mount Sidekiq::Web, at: '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.
