@@ -1,5 +1,6 @@
 require 'bundler/capistrano' # for bundler support
 require 'sidekiq/capistrano'
+require 'rvm/capistrano'
 # require 'delayed/recipes'
 
 set(:sidekiq_cmd) {"bundle exec sidekiq"}

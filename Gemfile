@@ -8,6 +8,7 @@ gem 'less-rails-bootstrap'
 gem 'webmock'
 gem 'heroku'
 gem 'capistrano', '2.15.5'
+gem 'rvm-capistrano'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0.rc2'
 # Use SCSS for stylesheets
