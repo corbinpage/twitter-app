@@ -59,13 +59,13 @@ namespace :twitter do
   #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_nyc RAILS_ENV=production &"
   # end
 
-  # task :start_beverages do
-  #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_beverages RAILS_ENV=production &"
-  # end
+  # task :start_beverag
 end
 
 namespace :async do 
-  task :redis do
+  task :redis does do
+  #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_beverages RAILS_ENV=production &"
+  # end
     run "cd #{release_path} && #{try_sudo} nohup redis-server /etc/redis/redis.conf"
   end
 
