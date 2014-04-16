@@ -1,4 +1,5 @@
-//= require d3.v3.min.js
+if($("body").hasClass("beverage")) {
+
 $(document).ready(function(){
   var SIZE = 600;
 
@@ -69,4 +70,6 @@ function update (data){
 
 }
 
-})
+});
+
+}

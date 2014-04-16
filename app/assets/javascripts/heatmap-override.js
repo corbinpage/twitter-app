@@ -1,3 +1,4 @@
+if($("body").hasClass("heatmap")) {
 
 var markers = [];
 var after = 1;
@@ -5,10 +6,8 @@ var heat = [];
 var map;
 var heatmap;
 
-$("body.heatmap").ready(function() {
-    
+$("document").ready(function() {
     var myLatlng = new google.maps.LatLng(40.7055269, -74.014346);
-    
     var myOptions = {
       zoom: 12,
       center: myLatlng,
@@ -147,3 +146,5 @@ $("body.heatmap").ready(function() {
       ]
     }
 });
+
+};
