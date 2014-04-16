@@ -15,5 +15,15 @@
         <div id="bubbles"class="col-sm-8 col-sm-offset-2 pagination-centered"></div>
       </div>
     </div>
+    <script>
+      updateBubbles();
+      function updateBubbles() {
+        d3.json('beverage.json', function(error, root) {
+          console.log(root);
+          update(root);
+        });
+        setTimeout(updateBubbles, 1000);
+      }
+    </script>
   </body>
 </html>
