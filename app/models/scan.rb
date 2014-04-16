@@ -12,7 +12,7 @@ class Scan < ActiveRecord::Base
     locations = [-74,40,-73,41] #NYC Coordinates
     @client.filter(:locations => locations.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
-        puts object.text
+        puts "Tweet from NYC: #{object.id}"
         begin
           new_tweet = parse_and_save_tweet(object)
         rescue
@@ -28,7 +28,7 @@ class Scan < ActiveRecord::Base
     locations = [-74,40,-73,41] #NYC Coordinates
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
-        puts object.text
+        puts "Tweet from Beverages: #{object.id}"
         begin
           new_tweet = parse_and_save_tweet(object)
         rescue
@@ -44,7 +44,7 @@ class Scan < ActiveRecord::Base
     locations = [-74,40,-73,41] #NYC Coordinates
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
-        puts object.text
+        puts "Tweet from Languages: #{object.id}"
         begin
           new_tweet = parse_and_save_tweet(object)
         rescue
@@ -60,7 +60,7 @@ class Scan < ActiveRecord::Base
     locations = [-74,40,-73,41] #NYC Coordinates
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
-        puts object.text
+        puts "Tweet from Tech Companies: #{object.id}"
         begin
           new_tweet = parse_and_save_tweet(object)
         rescue
