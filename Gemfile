@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
+gem 'less-rails'
 
 # Updating netssh gem version for deploy troubleshoot
 gem 'net-ssh', '~> 2.7.0'
@@ -27,8 +28,8 @@ gem 'twitter', '~>5.x'
 gem 'twitter-text'
 
 # Asynchronous Processing
-gem 'delayed_job_active_record'
-gem "daemons"
+# gem 'delayed_job_active_record'
+# gem "daemons"
 
 # OLD
 # gem 'beanstalk-client'

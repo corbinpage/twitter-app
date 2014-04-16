@@ -62,7 +62,6 @@ namespace :twitter do
   # task :start_beverag
 end
 
-# namespace :async do 
 #   task :redis does do
 #   #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_beverages RAILS_ENV=production &"
 #   # end
@@ -82,6 +81,6 @@ before "deploy:restart", "db:migrate"
 before "deploy:finalize_update", "deploy:symlink_keys"
 # before "deploy:restart", "async:redis"
 # before "deploy:restart", "async:sidekiq"
-before "deploy:restart", "twitter:start_all"
+# before "deploy:restart", "twitter:start_all"
 # before "deploy:restart", "twitter:start_nyc"
 # before "deploy:restart", "twitter:start_beverages"
