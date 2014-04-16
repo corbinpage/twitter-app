@@ -5,7 +5,7 @@ class WordTweet < ActiveRecord::Base
 
   def self.get_tech_tweets
   	self.joins(word: :word_type).
-  	select("words.text as company, strftime('%Y-%m-%d %H:%M',word_tweets.created_at) as date,count(word_tweets.id) as mentions").
+  	select("words.text as company, word_tweets.created_at as date,count(word_tweets.id) as mentions").
   	where("word_Types.text ='tech_companies'").
   	group('company,date').map{|x|[x.company,x.date,x.mentions]}
   end

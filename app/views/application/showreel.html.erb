@@ -54,7 +54,7 @@ var area = d3.svg.area()
     .y1(function(d) { return y(d.mentions); });
 
 d3.csv("showreel.csv", function(data) {
-  var parse = d3.time.format("%Y-%m-%d %H:%M").parse;
+  var parse = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
   console.log(data);
 
   // Nest stock values by name.
