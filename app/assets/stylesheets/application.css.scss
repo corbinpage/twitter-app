@@ -16,6 +16,8 @@
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
+ //= depend_on_asset "nyc_skyline_v1.jpg"
+ //= depend_on_asset "bubbles_v1.jpg"
  */
 @import "bootstrap";
 @import "bootstrap-theme.min";
@@ -25,8 +27,8 @@
 /*------------ Custom ------------*/
 
 #top {
-  /*background-image: url('nyc_skyline_v1.jpg');*/
-  background: url('/assets/nyc_skyline_v1.jpg') no-repeat center center fixed;
+  background-image: image-url('nyc_skyline_v1.jpg');
+  /*background: url('/assets/nyc_skyline_v1.jpg') no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -47,7 +49,7 @@
 }
 
 body.beverage {
-  background: url('bubbles_v1.jpg') no-repeat center center fixed;
+  background-image: image-url('bubbles_v1.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
