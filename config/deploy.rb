@@ -11,6 +11,7 @@ set(:sidekiq_processes) {5}
 
 set :application, "hivepulse"
 set :repository,  "git@github.com:twizards/twitter-app.git"
+set :branch, 'slowingitdown'
 
 set :user, 'joan'
 set :deploy_to, "/home/#{ user }/#{ application }"
