@@ -11,7 +11,6 @@ set(:sidekiq_processes) {5}
 
 set :application, "hivepulse"
 set :repository,  "git@github.com:twizards/twitter-app.git"
-set :branch, 'slowingitdown'
 
 set :user, 'joan'
 set :deploy_to, "/home/#{ user }/#{ application }"
@@ -83,6 +82,6 @@ before "deploy:restart", "db:migrate"
 before "deploy:finalize_update", "deploy:symlink_keys"
 # before "deploy:restart", "async:redis"
 # before "deploy:restart", "async:sidekiq"
-before "deploy:restart", "twitter:start_all"
+# before "deploy:restart", "twitter:start_all"
 # before "deploy:restart", "twitter:start_nyc"
 # before "deploy:restart", "twitter:start_beverages"
