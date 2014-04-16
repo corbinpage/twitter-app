@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   # Twibbles Page - One HTML for initial page load and then JSON updates
   def beverage
-    @jsonbevs = {name: 'bevs',children: beverage_counts = WordType.joins(:tweets).where(text: 'beverages').where('tweets.created_at > ?',Time.now - 1.week).group('words.text').count.map{|k,v| [{'name'=> k,'size'=> v}]}.flatten}.to_json.html_safe
+    @jsonbevs = {name: 'bevs',children: beverage_counts = WordType.joins(:tweets).where(text: 'beverages').where('tweets.created_at > ?',Time.now - 10.seconds).group('words.text').count.map{|k,v| [{'name'=> k,'size'=> v}]}.flatten}.to_json.html_safe
     respond_to do |f|
       f.json { render :json => @jsonbevs }
       f.html
