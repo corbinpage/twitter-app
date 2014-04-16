@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
     render :json => data_hash
   end
 
-  def showreel
+  def techochamber
     @mentions = WordTweet.get_tech_tweets
     #binding.pry
     respond_to do |f|

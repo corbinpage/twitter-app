@@ -2,6 +2,8 @@
 
 svg {
   font-family: "Helvetica Neue", Helvetica;
+  display:inline-block;
+  text-align: center;
 }
 
 .line {
@@ -10,14 +12,36 @@ svg {
   stroke-width: 2px;
 }
 
+.aspectwrapper {
+  display: inline-block; /* shrink to fit */
+  width: 100%;
+  height: 100%;           /* whatever width you like */
+  position: relative;    /* so .content can use position: absolute */
+}
+.aspectwrapper::after {
+  padding-top: 1%;
+  display: block;
+  content: '';
+}
+.content {
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;  /* follow the parent's edges */
+  outline: thin dashed green;            /* just so you can see the box */
+}
+
 </style>
-<body>
+<div class="aspectwrapper">
+  <div id="charts">
+    
+  </div>
+
+</div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 var m = [20, 20, 30, 20],
-    w = 960 - m[1] - m[3],
-    h = 500 - m[0] - m[2];
+    w = 1000 - m[1] - m[3],
+    h = 600 - m[0] - m[2];
 
 var x,
     y,
@@ -26,13 +50,13 @@ var x,
 
 var color = d3.scale.category10();
 
-var svg = d3.select("body").append("svg")
-    .attr("width", w + m[1] + m[3])
+var svg = d3.select("#charts").append("svg")
+    .attr("width", "100%")//w + m[1] + m[3])
     .attr("height", h + m[0] + m[2])
   .append("g")
     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
-var stocks,
+var mentions,
     names;
 
 // A line generator, for the dark stroke.
@@ -53,14 +77,14 @@ var area = d3.svg.area()
     .x(function(d) { return x(d.date); })
     .y1(function(d) { return y(d.mentions); });
 
-d3.csv("showreel.csv", function(data) {
+d3.csv("techochamber.csv", function(data) {
   var parse = d3.time.format("%Y-%m-%d %H:%M").parse;
   console.log(data);
 
   // Nest stock values by name.
   names = d3.nest()
       .key(function(d) { return d.name; })
-      .entries(stocks = data);
+      .entries(mentions = data);
       console.log(names);
 
   // Parse dates and numbers. We assume values are sorted by date.
@@ -84,16 +108,17 @@ d3.csv("showreel.csv", function(data) {
 
 function lines() {
   x = d3.time.scale().range([0, w - 60]);
-  y = d3.scale.linear().range([h / 4 - 20, 0]);
+  y = d3.scale.linear().range([h / 5 - 10, 0]);
 
   // Compute the minimum and maximum date across names.
   x.domain([
     d3.min(names, function(d) { return d.values[0].date; }),
-    d3.max(names, function(d) { return d.values[d.values.length - 1].date; })
+    d3.max(names, function(d) { return d.values[d.values.length - 2].date; })
   ]);
 
   var g = svg.selectAll(".name")
-      .attr("transform", function(d, i) { return "translate(0," + (i * h / 4 + 10) + ")"; });
+      .attr("transform", function(d, i) { return "translate(0," + (i * h / 5 + 20) + ")"; })
+      .attr("width", "100%");
 
   g.each(function(d) {
     var e = d3.select(this);
@@ -119,26 +144,23 @@ function lines() {
       y.domain([0, d.maxMentions]);
 
       e.select("path")
-          .attr("d", function(d) { return line(d.values.slice(0, k + 1)); });
+          .attr("d", function(d) { return line(d.values.slice(0, k + 2)); });
       e.selectAll("circle, text")
           .data(function(d) { return [d.values[k], d.values[k]]; })
           .attr("transform", function(d) { 
             if (d) {
-              console.log(d);
               return "translate(" + x(d.date) + "," + y(d.mentions) + ")";
             } 
-            // else {
-            //   console.log(d);
-            // }
           });
     });
   }
 
   var k = 1, n = names[0].values.length;
+
   d3.timer(function() {
     draw(k);
     if ((k += 2) >= n - 1) {
-      draw(n - 1);
+      draw(n -1);
       setTimeout(horizons, 500);
       return true;
     }
@@ -152,7 +174,7 @@ function horizons() {
       .attr("id", "clip")
     .append("rect")
       .attr("width", w)
-      .attr("height", h / 4 - 20);
+      .attr("height", h / 5 - 20);
 
 console.log("horizons");
 
@@ -163,16 +185,16 @@ console.log("horizons");
       .attr("clip-path", "url(#clip)");
 
   area
-      .y0(h / 4 - 20);
+      .y0(h / 5 - 20);
 
   g.select("circle").transition()
       .duration(duration)
-      .attr("transform", function(d) { return "translate(" + (w - 60) + "," + (-h / 4) + ")"; })
+      .attr("transform", function(d) { return "translate(" + (w - 60) + "," + (-h / 5) + ")"; })
       .remove();
 
   g.select("text").transition()
       .duration(duration)
-      .attr("transform", function(d) { return "translate(" + (w - 60) + "," + (h / 4 - 20) + ")"; })
+      .attr("transform", function(d) { return "translate(" + (w - 60) + "," + (h / 5 - 20) + ")"; })
       .attr("dy", "0em");
 
   g.each(function(d) {
@@ -182,7 +204,7 @@ console.log("horizons");
         .data(d3.range(3))
       .enter().insert("path", ".line")
         .attr("class", "area")
-        .attr("transform", function(d) { return "translate(0," + (d * (h / 4 - 20)) + ")"; })
+        .attr("transform", function(d) { return "translate(0," + (d * (h / 5 - 20)) + ")"; })
         .attr("d", area(d.values))
         .style("fill", function(d, i) { return color(i); })
         .style("fill-opacity", 1e-6);
@@ -209,7 +231,7 @@ function areas() {
   var g = svg.selectAll(".name");
 
   axis
-      .y(h / 4 - 21);
+      .y(h / 5 - 21);
 
   g.select(".line")
       .attr("d", function(d) { return axis(d.values); });
