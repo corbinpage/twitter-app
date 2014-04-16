@@ -9,7 +9,6 @@
     <%= analytics_init if Rails.env.production? %>
     <%= javascript_include_tag 'application', 'heatmap' %>
     <%= stylesheet_link_tag    'application', 'heatmap', media: 'all' %>
-    <!-- Custom Fonts-->
   </head>
   <body class="<%= controller_name %> <%= action_name %>" > 
     <div id="tog"class="btn">Toggle Pulse</div>

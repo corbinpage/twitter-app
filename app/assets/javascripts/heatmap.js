@@ -1,5 +1,6 @@
-//= require heatmap
+//= require_self
 //= require heatmap-gmaps
+//= require heatmap-override
 
 /*
  * heatmap.js 1.0 -    JavaScript Heatmap Library

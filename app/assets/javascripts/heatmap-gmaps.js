@@ -28,7 +28,6 @@ HeatmapOverlay.prototype.onAdd = function(){
   el = document.createElement("div");
     
     el.style.cssText = "position:absolute;top:0;left:0;width:"+w+"px;height:"+h+"px;";
-      
     this.conf.element = el;
     panes.overlayLayer.appendChild(el);
 
