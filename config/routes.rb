@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'frameworks' => 'application#frameworks', as: :frameworks
   get 'frameworks_update' => 'application#frameworks_update', as: :frameworks_update
   get 'showreel' => 'application#showreel', as: :showreel
+  get 'testshowreel' => 'application#testshowreel', as: :testshowreel
   get 'stocks' => 'application#stocks', as: :stocks
   mount Sidekiq::Web, at: '/sidekiq'
 

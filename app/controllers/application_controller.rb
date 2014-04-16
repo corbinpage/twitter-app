@@ -59,6 +59,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def testshowreel
+    render 'test_showreel'
+  end
+
   def stocks
     render 'stocks.csv'
   end
