@@ -54,7 +54,7 @@ var area = d3.svg.area()
     .y1(function(d) { return y(d.mentions); });
 
 d3.csv("showreel.csv", function(data) {
-  var parse = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
+  var parse = d3.time.format("%Y-%m-%d %H:%M").parse;
   console.log(data);
 
   // Nest stock values by name.
@@ -205,7 +205,7 @@ console.log("horizons");
 }
 
 function areas() {
-  alert("areas");
+  //("areas");
   var g = svg.selectAll(".name");
 
   axis
@@ -250,7 +250,7 @@ function areas() {
 }
 
 function stackedArea() {
-  alert("stacked area");
+  //("stacked area");
   var stack = d3.layout.stack()
       .values(function(big_d) { return big_d.values; })
       .x(function(d) { return d.date; })
@@ -292,7 +292,7 @@ function stackedArea() {
 
 function streamgraph() {
 
-  alert("streamgraph");
+  //("streamgraph");
   var stack = d3.layout.stack()
       .values(function(big_d) { return big_d.values; })
       .x(function(d) { return d.date; })
@@ -323,7 +323,7 @@ function streamgraph() {
 }
 
 function overlappingArea() {
-  alert("overlappingArea");
+  //("overlappingArea");
   var g = svg.selectAll(".name");
 
   line
@@ -373,7 +373,7 @@ function overlappingArea() {
 }
 
 function groupedBar() {
-  alert("grouped bar");
+  //("grouped bar");
   x = d3.scale.ordinal()
       .domain(names[0].values.map(function(d) { return d.date; }))
       .rangeBands([0, w - 60], .1);
@@ -414,7 +414,7 @@ function groupedBar() {
 }
 
 function stackedBar() {
-  alert("stacked bar");
+  //("stacked bar");
   x.rangeRoundBands([0, w - 60], .1);
 
   var stack = d3.layout.stack()
@@ -458,7 +458,7 @@ function stackedBar() {
 }
 
 function transposeBar() {
-  alert("transpose bar");
+  //("transpose bar");
   x
       .domain(names.map(function(d) { return d.key; }))
       .rangeRoundBands([0, w], .2);
@@ -500,7 +500,7 @@ function transposeBar() {
 }
 
 function donut() {
-  alert("donut!");
+  //("donut!");
   var g = svg.selectAll(".name");
 
   g.selectAll("rect").remove();
@@ -529,7 +529,7 @@ function donut() {
 
   function arcTween(d) {
     console.log(d);
-    alert("arctween");
+    //("arctween");
     var path = d3.select(this),
         text = d3.select(this.parentNode.appendChild(this.previousSibling)),
         x0 = x(d.data.key),
@@ -557,7 +557,7 @@ function donut() {
 }
 
 function donutExplode() {
-  alert("donut explode");
+  //("donut explode");
   var r0a = h / 2 - x.rangeBand() / 2,
       r1a = h / 2,
       r0b = 2 * h - x.rangeBand() / 2,
@@ -568,7 +568,7 @@ function donutExplode() {
       .each(transitionExplode);
 
   function transitionExplode(d, i) {
-    alert("transition explode");
+    //("transition explode");
     d.innerRadius = r0a;
     d.outerRadius = r1a;
     d3.select(this).transition()
@@ -580,7 +580,7 @@ function donutExplode() {
   }
 
   function tweenArc(b) {
-    alert("tween arc");
+    //("tween arc");
     return function(a) {
       var path = d3.select(this),
           text = d3.select(this.nextSibling),
