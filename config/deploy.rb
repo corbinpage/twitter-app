@@ -62,17 +62,17 @@ namespace :twitter do
   # task :start_beverag
 end
 
-namespace :async do 
-  task :redis does do
-  #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_beverages RAILS_ENV=production &"
-  # end
-    run "cd #{release_path} && #{try_sudo} nohup redis-server /etc/redis/redis.conf"
-  end
+# namespace :async do 
+#   task :redis does do
+#   #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_beverages RAILS_ENV=production &"
+#   # end
+#     run "cd #{release_path} && #{try_sudo} nohup redis-server /etc/redis/redis.conf"
+#   end
 
-  task :sidekiq do
-    run "cd #{release_path} && #{try_sudo} bundle exec sidekiq -d -e production -P #{shared_path}/pids/sidekiq.pid -L #{release_path}/log/sidekiq.log"
-  end
-end
+#   task :sidekiq do
+#     run "cd #{release_path} && #{try_sudo} bundle exec sidekiq -d -e production -P #{shared_path}/pids/sidekiq.pid -L #{release_path}/log/sidekiq.log"
+#   end
+# end
 
 before "deploy:restart", "db:migrate"
 # after "deploy:stop",    "delayed_job:stop"
