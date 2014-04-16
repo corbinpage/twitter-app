@@ -84,5 +84,5 @@ before "deploy:finalize_update", "deploy:symlink_keys"
 # before "deploy:restart", "twitter:start_all"
 # before "deploy:restart", "twitter:start_nyc"
 # before "deploy:restart", "twitter:start_beverages"
-        require './config/boot'
-        require 'airbrake/capistrano'
+        # require './config/boot'
+        # require 'airbrake/capistrano'
