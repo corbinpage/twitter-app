@@ -9,15 +9,54 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
+ *= require 'bootstrap-theme.min'
+ *= require 'styles'
  *= require_self
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
+ //= depend_on_asset "nyc_skyline_v1.jpg"
+ //= depend_on_asset "bubbles_v1.jpg"
  */
 @import "bootstrap";
-@import "bootstrap-theme";
+@import "bootstrap-theme.min";
 /* Some Style from the Bootstrap Default Theme */
+
+
+/*------------ Custom ------------*/
+
+#top {
+  background-image: image-url('nyc_skyline_v1.jpg');
+  /*background: url('/assets/nyc_skyline_v1.jpg') no-repeat center center fixed;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#splash-header-text {
+  background-color: black;
+  border-radius: 5px;
+}
+
+#heatmapArea {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+body.beverage {
+  background-image: image-url('bubbles_v1.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/*------------ End Custom ------------*/
 
 html {
   position: relative;
