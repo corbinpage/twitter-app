@@ -71,7 +71,7 @@ namespace :async do
   end
 
   task :sidekiq do
-    run "cd #{release_path} && #{try_sudo} bundle exec sidekiq -d -e production -P #{shared_path}/pids/sidekiq.pid -L #{release_path}/log/sidekiq.log"
+    # run "cd #{release_path} && #{try_sudo} bundle exec sidekiq -d -e production -P #{shared_path}/pids/sidekiq.pid -L #{release_path}/log/sidekiq.log"
   end
 end
 
