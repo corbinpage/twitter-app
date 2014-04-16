@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'psych'
 gem 'sidekiq', '2.16.1'
 gem 'sinatra', require: false
 gem 'slim'
@@ -84,6 +85,7 @@ end
 group :production do
   gem "pg"
   gem "google-analytics-rails"
+  gem "airbrake"
   # gem "rails_12factor"
 end
 
