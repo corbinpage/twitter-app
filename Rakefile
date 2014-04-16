@@ -34,7 +34,10 @@ namespace :stream do
 
   desc "Start Beverages Scan"
   task :start_beverages => :environment do
-    BeverageWorker.perform_async
+    # Queue up the job to start
+    Scan.create(category: "beverages").run_twitter_stream_beverages
+
+    system 'bin/delayed_job -n 1 --queues=beverages start'
   end
 
   desc "Start Language Scan"
