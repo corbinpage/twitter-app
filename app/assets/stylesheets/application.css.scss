@@ -9,6 +9,8 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
+ *= require 'bootstrap-theme.min'
+ *= require 'styles'
  *= require_self
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
@@ -18,6 +20,15 @@
 @import "bootstrap";
 @import "bootstrap-theme";
 /* Some Style from the Bootstrap Default Theme */
+
+#top {
+  background-image: url('nyc_skyline_v1.jpg');
+}
+
+#splash-header-text {
+  background-color: black;
+  border-radius: 5px;
+}
 
 html {
   position: relative;
