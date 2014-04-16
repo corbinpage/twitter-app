@@ -1,15 +1,15 @@
 require 'spec_helper'
 require 'spec_helper'
 
-feature 'External request' do
-  it 'queries' do
-    uri = URI('https://api.twitter.com/1.1/search/tweets.json?q=%whiskey')
+# feature 'External request' do
+#   it 'queries' do
+#     uri = URI('https://api.twitter.com/1.1/search/tweets.json?q=%whiskey')
 
-    response = Net::HTTP.get(uri)
+#     response = Net::HTTP.get(uri)
 
-    expect(response).to be_an_instance_of(String)
-  end
-end
+#     expect(response).to be_an_instance_of(String)
+#   end
+# end
 
 describe Scan do
 	let(:tweet) { mock_model(Tweet) }
