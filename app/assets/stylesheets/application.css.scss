@@ -35,6 +35,11 @@
   background-size: cover;
 }
 
+.member-pic {
+  height: 256px;
+  width: 256px;
+}
+
 #splash-header-text {
   background-color: black;
   border-radius: 5px;
@@ -68,9 +73,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
+/*  /* Margin bottom by footer height
   margin-bottom: 50px;
-  padding-bottom: 30px;
+  padding-bottom: 30px;*/
 }
 
 body * {
