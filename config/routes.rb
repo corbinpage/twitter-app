@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get 'heatmap' => 'application#heatmap', as: :heatmap
   get 'update' => 'application#update', as: :update
 
-  # Beverage Page
-  get 'beverage' => 'application#beverage', as: :beverage
+  # Twubbles Page
+  get 'twubbles' => 'application#twubbles', as: :twubbles
 
   # Echo Chamber Page
   get 'frameworks' => 'application#frameworks', as: :frameworks

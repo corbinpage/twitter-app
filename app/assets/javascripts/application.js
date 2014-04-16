@@ -16,6 +16,6 @@
 //= require heatmap
 //= require heatmap-gmaps
 //= require heatmap-override
-//= require beverage
 //= require d3.v3.min.js
+//= require twubbles
 //= require_self

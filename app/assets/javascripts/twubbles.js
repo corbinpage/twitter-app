@@ -1,26 +1,24 @@
-if($("body").hasClass("beverage")) {
-
 $(document).ready(function(){
-  var SIZE = 600;
+if( $("body").hasClass("twubbles")) {
+  // var SIZE = 8;
 
   var bubble = d3.layout.pack()
     .sort(null)
-    .size([SIZE, SIZE])
-    .padding(1.5)
+    .size([970, 600])
+    .padding(2)
     .value(function(d) { return d.size; } );
 
   var svg = d3.select('#bubbles')
-    .append('svg')
-    .attr('width', SIZE)
-    .attr('height', SIZE);
+    .append('svg');
+    // .attr('width', SIZE)
+    // .attr('height', SIZE);
 
   var color = d3.scale.category10();
 
-  updateBubbles(SIZE,bubble,svg,color);
+  updateBubbles();
 
   function updateBubbles() {
-  d3.json('beverage.json', function(error, root) {
-    console.log(root);
+  d3.json('twubbles.json', function(error, root) {
     update(root);
   });
   setTimeout(updateBubbles, 1000);
@@ -40,24 +38,32 @@ function update (data){
 
   enter.append('circle')
     .attr('r', 0)
-    .style('fill', function(d) { return color(d.name); })
+    .style('fill', 'A4BADF')
+    // .style('fill', function(d) { return color(d.name); })
     .style('opacity', .9);
+
   enter.append('text')
     .style('opacity', 0)
     .style ('fill', 'black')
     .style('text-anchor', 'middle')
-    .text(function(d) { return d.name + " ("+d.value/100+"%"+")"; });
+    .text(function(d) { return d.name + " ("+d.value+")"; });
 
   // UPDATE
   var update = node.transition()
     .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
   
+  // update.bubble.size([$('.wrap').height(),$('.wrap').width()]);
+  // update.select('svg')
+  //   .attr('width', $('.wrap').width())
+  //   .attr('height', $('.wrap').height());
+
   update.select('circle')
     .attr('r', function(d) { return d.r; });
+    // .style('box-shadow','10px 10px 5px #888888;');
 
   update.select('text')
     .style('font-size', function(d) {return d.r / 3 + 'px';})
-    .text(function(d) { return d.name + " ("+d.value+"%"+")"; })
+    .text(function(d) { return d.name + " ("+d.value+")"; })
     .style('opacity', 1);
 
   // EXIT
@@ -69,7 +75,6 @@ function update (data){
   exit.select('text').style('opacity', 0);
 
 }
-
+}
 });
 
-}

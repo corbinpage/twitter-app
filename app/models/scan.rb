@@ -1,10 +1,18 @@
 class Scan < ActiveRecord::Base
   has_many :tweets, :dependent => :destroy
 
-  BEVERAGE_TOPICS = ["coffee","tea","beer","wine", "red bull","coca-cola", "whiskey", "gatorade", "orangina", "fanta"]
-  LANGUAGE_TOPICS = ["ruby", "php", "java", "python", "javascript"]
+  # BEVERAGE_TOPICS = ["coffee","tea","beer","wine", "red bull","coca-cola", "whiskey", "gatorade", "orangina", "fanta"]
+  # LANGUAGE_TOPICS = ["ruby", "php", "java", "python", "javascript"]
   TECH_COMPANY_TOPICS = ["google","apple","microsoft","facebook","amazon"]
-  VENTURE_CAPITAL_TOPICS = ["union square"]
+  TWUBBLE_TOPICS = ["affliction","agony","anguish","bad news","blow","blues",
+                    "catastrophe","crying","dejection","depression","desolation",
+                    "despair","despondence","distress","doldrums","dolor","gloom",
+                    "grief","grieving","guilt","hardship","heartache","heartbreak",
+                    "lonely","melancholy","misery","misfortune","mourning","oppression",
+                    "pain","regret","remorse","sadness","self-pity","shame","sorrow",
+                    "suffering","torment","trouble","unhappiness","weeping ","woe",
+                    "worry","wretched"]
+
 
   def run_twitter_stream_nyc
     @client = Tweet.initialize_streaming_twitter_client_nyc
@@ -21,14 +29,14 @@ class Scan < ActiveRecord::Base
     end
   end
 
-  def run_twitter_stream_beverages
-    @client = Tweet.initialize_streaming_twitter_client_beverages
+  def run_twitter_stream_twubbles
+    @client = Tweet.initialize_streaming_twitter_client_twubbles
 
-    topics = BEVERAGE_TOPICS
+    topics = TWUBBLE_TOPICS
     locations = [-74,40,-73,41] #NYC Coordinates
     @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
       if object.is_a?(Twitter::Tweet)
-        puts "Tweet from Beverages: #{object.id}"
+        puts "Tweet from Twubbles: #{object.text}"
         begin
           new_tweet = parse_and_save_tweet(object)
         rescue
@@ -36,6 +44,22 @@ class Scan < ActiveRecord::Base
       end
     end
   end
+
+  # def run_twitter_stream_beverages
+  #   @client = Tweet.initialize_streaming_twitter_client_beverages
+
+  #   topics = BEVERAGE_TOPICS
+  #   locations = [-74,40,-73,41] #NYC Coordinates
+  #   @client.filter(:locations => locations.join(","),:track => topics.join(",")) do |object|
+  #     if object.is_a?(Twitter::Tweet)
+  #       puts "Tweet from Beverages: #{object.id}"
+  #       begin
+  #         new_tweet = parse_and_save_tweet(object)
+  #       rescue
+  #       end
+  #     end
+  #   end
+  # end
 
   def run_twitter_stream_languages
     @client = Tweet.initialize_streaming_twitter_client_languages
