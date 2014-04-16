@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'psych'
 gem 'sidekiq', '2.16.1'
 gem 'sinatra', require: false
 gem 'slim'

@@ -156,7 +156,6 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    psych (2.0.5)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -315,7 +314,6 @@ DEPENDENCIES
   obscenity
   pg
   pry
-  psych
   rails (= 4.1.0.rc2)
   rspec-rails
   sass-rails (~> 4.0.2)
