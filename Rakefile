@@ -24,14 +24,20 @@ namespace :stream do
     BeverageWorker.perform_async
   end
 
-  # desc "Start NYC Scan"
-  # task :start_nyc => :environment do
-  #   StreamWorker.perform_async(:nyc)
-  # end
+  desc "Start NYC Scan"
+  task :start_nyc => :environment do
+    # Queue up the job to start
+    Scan.create(category: "nyc").run_twitter_stream_nyc
+
+    system 'bin/delayed_job -n 1 --queues=nyc start'
+  end
 
   desc "Start Beverages Scan"
   task :start_beverages => :environment do
-    BeverageWorker.perform_async
+    # Queue up the job to start
+    Scan.create(category: "beverages").run_twitter_stream_beverages
+
+    system 'bin/delayed_job -n 1 --queues=beverages start'
   end
 
   desc "Start Language Scan"
