@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Twubbles</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
+    <%= analytics_init if Rails.env.production? %>
+    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>" > 
+    <div id="bubbles" class="wrap container">
+    </div>
+    <div id="footer" class="twubbles-footer navbar-fixed-bottom">
+      <div class="container twubbles-footer">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>New York can be a scary, lonely place. You may find yourself closed off and trapped in a bubble of self-doubt. But you're not alone. Everyone experiences doubt, pain, suffering, and heartbreak. Here are some other New Yorkers having a little twubble right now.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
