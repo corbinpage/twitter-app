@@ -54,36 +54,8 @@ namespace :god do
   task :watch do
     run "cd #{release_path} && #{try_sudo} god -c config/stream.god -D"
   end
-
-  # task :start_nyc do
-  #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_nyc RAILS_ENV=production &"
-  # end
-
-  # task :start_beverag
 end
 
-#   task :redis does do
-#   #   run "cd #{release_path} && #{try_sudo} nohup rake twitter:start_beverages RAILS_ENV=production &"
-#   # end
-#     run "cd #{release_path} && #{try_sudo} nohup redis-server /etc/redis/redis.conf"
-#   end
-
-#   task :sidekiq do
-#     run "cd #{release_path} && #{try_sudo} bundle exec sidekiq -d -e production -P #{shared_path}/pids/sidekiq.pid -L #{release_path}/log/sidekiq.log"
-#   end
-# end
-
 before "deploy:restart", "db:migrate"
-# after "deploy:stop",    "delayed_job:stop"
-# after "deploy:start",   "delayed_job:start"
-# after "deploy:restart", "delayed_job:restart"
- 
 before "deploy:finalize_update", "deploy:symlink_keys"
 before "deploy:finalize_update", "god:watch"
-# before "deploy:restart", "async:redis"
-# before "deploy:restart", "async:sidekiq"
-# before "deploy:restart", "twitter:start_all"
-# before "deploy:restart", "twitter:start_nyc"
-# before "deploy:restart", "twitter:start_beverages"
-        # require './config/boot'
-        # require 'airbrake/capistrano'
