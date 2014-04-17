@@ -4,9 +4,9 @@ God.watch do |w|
   w.dir = "#{APP_PATH}"
   w.name = "twubbles_stream"
   w.log = "/home/joan/hivepulse/shared/log/god-#{w.name}.log"
-  w.pid_file = "/home/joan/hivepulse/shared/tmp/pids/#{w.name}.pid"
+  w.pid_file = "/home/joan/hivepulse/current/tmp/pids/#{w.name}.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
-  w.start = "bundle exec rake start_twubbles RAILS_ENV=production &"
+  w.start = "bundle exec rake start_twubbles RAILS_ENV=production"
   w.keepalive
 end
 
@@ -14,9 +14,9 @@ God.watch do |w|
   w.dir = "#{APP_PATH}"
   w.name = "nyc_stream"
   w.log = "/home/joan/hivepulse/shared/log/god-#{w.name}.log"
-  w.pid_file = "/home/joan/hivepulse/shared/tmp/pids/#{w.name}.pid"
+  w.pid_file = "/home/joan/hivepulse/current/tmp/pids/#{w.name}.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
-  w.start = "bundle exec rake start_nyc RAILS_ENV=production &"
+  w.start = "bundle exec rake start_nyc RAILS_ENV=production"
   w.keepalive
 end
 
@@ -24,9 +24,9 @@ God.watch do |w|
   w.dir = "#{APP_PATH}"
   w.name = "tech_companies_stream"
   w.log = "/home/joan/hivepulse/shared/log/god-#{w.name}.log"
-  w.pid_file = "/home/joan/hivepulse/shared/tmp/pids/#{w.name}.pid"
+  w.pid_file = "/home/joan/hivepulse/current/tmp/pids/tech_companies_stream.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
-  w.start = "bundle exec rake start_tech_companies RAILS_ENV=production &"
+  w.start = "bundle exec rake start_tech_companies RAILS_ENV=production"
   w.keepalive
 end
 
