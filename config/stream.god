@@ -6,7 +6,7 @@ God.watch do |w|
   w.log = "/home/joan/hivepulse/shared/log/god-#{w.name}.log"
   w.pid_file = "/home/joan/hivepulse/shared/tmp/pids/#{w.name}.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
-  w.start = "bundle install && bundle exec rake start_twubbles &"
+  w.start = "bundle exec rake start_twubbles &"
   w.keepalive
 end
 
@@ -16,7 +16,7 @@ God.watch do |w|
   w.log = "/home/joan/hivepulse/shared/log/god-#{w.name}.log"
   w.pid_file = "/home/joan/hivepulse/shared/tmp/pids/#{w.name}.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
-  w.start = "bundle install && bundle exec rake start_nyc &"
+  w.start = "bundle exec rake start_nyc &"
   w.keepalive
 end
 
@@ -26,7 +26,7 @@ God.watch do |w|
   w.log = "/home/joan/hivepulse/shared/log/god-#{w.name}.log"
   w.pid_file = "/home/joan/hivepulse/shared/tmp/pids/#{w.name}.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
-  w.start = "bundle install && bundle exec rake start_tech_companies &"
+  w.start = "bundle exec rake start_tech_companies &"
   w.keepalive
 end
 
