@@ -57,7 +57,7 @@ namespace :god do
   end
 
   task :watch do
-    run "cd #{release_path} && #{try_sudo} bundle exec god -c config/stream.god -D RAILS_ENV=production"
+    run "cd #{release_path} && #{try_sudo} bundle exec god -c config/stream.god -D"
   end
 end
 

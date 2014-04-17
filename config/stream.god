@@ -30,6 +30,7 @@ God.watch do |w|
   w.keepalive
 end
 
+#!/usr/bin/env ruby
 # RAILS_ROOT = File.expand_path('../../', __FILE__)
 # require 'rails/commands'
 # require 'pry-nav'
