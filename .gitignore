@@ -33,3 +33,5 @@ dump.rdb
 /vendor/cache
 
 .DS_Store
+
+config/secrets.yml
