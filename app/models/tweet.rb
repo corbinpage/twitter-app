@@ -22,7 +22,7 @@ class Tweet < ActiveRecord::Base
     end
   end
 
-  def self.initialize_streaming_twitter_client_beverages
+  def self.initialize_streaming_twitter_client_twubbles
     client = Twitter::Streaming::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_API_KEY_2']
       config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET_2']
@@ -30,6 +30,15 @@ class Tweet < ActiveRecord::Base
       config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET_2']
     end
   end
+
+  # def self.initialize_streaming_twitter_client_beverages
+  #   client = Twitter::Streaming::Client.new do |config|
+  #     config.consumer_key        = ENV['TWITTER_API_KEY_2']
+  #     config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET_2']
+  #     config.access_token        = ENV['TWITTER_USER_API_KEY_2']
+  #     config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET_2']
+  #   end
+  # end
 
   def self.initialize_streaming_twitter_client_languages
     client = Twitter::Streaming::Client.new do |config|
@@ -65,6 +74,8 @@ class Tweet < ActiveRecord::Base
     case category
     when 'beverages'
       topics = Scan::BEVERAGE_TOPICS
+    when 'twubbles'
+      topics = Scan::TWUBBLE_TOPICS
     when 'languages'
       topics = Scan::LANGUAGE_TOPICS 
     when 'tech_companies'

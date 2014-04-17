@@ -40,6 +40,14 @@ namespace :stream do
     system 'bin/delayed_job -n 1 --queues=beverages start'
   end
 
+  desc "Start Twubbles Scan"
+  task :start_twubbles => :environment do
+    # Queue up the job to start
+    Scan.create(category: "twubbles").run_twitter_stream_twubbles
+
+    system 'bin/delayed_job -n 1 --queues=twubbles start'
+  end
+
   desc "Start Language Scan"
   task :start_languages => :environment do
 
