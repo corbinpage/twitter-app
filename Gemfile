@@ -90,7 +90,7 @@ group :production do
 end
 
 gem "bootstrap-sass", "~> 3.1.1"
-gem "figaro", github: 'laserlemon/figaro'
+gem "figaro", github: 'laserlemon/figaro', ref: 'e16f2d47f6516e8420ce21c9de76785d9f244bae'
 gem 'execjs'
 
 

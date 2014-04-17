@@ -29,3 +29,7 @@
 
 # Ignore Redis dump
 dump.rdb
+
+/vendor/cache
+
+.DS_Store
