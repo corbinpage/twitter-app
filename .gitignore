@@ -34,4 +34,4 @@ dump.rdb
 
 .DS_Store
 
-config/secrets.yml
+config/initializers/env_vars.rb
