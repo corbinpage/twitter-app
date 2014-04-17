@@ -154,6 +154,8 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-nav (0.2.3)
+      pry (~> 0.9.10)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -232,7 +234,6 @@ GEM
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
     slop (3.5.0)
-    spring (1.1.2)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -311,7 +312,7 @@ DEPENDENCIES
   net-ssh (~> 2.7.0)
   obscenity
   pg
-  pry
+  pry-nav
   rails (= 4.1.0.rc2)
   rspec-rails
   sass-rails (~> 4.0.2)
@@ -322,7 +323,6 @@ DEPENDENCIES
   simplecov
   sinatra
   slim
-  spring
   sprockets_better_errors
   sqlite3
   therubyracer
