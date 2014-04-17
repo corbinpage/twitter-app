@@ -41,6 +41,7 @@ namespace :deploy do
  end
  task :symlink_keys do
  	run "#{try_sudo} ln -s #{shared_path}/application.yml #{release_path}/config/application.yml"
+  run "#{try_sudo} ln -s #{shared_path}/vendor/cache #{release_path}/vendor/cache"
  end
 end
 
