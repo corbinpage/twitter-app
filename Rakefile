@@ -21,7 +21,7 @@ namespace :stream do
     NYCWorker.perform_async
     LanguageWorker.perform_async
     TechCompanyWorker.perform_async
-    BeverageWorker.perform_async
+    TwubbleWorker.perform_async
   end
 
   desc "Start NYC Scan"
@@ -30,14 +30,6 @@ namespace :stream do
     Scan.create(category: "nyc").run_twitter_stream_nyc
 
     system 'bin/delayed_job -n 1 --queues=nyc start'
-  end
-
-  desc "Start Beverages Scan"
-  task :start_beverages => :environment do
-    # Queue up the job to start
-    Scan.create(category: "beverages").run_twitter_stream_beverages
-
-    system 'bin/delayed_job -n 1 --queues=beverages start'
   end
 
   desc "Start Twubbles Scan"
