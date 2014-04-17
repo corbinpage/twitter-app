@@ -22,9 +22,9 @@ HivePulse
 
 Using geolocation data provided by Twitter and Google Maps API, HivePulse displays the heartbeat of the city on a heat map overlay. We chose this visualization in part because Twitter's dataset provides uniquely comprehensive geolocation tagging: 
 
-#not sure if we want to use this but it's cool and everyone should read it!
+<--! not sure if we want to use this but its cool and everyone should read it!
 
-"Twitter presents a truly unique opportunity to measure the accuracy of the geocoding process in a far more comprehensive and quantitative fashion. Unlike any other major document collection available for academic research, Twitter contains a sensor–based gold standard in which 2.6 percent of the data is assigned a precise physically–measured location that can be compared with the geocoded results to determine their correlation. Even more significant is the size of the data samples: more than 30 million tweets georeferenced via sensor as a gold standard and a total of 1.5 billion tweets containing 14.3 billion words as the collection to geocode." -
+"Twitter presents a truly unique opportunity to measure the accuracy of the geocoding process in a far more comprehensive and quantitative fashion. Unlike any other major document collection available for academic research, Twitter contains a sensor–based gold standard in which 2.6 percent of the data is assigned a precise physically–measured location that can be compared with the geocoded results to determine their correlation. Even more significant is the size of the data samples: more than 30 million tweets georeferenced via sensor as a gold standard and a total of 1.5 billion tweets containing 14.3 billion words as the collection to geocode." -->
 
 Twubbles
 
