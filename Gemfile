@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # gem 'airbrake'
+gem 'god'
 gem 'sidekiq', '2.16.1'
 gem 'sinatra', require: false
 gem 'slim'

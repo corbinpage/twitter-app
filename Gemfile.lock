@@ -91,6 +91,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     geocoder (1.1.9)
+    god (0.13.4)
     google-analytics-rails (0.0.5)
     heroku (3.6.0)
       heroku-api (~> 0.3.17)
@@ -300,6 +301,7 @@ DEPENDENCIES
   factory_girl_rails
   figaro!
   geocoder
+  god
   google-analytics-rails
   heroku
   jbuilder (~> 2.0)
