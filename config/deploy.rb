@@ -52,12 +52,12 @@ end
 
 namespace :god do
   task :kill do
-    run "ps -ef | grep god | grep -v grep | awk '{print $2}' | xargs kill -9"
-    run "ps -ef | grep rake | grep -v grep | awk '{print $2}' | xargs kill -9"
+    run "if #{try_sudo} #{try_sudo} ps -ef | grep god | grep -v grep | awk '{print $2}' | xargs kill -0> /dev/null 2>&1; then #{try_sudo} ps -ef | grep god | grep -v grep | awk '{print $2}' | xargs kill -9; fi"
+    run "if #{try_sudo} #{try_sudo} ps -ef | grep rake | grep -v grep | awk '{print $2}' | xargs kill -0> /dev/null 2>&1; then #{try_sudo} ps -ef | grep rake | grep -v grep | awk '{print $2}' | xargs kill -9; fi"
   end
 
   task :watch do
-    run "cd #{release_path} && #{try_sudo} nohup bundle exec god -c config/stream.god"
+    run "cd #{release_path} && #{try_sudo} bundle exec god -c config/stream.god -D RAILS_ENV=production"
   end
 end
 
