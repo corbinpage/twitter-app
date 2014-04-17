@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def update
     if params[:after].nil? # First time the page loads
-      @tweet = tweet.last
+      @tweet = Tweet.last
     else
       tweet_array = Tweet.where("id > ?", params[:after].to_i).order(created_at: :desc).limit(1)
       @tweet = tweet_array.empty? ? {id: -1} : tweet_array.first
@@ -35,6 +35,19 @@ class ApplicationController < ActionController::Base
     respond_to do |f|
       f.json { render :json => @jsonbevs }
       f.html
+    end
+  end  
+
+  def twitter_bubbles
+    @jsonbevs = {name: 'twubbles',children: twubbles_counts = 
+        WordType.joins(:tweets).where(text: 'twubbles').
+        where('tweets.created_at > ?',Time.now - 10.seconds).
+        group('words.text').count.map{|k,v| [{'name'=> k,'size'=> v}]}.
+        flatten}.to_json.html_safe
+        
+    respond_to do |f|
+      f.json { render :json => @jsonbevs }
+      f.html { render 'twubbles'}
     end
   end
   # -------------------
