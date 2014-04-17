@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 # gem 'airbrake'
 gem 'god'
-gem 'sidekiq', '2.16.1'
-gem 'sinatra', require: false
-gem 'slim'
+# gem 'sidekiq', '2.16.1'
+# gem 'sinatra', require: false
+# gem 'slim'
 gem 'sqlite3'
 gem 'less-rails-bootstrap'
 gem 'webmock'

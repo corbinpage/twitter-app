@@ -1,13 +1,13 @@
 require 'bundler/capistrano' # for bundler support
-require 'sidekiq/capistrano'
+# require 'sidekiq/capistrano'
 # require 'delayed/recipes'
 
-set(:sidekiq_cmd) {"bundle exec sidekiq"}
-set(:sidekiqctl_cmd) {"bundle exec sidekiqctl"}
-set(:sidekiq_timeout) {10}
-set(:sidekiq_role) {:app}
-set(:sidekiq_pid) { "#{current_path}/tmp/pids/sidekiq.pid"}
-set(:sidekiq_processes) {5}
+# set(:sidekiq_cmd) {"bundle exec sidekiq"}
+# set(:sidekiqctl_cmd) {"bundle exec sidekiqctl"}
+# set(:sidekiq_timeout) {10}
+# set(:sidekiq_role) {:app}
+# set(:sidekiq_pid) { "#{current_path}/tmp/pids/sidekiq.pid"}
+# set(:sidekiq_processes) {5}
 
 set :application, "hivepulse"
 set :repository,  "git@github.com:twizards/twitter-app.git"
@@ -52,7 +52,7 @@ end
 
 namespace :god do
   task :watch do
-    run "cd #{release_path} && #{try_sudo} god -c config/stream.god -D"
+    run "cd #{release_path} && #{try_sudo} mkdir -p tmp/pids && #{try_sudo} nohup bundle exec god -c config/stream.god"
   end
 end
 

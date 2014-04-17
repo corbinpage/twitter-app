@@ -1,5 +1,3 @@
-require 'sidekiq/web'
-
 Rails.application.routes.draw do
 
   # Home Page
@@ -19,7 +17,6 @@ Rails.application.routes.draw do
   get 'techochamber' => 'application#techochamber', as: :techochamber
   get 'testshowreel' => 'application#testshowreel', as: :testshowreel
   get 'stocks' => 'application#stocks', as: :stocks
-  mount Sidekiq::Web, at: '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
