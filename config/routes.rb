@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   # Twubbles Page
   get 'twubbles' => 'application#twubbles', as: :twubbles
-
+  get '/twitter-bubbles' => 'application#twitter_bubbles'
+  
   # Echo Chamber Page
   get 'frameworks' => 'application#frameworks', as: :frameworks
   get 'frameworks_update' => 'application#frameworks_update', as: :frameworks_update

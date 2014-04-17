@@ -58,7 +58,7 @@ namespace :god do
   end
 
   task :watch do
-    run "cd #{current_path} && #{try_sudo} bundle exec god -c config/stream.god -D"
+    run "cd #{release_path} && #{try_sudo} bundle exec god -c config/stream.god"
   end
 end
 
