@@ -3,7 +3,7 @@ APP_PATH = File.expand_path('../..',  __FILE__)
 God.watch do |w|
   w.dir = "#{APP_PATH}"
   w.name = "twubbles_stream"
-  w.pid_file = "#{APP_PATH}/tmp/pids/#{w.name}.pid"
+  w.pid_file = "/home/joan/hivepulse/shared/tmp/pids/#{w.name}.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
   w.start = "bundle exec rake start_twubbles &"
   w.keepalive
@@ -12,7 +12,7 @@ end
 God.watch do |w|
   w.dir = "#{APP_PATH}"
   w.name = "nyc_stream"
-  w.pid_file = "#{APP_PATH}/tmp/pids/#{w.name}.pid"
+  w.pid_file = "/home/joan/hivepulse/shared/tmp/pids/#{w.name}.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
   w.start = "bundle exec rake start_nyc &"
   w.keepalive
@@ -21,7 +21,7 @@ end
 God.watch do |w|
   w.dir = "#{APP_PATH}"
   w.name = "tech_companies_stream"
-  w.pid_file = "#{APP_PATH}/tmp/pids/#{w.name}.pid"
+  w.pid_file = "/home/joan/hivepulse/shared/tmp/pids/#{w.name}.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
   w.start = "bundle exec rake start_tech_companies &"
   w.keepalive

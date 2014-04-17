@@ -51,11 +51,17 @@ namespace :db do
 end
 
 namespace :god do
+  task :kill do
+    run "ps -ef | grep god | grep -v grep | awk '{print $2}' | xargs kill -9"
+    run "ps -ef | grep rake | grep -v grep | awk '{print $2}' | xargs kill -9"
+  end
+
   task :watch do
-    run "cd #{release_path} && #{try_sudo} mkdir -p tmp/pids && #{try_sudo} nohup bundle exec god -c config/stream.god"
+    run "cd #{release_path} && #{try_sudo} nohup bundle exec god -c config/stream.god"
   end
 end
 
 before "deploy:restart", "db:migrate"
 before "deploy:finalize_update", "deploy:symlink_keys"
-before "deploy:finalize_update", "god:watch"
+before "deploy:finalize_update", "god:kill"
+after "deploy:finalize_update", "god:watch"
