@@ -1,7 +1,92 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/williamjeffries/Documents/Projects/twitter-app/app/models/scan.rb": [
+      "/Users/joansoskin/development/flatiron/projects/twitter-app/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/joansoskin/development/flatiron/projects/twitter-app/app/models/scan.rb": [
         1,
         1,
         null,
@@ -106,7 +191,7 @@
         null,
         null
       ],
-      "/Users/williamjeffries/Documents/Projects/twitter-app/app/models/tweet.rb": [
+      "/Users/joansoskin/development/flatiron/projects/twitter-app/app/models/tweet.rb": [
         1,
         1,
         1,
@@ -195,20 +280,20 @@
         null,
         null
       ],
-      "/Users/williamjeffries/Documents/Projects/twitter-app/app/models/word_type.rb": [
+      "/Users/joansoskin/development/flatiron/projects/twitter-app/app/models/word_type.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/williamjeffries/Documents/Projects/twitter-app/app/models/word.rb": [
+      "/Users/joansoskin/development/flatiron/projects/twitter-app/app/models/word.rb": [
         1,
         1,
         1,
         1,
         null
       ],
-      "/Users/williamjeffries/Documents/Projects/twitter-app/app/models/word_tweet.rb": [
+      "/Users/joansoskin/development/flatiron/projects/twitter-app/app/models/word_tweet.rb": [
         1,
         null,
         1,
@@ -228,6 +313,6 @@
         null
       ]
     },
-    "timestamp": 1397679573
+    "timestamp": 1397748255
   }
 }
