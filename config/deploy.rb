@@ -50,9 +50,9 @@ namespace :db do
   end
 end
 
-namespace :twitter do
-  task :start_all do
-    run "cd #{release_path} && #{try_sudo} rake stream:start_all"
+namespace :god do
+  task :watch do
+    run "cd #{release_path} && #{try_sudo} god -c config/stream.god -D"
   end
 
   # task :start_nyc do
@@ -79,6 +79,7 @@ before "deploy:restart", "db:migrate"
 # after "deploy:restart", "delayed_job:restart"
  
 before "deploy:finalize_update", "deploy:symlink_keys"
+before "deploy:finalize_update", "god:watch"
 # before "deploy:restart", "async:redis"
 # before "deploy:restart", "async:sidekiq"
 # before "deploy:restart", "twitter:start_all"
