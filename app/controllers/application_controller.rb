@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
 
   def techochamber
     @mentions = WordTweet.get_tech_tweets
-    #binding.pry
+    # binding.pry
     respond_to do |f|
       f.csv { render text: to_csv(@mentions) }
       f.json { render :json => @mentions.to_json.html_safe }
