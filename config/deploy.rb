@@ -40,8 +40,8 @@ namespace :deploy do
    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
  end
  task :symlink_keys do
-  run "#{try_sudo} ln -s #{shared_path}/my_class.rb #{release_path}/config/initializers/my_class.rb"
- 	run "#{try_sudo} ln -s #{shared_path}/env_vars.rb #{release_path}/config/initializers/env_vars.rb"
+  # run "#{try_sudo} ln -s #{shared_path}/my_class.rb #{release_path}/config/initializers/my_class.rb"
+ 	run "#{try_sudo} ln -s #{shared_path}/secrets.yml #{release_path}/config/secrets.yml"
  end
 end
 
