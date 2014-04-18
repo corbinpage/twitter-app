@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=<%= Rails.application.secrets.google_maps_api_key %>"></script>
     <%= analytics_init if Rails.env.production? %>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>

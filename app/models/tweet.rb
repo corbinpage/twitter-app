@@ -6,55 +6,55 @@ class Tweet < ActiveRecord::Base
 
   def self.initialize_streaming_twitter_client
     client = Twitter::Streaming::Client.new do |config|
-      config.consumer_key        = ENV['TWITTER_API_KEY']
-      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET']
-      config.access_token        = ENV['TWITTER_USER_API_KEY']
-      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET']
+      config.consumer_key        = Rails.application.secrets.twitter_api_key
+      config.consumer_secret     = Rails.application.secrets.twitter_api_key_secret
+      config.access_token        = Rails.application.secrets.twitter_user_api_key
+      config.access_token_secret = Rails.application.secrets.twitter_user_api_key_secret
     end
   end
 
   def self.initialize_streaming_twitter_client_nyc
     client = Twitter::Streaming::Client.new do |config|
-      config.consumer_key        = ENV['TWITTER_API_KEY']
-      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET']
-      config.access_token        = ENV['TWITTER_USER_API_KEY']
-      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET']
+      config.consumer_key        = Rails.application.secrets.twitter_api_key
+      config.consumer_secret     = Rails.application.secrets.twitter_api_key_secret
+      config.access_token        = Rails.application.secrets.twitter_user_api_key
+      config.access_token_secret = Rails.application.secrets.twitter_user_api_key_secret
     end
   end
 
   def self.initialize_streaming_twitter_client_twubbles
     client = Twitter::Streaming::Client.new do |config|
-      config.consumer_key        = ENV['TWITTER_API_KEY_2']
-      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET_2']
-      config.access_token        = ENV['TWITTER_USER_API_KEY_2']
-      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET_2']
+      config.consumer_key        = Rails.application.secrets.twitter_api_key_2
+      config.consumer_secret     = Rails.application.secrets.twitter_api_key_secret_2
+      config.access_token        = Rails.application.secrets.twitter_user_api_key_2
+      config.access_token_secret = Rails.application.secrets.twitter_user_api_key_secret_2
     end
   end
 
   # def self.initialize_streaming_twitter_client_beverages
   #   client = Twitter::Streaming::Client.new do |config|
-  #     config.consumer_key        = ENV['TWITTER_API_KEY_2']
-  #     config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET_2']
-  #     config.access_token        = ENV['TWITTER_USER_API_KEY_2']
-  #     config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET_2']
+  #     config.consumer_key        = Rails.application.secrets.twitter_api_key_2
+  #     config.consumer_secret     = Rails.application.secrets.twitter_api_key_secret_2
+  #     config.access_token        = Rails.application.secrets.twitter_user_api_key_2
+  #     config.access_token_secret = Rails.application.secrets.twitter_user_api_key_secret_2
   #   end
   # end
 
   def self.initialize_streaming_twitter_client_languages
     client = Twitter::Streaming::Client.new do |config|
-      config.consumer_key        = ENV['TWITTER_API_KEY_3']
-      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET_3']
-      config.access_token        = ENV['TWITTER_USER_API_KEY_3']
-      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET_3']
+      config.consumer_key        = Rails.application.secrets.twitter_api_key_3
+      config.consumer_secret     = Rails.application.secrets.twitter_api_key_secret_3
+      config.access_token        = Rails.application.secrets.twitter_user_api_key_3
+      config.access_token_secret = Rails.application.secrets.twitter_user_api_key_secret_3
     end
   end
 
   def self.initialize_streaming_twitter_client_tech_companies
     client = Twitter::Streaming::Client.new do |config|
-      config.consumer_key        = ENV['TWITTER_API_KEY_4']
-      config.consumer_secret     = ENV['TWITTER_API_KEY_SECRET_4']
-      config.access_token        = ENV['TWITTER_USER_API_KEY_4']
-      config.access_token_secret = ENV['TWITTER_USER_API_KEY_SECRET_4']
+      config.consumer_key        = Rails.application.secrets.twitter_api_key_4
+      config.consumer_secret     = Rails.application.secrets.twitter_api_key_secret_4
+      config.access_token        = Rails.application.secrets.twitter_user_api_key_4
+      config.access_token_secret = Rails.application.secrets.twitter_user_api_key_secret_4
     end
   end
 
