@@ -6,6 +6,7 @@ def generic_monitoring(w)
   w.log = "/home/joan/hivepulse/shared/log/god-#{w.name}.log"
   w.pid_file = "/home/joan/hivepulse/current/tmp/pids/#{w.name}.pid"
   w.env = {"RAILS_ENV" => "production", "PIDFILE" => w.pid_file}
+  w.interval = 60.seconds
   w.keepalive
   
   w.restart_if do |restart|
@@ -24,7 +25,6 @@ def generic_monitoring(w)
   
   w.lifecycle do |on|
     on.condition(:flapping) do |c|
-      c.interval = 5.minutes
       c.to_state = [:start, :restart]
       c.times = 5
       c.within = 5.minute
