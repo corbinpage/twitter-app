@@ -16,10 +16,6 @@ describe Scan do
 
 	describe 'generates an object that ...' do
 
-		it 'breaks' do
-			raise "not today"
-		end
-		
 		it 'is a tweet' do
 			tweet = mock_model("Tweet")
 			tweet.class.name.should eq("Tweet")
