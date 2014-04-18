@@ -1,23 +1,5 @@
 APP_PATH = File.expand_path('../..',  __FILE__)
 
-God.watch do |w|
-  w.name = "twubbles_stream"
-  w.start = "bundle exec rake start_twubbles RAILS_ENV=production"
-  generic_monitoring(w)
-end
-
-God.watch do |w|
-  w.name = "nyc_stream"
-  w.start = "bundle exec rake start_nyc RAILS_ENV=production"
-  generic_monitoring(w)
-end
-
-God.watch do |w|
-  w.name = "tech_companies_stream"
-  w.start = "bundle exec rake start_tech_companies RAILS_ENV=production"
-  generic_monitoring(w)
-end
-
 def generic_monitoring(w)
   w.dir = "#{APP_PATH}"
   w.group = "streams"
@@ -49,4 +31,22 @@ def generic_monitoring(w)
       c.retry_within = 2.hours
     end
   end
+end
+
+God.watch do |w|
+  w.name = "twubbles_stream"
+  w.start = "bundle exec rake start_twubbles RAILS_ENV=production"
+  generic_monitoring(w)
+end
+
+God.watch do |w|
+  w.name = "nyc_stream"
+  w.start = "bundle exec rake start_nyc RAILS_ENV=production"
+  generic_monitoring(w)
+end
+
+God.watch do |w|
+  w.name = "tech_companies_stream"
+  w.start = "bundle exec rake start_tech_companies RAILS_ENV=production"
+  generic_monitoring(w)
 end
