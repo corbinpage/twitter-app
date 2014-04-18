@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   # Twubbles Page
   get 'twubbles' => 'application#twubbles', as: :twubbles
   get '/twitter-bubbles' => 'application#twitter_bubbles'
-  get '/testing-something' => 'application#testing'
   
   # Echo Chamber Page
   get 'frameworks' => 'application#frameworks', as: :frameworks

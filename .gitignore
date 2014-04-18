@@ -36,4 +36,4 @@ dump.rdb
 
 config/initializers/env_vars.rb
 
-config/initializers/my_class.rb
+config/secrets.yml

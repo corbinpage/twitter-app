@@ -7,10 +7,7 @@ class ApplicationController < ActionController::Base
   def home
   end
   # -------------------
-  def testing
-    TestClass.talk
-  end
-  
+
   # HivePulse Page - One HTML for initial page load and then JSON updates
   def heatmap
     render 'heatmap'
