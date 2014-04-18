@@ -11,13 +11,54 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>" > 
     <div id="bubbles" class="wrap container">
+      <svg>
+        <defs>
+          <filter id="inset-shadow" >
+            <feComponentTransfer in="SourceAlpha" result="inset-selection">
+              <feFuncA type="discrete" tableValues="0 1 1 1 1 1"/>
+            </feComponentTransfer>
+            <feComponentTransfer in="SourceGraphic" result="original-no-fill">
+                <feFuncA type="discrete" tableValues="0 0 1"/>
+            </feComponentTransfer>
+            <feColorMatrix type="matrix" in="original-no-fill" result="new-source-alpha" values="0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 1 0"
+            />            
+            <feGaussianBlur in="new-source-alpha" result="blur" stdDeviation="5" />
+            <feGaussianBlur in="new-source-alpha" result="blur2" stdDeviation="10" />
+            <feGaussianBlur in="new-source-alpha" result="blur3" stdDeviation="15" />
+            <feMerge result="blur">
+              <feMergeNode in="blur" mode="normal"/>
+              <feMergeNode in="blur2" mode="normal"/>
+              <feMergeNode in="blur3" mode="normal"/>
+            </feMerge>
+            <feComposite operator="in" in="inset-selection" in2="blur" result="inset-blur"/>
+            <feComposite operator="over" in="original-no-fill" in2="inset-blur"/>            
+          </filter>
+        </defs>
+      </svg>
+      <div class="bubble x1">
+        <span class="bubble-text">This is a Tweet</span>
+      </div>
+      <div class="bubble x2">
+        <span class="bubble-text">This is a Tweet</span>
+      </div>
+      <div class="bubble x3">
+        <span class="bubble-text">This is a Tweet</span>
+      </div>
+      <div class="bubble x4">
+        <span class="bubble-text">This is a Tweet</span>
+      </div>
+      <div class="bubble x5">
+        <span class="bubble-text">This is a Tweet</span>
+      </div>
     </div>
     <div id="footer" class="twubbles-footer navbar-fixed-bottom">
       <div class="container twubbles-footer">
         <div class="row">
-          <div class="col-sm-6">
-            <p>New York can be a scary, lonely place. You may find yourself closed off and trapped in a bubble of self-doubt. But you're not alone. Everyone experiences doubt, pain, suffering, and heartbreak. Here are some other New Yorkers having a little twubble right now.
-            </p>
+          <div id="twubbles-footer">
+            <p>New York City can be a scary, lonely place. You may find yourself closed off and trapped in a bubble of self-doubt. But you're not alone. Everyone experiences doubt, pain, suffering, and heartbreak.<br><span>Here are some other New Yorkers having a little twubble right now.</span></p>
           </div>
         </div>
       </div>

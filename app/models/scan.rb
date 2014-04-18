@@ -4,7 +4,7 @@ class Scan < ActiveRecord::Base
   # BEVERAGE_TOPICS = ["coffee","tea","beer","wine", "red bull","coca-cola", "whiskey", "gatorade", "orangina", "fanta"]
   # LANGUAGE_TOPICS = ["ruby", "php", "java", "python", "javascript"]
   TECH_COMPANY_TOPICS = ["google","apple","microsoft","facebook","amazon"]
-  TWUBBLE_TOPICS = ["affliction","agony","anguish","bad news","blow","blues",
+  TWUBBLE_TOPICS = ["affliction","agony","anguish","bad news","blues",
                     "catastrophe","crying","dejection","depression","desolation",
                     "despair","despondence","distress","doldrums","dolor","gloom",
                     "grief","grieving","guilt","hardship","heartache","heartbreak",

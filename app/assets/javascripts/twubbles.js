@@ -8,8 +8,7 @@ if( $("body").hasClass("twubbles")) {
     .padding(2)
     .value(function(d) { return d.size; } );
 
-  var svg = d3.select('#bubbles')
-    .append('svg');
+  var svg = d3.select('svg');
     // .attr('width', SIZE)
     // .attr('height', SIZE);
 
@@ -40,7 +39,8 @@ function update (data){
     .attr('r', 0)
     .style('fill', 'A4BADF')
     // .style('fill', function(d) { return color(d.name); })
-    .style('opacity', .9);
+    .style('opacity', .9)
+    .attr('filter','url(#inset-shadow)');
 
   enter.append('text')
     .style('opacity', 0)
