@@ -10,11 +10,13 @@ def generic_monitoring(w)
   
   w.restart_if do |restart|
     restart.condition(:memory_usage) do |c|
+      c.interval = 5.minutes
       c.above = 500.megabytes
       c.times = [4, 5] # 4 out of 5 intervals
     end
   
     restart.condition(:cpu_usage) do |c|
+      c.interval = 5.minutes
       c.above = 80.percent
       c.times = 5
     end
@@ -22,6 +24,7 @@ def generic_monitoring(w)
   
   w.lifecycle do |on|
     on.condition(:flapping) do |c|
+      c.interval = 5.minutes
       c.to_state = [:start, :restart]
       c.times = 5
       c.within = 5.minute
