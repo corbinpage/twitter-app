@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'newrelic_rpm'
+gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'newrelic_rpm', group: :production
 gem 'god'
 gem 'sqlite3'
 gem 'less-rails-bootstrap'
