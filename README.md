@@ -8,64 +8,58 @@ Twizardry is a Rails application that streams and visualizes Twitter data to hel
 
 ## Screenshots
 
-Add some spiffy screenshots of your app here.
+![heatmap](http://107.170.117.122/assets/heatmapshot-fa95de4c7fe3a055ddf6da1780921cdf.gif)
+![twubbles](http://107.170.117.122/assets/twibbles-4d69b49ec6e2e2f1822714cec6685b6d.gif)
 
 ## Background
 
-# Why did you want to make this app? 
+### Why did you want to make this app? 
 
 Inspired by a passion for compelling information presentation and the enormity of the Twitter dataset, we set out to bring people closer through our code. For the sake of limiting our project scope, we chose to focus on increasing ambient awareness in New York City by displaying live-streamed, local tweets in three different ways.
 
-#What was your development process like?
+### What was your development process like?
+
+We started out with a single twitter data stream open, and decided to use geolocation data to create a heatmap after being inspired by [Graffito](graffito.herokuapp.com), a rails app that came out of the Flatiron School Brooklyn Fellowship last semester. From there we added more twitter streams and scaled up the backend server technology as necessary in order to create more visualizations. The [D3 Javascript library](d3js.org) was an incredible resource for us.
 
 ## Features
 
-HivePulse
+### HivePulse
 
 Using geolocation data provided by Twitter and Google Maps API, HivePulse displays the heartbeat of the city on a heat map overlay. We chose this visualization in part because Twitter's dataset provides uniquely comprehensive geolocation tagging.
 
-Twubbles
+### Twubbles
 
-The Techo Chamber
+New York can be a scary, lonely place. You may find yourself closed off and trapped in a bubble of self-doubt. But you're not alone. Everyone experiences doubt, pain, suffering, and heartbreak. Twubbles is a visualization that shows other New Yorkers having a little twubble right now too.
+
+### The Techo Chamber
+
+The tech scene in New York can be very insular, and sometimes feels like a bit of an echo chamber, with everyone concerned about hot new trends. Embracing that, this visualization compares how much people are tweeting about a few top tech companies in a variety of ways.
 
 ## Usage
 
-How do users use your app?
+Go to our site and check out our visualizations!
 
 ## Development/Contribution
 
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
+If you'd like to submit a pull request please adhere to the following:
+
+Your code must be tested. Please TDD your code!
+No single-character variables
+Two-spaces instead of tabs
+Single-quotes instead of double-quotes unless you are using string interpolation or escapes.
+General Rails/Ruby naming conventions for files and classes
 
 ## Future
 
 What features are you currently working on? Only mention things that you
 actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
 
-## Author
-
-Link to your blog, twitter, etc!
+## Authors
+Built by [Corbin Page](http://www.linkedin.com/in/corbintpage),
+[Joan Soskin](http://www.linkedin.com/in/joansoskin),
+[William Jeffries](http://www.linkedin.com/in/williamjeffries), and
+[Daniel Kronovet](http://www.linkedin.com/in/dkronovet), students at the [Flatiron School](http://flatironschool.com/) in New York.
 
 ## License
 
-# The MIT License (MIT)
-
-Copyright (c) [2014] [William Jeffries, Joan Soskin, Daniel Kronovet, Corbin Page]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This application is MIT Licensed. See [LICENSE](https://github.com/twizards/twitter-app/blob/master/license) for details.
