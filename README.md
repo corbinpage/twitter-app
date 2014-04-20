@@ -1,3 +1,4 @@
+[ ![Codeship Status for repository/name](https://www.codeship.io/projects/4f774da0-a622-0131-a5d8-66b98f1e75c1/status?branch=master)](https://www.codeship.io/projects/18823)
 [![Build Status](https://travis-ci.org/twizards/twitter-app.svg?branch=master)](https://travis-ci.org/twizards/twitter-app)
 [![Code Climate](https://codeclimate.com/github/twizards/twitter-app.png)](https://codeclimate.com/github/twizards/twitter-app)
 [![Gemnasium](https://gemnasium.com/wfjeff/twinenyc.png)](https://gemnasium.com/twizards/twitter-app)
