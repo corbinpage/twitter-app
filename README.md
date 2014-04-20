@@ -51,8 +51,7 @@ General Rails/Ruby naming conventions for files and classes
 
 ## Future
 
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
+Right now our primary focus is to improve our current visualizations and optimize for performance. We are going to monitor this project with NewRelic to find bottlenecks, and are considering whether or not to migrate to Puma. We plan to increase test coverage and pay down some of our technical debt by refactoring the code base.
 
 ## Authors
 Built by [Corbin Page](http://www.linkedin.com/in/corbintpage),
