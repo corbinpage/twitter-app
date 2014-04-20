@@ -47,7 +47,7 @@ Your code must be tested. Please TDD your code!
 No single-character variables
 Two-spaces instead of tabs
 Single-quotes instead of double-quotes unless you are using string interpolation or escapes.
-General Rails/Ruby naming conventions for files and classes
+General Rails/Ruby naming conventions for files and classes.
 
 ## Future
 
@@ -61,4 +61,4 @@ Built by [Corbin Page](http://www.linkedin.com/in/corbintpage),
 
 ## License
 
-This application is MIT Licensed. See [LICENSE](https://github.com/twizards/twitter-app/blob/master/license) for details.
+This application is MIT Licensed. See [LICENSE](https://github.com/twizards/twitter-app/blob/master/LICENSE) for details.
