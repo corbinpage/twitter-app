@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/twizards/twitter-app.svg?branch=master)](https://travis-ci.org/twizards/twitter-app)
 [![Code Climate](https://codeclimate.com/github/twizards/twitter-app.png)](https://codeclimate.com/github/twizards/twitter-app)
+[![Coverage Status](https://coveralls.io/repos/twizards/twitter-app/badge.png)](https://coveralls.io/r/twizards/twitter-app)
+
 # Twitterapp
 
 ## Description
