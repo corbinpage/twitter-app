@@ -32,7 +32,7 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  user: twituser
+  user: joan
   port: 5432
   pool: 10
   database: twitdb
