@@ -1,15 +1,12 @@
 $(document).ready(function(){
 if( $("body").hasClass("twubbles")) {
-  // var SIZE = 8;
+
+  // Controls the floating bubbles' text changing
+  var nextSadTweetText = "This is a lonely place";
 
   var changeBubbleText = function(e,bubble) {
-    // This - the object
     if(e.animationName == "moveclouds") {
-      console.log("moveclouds: "+this.innerHTML);
-      // Make AJAX Call
-    }
-    else if(e.animationName == "sideWays") {
-      console.log("sideWays"+this.innerHTML);
+      $(this).children(":first").text(nextSadTweetText[Math.floor(Math.random()*nextSadTweetText.length)]);
     }
   }
 
@@ -23,7 +20,7 @@ if( $("body").hasClass("twubbles")) {
 
   startListening();
 
-
+  // Start the code for the pop up bubbles
 
   var bubble = d3.layout.pack()
     .sort(null)
@@ -47,6 +44,7 @@ if( $("body").hasClass("twubbles")) {
 }
 
 function update (data){
+  nextSadTweetText = data['sad_tweets'];
 
   var data = bubble.nodes(data).filter( function(d) { return !d.children; });
 
