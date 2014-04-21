@@ -81,6 +81,7 @@ class ApplicationController < ActionController::Base
     logger.info("made it to controller action")
     @mentions = truncate_last_minute(WordTweet.get_tech_tweets)
     logger.info("made it past @mentions")
+    logger.info(@mentions[0])
     respond_to do |f|
       f.csv { render text: to_csv(@mentions) }
       f.json { render :json => @mentions.to_json.html_safe }
