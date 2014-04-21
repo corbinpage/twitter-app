@@ -11,13 +11,40 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>" > 
     <div id="bubbles" class="wrap container">
+      <svg>
+        <defs>
+          <radialGradient id="grad1" cx="50%" cy="70%" r="100%" fx="50%" fy="70%">
+            <stop offset="0%" style="stop-color:rgb(164,186,223);
+            stop-opacity:.8" />
+            <stop offset="110%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+          </radialGradient>
+        </defs>
+<!--         <g class="node" transform="translate(428.4298400878906,286.1123046875)">
+          <circle r="101.53063773292138" fill="url(#grad1)"></circle>
+          <text style="opacity: 1; text-anchor: middle; font-size: 33.843545910973795px;">crying (54)</text>
+        </g> -->
+      </svg>
+      <div class="bubble x1">
+        <span class="bubble-text"><%= @sad_tweets[0]%></span>
+      </div>
+      <div class="bubble x2">
+        <span class="bubble-text"><%= @sad_tweets[1]%></span>
+      </div>
+      <div class="bubble x3">
+        <span class="bubble-text"><%= @sad_tweets[2]%></span>
+      </div>
+      <div class="bubble x4">
+        <span class="bubble-text"><%= @sad_tweets[3]%></span>
+      </div>
+      <div class="bubble x5">
+        <span class="bubble-text"><%= @sad_tweets[4]%></span>
+      </div>
     </div>
     <div id="footer" class="twubbles-footer navbar-fixed-bottom">
       <div class="container twubbles-footer">
         <div class="row">
-          <div class="col-sm-6">
-            <p>New York can be a scary, lonely place. You may find yourself closed off and trapped in a bubble of self-doubt. But you're not alone. Everyone experiences doubt, pain, suffering, and heartbreak. Here are some other New Yorkers having a little twubble right now.
-            </p>
+          <div id="twubbles-footer">
+            <p>New York City can be a scary, lonely place. You may find yourself closed off and trapped in a bubble of self-doubt. But you're not alone. Everyone experiences doubt, pain, suffering, and heartbreak.<br><span>Here are some other New Yorkers having a little twubble right now.</span></p>
           </div>
         </div>
       </div>
