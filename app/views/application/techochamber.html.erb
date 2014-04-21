@@ -78,7 +78,7 @@ var area = d3.svg.area()
     .y1(function(d) { return y(d.mentions); });
 
 d3.csv("techochamber.csv", function(data) {
-  var parse = d3.time.format("%Y-%m-%d %H:%M").parse;
+  var parse = d3.time.format("%d-%m-%Y %I:%M").parse;
   console.log(data);
 
   // Nest stock values by name.
@@ -113,7 +113,7 @@ function lines() {
   // Compute the minimum and maximum date across names.
   x.domain([
     d3.min(names, function(d) { return d.values[0].date; }),
-    d3.max(names, function(d) { return d.values[d.values.length - 2].date; })
+    d3.max(names, function(d) { return d.values[d.values.length - 1].date; })
   ]);
 
   var g = svg.selectAll(".name")
@@ -299,11 +299,11 @@ function stackedArea() {
       .each("end", function() { d3.select(this).attr("transform", null); });
 
   t.select("path.area")
-      .attr("d", function(big_d) { return area(big_d.values.slice(0, -2)); });
+      .attr("d", function(big_d) { return area(big_d.values); });
 
   t.select("path.line")
       .style("stroke-opacity", function(d, i) { return i < 3 ? 1e-6 : 1; })
-      .attr("d", function(big_d) { return line(big_d.values.slice(0, -2)); });
+      .attr("d", function(big_d) { return line(big_d.values); });
 
   t.select("text")
       .attr("transform", function(big_d) { d = big_d.values[big_d.values.length - 2]; return "translate(" + (w - 60) + "," + y(d.mentions / 2 + d.mentions0) + ")"; });
@@ -332,11 +332,11 @@ function streamgraph() {
       .duration(duration);
 
   t.select("path.area")
-      .attr("d", function(big_d) { return area(big_d.values.slice(0, -2)); });
+      .attr("d", function(big_d) { return area(big_d.values); });
 
   t.select("path.line")
       .style("stroke-opacity", 1e-6)
-      .attr("d", function(big_d) { return line(big_d.values.slice(0, -2)); });
+      .attr("d", function(big_d) { return line(big_d.values); });
 
   t.select("text")
       .attr("transform", function(big_d) { d = big_d.values[big_d.values.length - 2]; return "translate(" + (w - 60) + "," + y(d.mentions / 2 + d.mentions0) + ")"; });
@@ -352,7 +352,7 @@ function overlappingArea() {
       .y(function(d) { return y(d.mentions0 + d.mentions); });
 
   g.select(".line")
-      .attr("d", function(big_d) { return line(big_d.values.slice(0, -2)); });
+      .attr("d", function(big_d) { return line(big_d.values); });
 
   y
       .domain([0, d3.max(names.map(function(d) { return d.maxMentions; }))])
@@ -370,11 +370,11 @@ function overlappingArea() {
 
   t.select(".line")
       .style("stroke-opacity", 1)
-      .attr("d", function(big_d) { return line(big_d.values.slice(0, -2)); });
+      .attr("d", function(big_d) { return line(big_d.values); });
 
   t.select(".area")
       .style("fill-opacity", .5)
-      .attr("d", function(big_d) { return area(big_d.values.slice(0, -2)); });
+      .attr("d", function(big_d) { return area(big_d.values); });
 
   t.select("text")
       .attr("dy", ".31em")
@@ -419,7 +419,7 @@ function groupedBar() {
 
   g.each(function(p, j) {
     d3.select(this).selectAll("rect")
-        .data(function(d) { return d.values.slice(0, -2); })
+        .data(function(d) { return d.values; })
       .enter().append("rect")
         .attr("x", function(d) { return x(d.date) + x1(p.key); })
         .attr("y", function(d) { return y(d.mentions); })
@@ -440,7 +440,7 @@ function stackedBar() {
   x.rangeRoundBands([0, w - 60], .1);
 
   var stack = d3.layout.stack()
-      .values(function(big_d) { return big_d.values.slice(0, -2); })
+      .values(function(big_d) { return big_d.values; })
       .x(function(d) { return d.date; })
       .y(function(d) { return d.mentions; })
       .out(function(d, y0, y) { d.mentions0 = y0; })
@@ -486,14 +486,14 @@ function transposeBar() {
       .rangeRoundBands([0, w], .2);
 
   y
-      .domain([0, d3.max(names.map(function(d) { return d3.sum(d.values.slice(0, -2).map(function(d) { return d.mentions; })); }))]);
+      .domain([0, d3.max(names.map(function(d) { return d3.sum(d.values.map(function(d) { return d.mentions; })); }))]);
 
   var stack = d3.layout.stack()
       .x(function(d, i) { return i; })
       .y(function(d) { return d.mentions; })
       .out(function(d, y0, y) { d.mentions0 = y0; });
 
-  stack(d3.zip.apply(null, names.map(function(d) { return d.values.slice(0, -2); }))); // transpose!
+  stack(d3.zip.apply(null, names.map(function(d) { return d.values; }))); // transpose!
 
   var g = svg.selectAll(".name");
 
