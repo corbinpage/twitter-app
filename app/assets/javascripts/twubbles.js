@@ -2,11 +2,28 @@ $(document).ready(function(){
 if( $("body").hasClass("twubbles")) {
   // var SIZE = 8;
 
+  function changeTweetText(bubble) {
+    console.log("bubble help for: " + bubble);
+    // startListening();
+  }
+
+  function startListening() {
+    var bubble1 = document.getElementById("x1");
+    bubble1.addEventListener('AnimationIteration', changeTweetText("update"));
+    bubble1.addEventListener('AnimationStart', changeTweetText("start"));
+    // anim.addEventListener('MSAnimationIteration', changeTweet(this));
+    // anim.addEventListener('animationiteration', changeTweet(this));
+  }
+
+  startListening();
+
+
+
   var bubble = d3.layout.pack()
     .sort(null)
-    .size([970, 600])
+    .size([$('#bubbles').width(),$('#bubbles').height()])
     .padding(2)
-    .value(function(d) { return d.size; } );
+    .value(function(d) { return 2*d.size; } );
 
   var svg = d3.select('svg');
     // .attr('width', SIZE)
@@ -37,10 +54,10 @@ function update (data){
 
   enter.append('circle')
     .attr('r', 0)
-    .style('fill', 'A4BADF')
+    // .style('fill', 'A4BADF')
     // .style('fill', function(d) { return color(d.name); })
     .style('opacity', .9)
-    .attr('filter','url(#inset-shadow)');
+    .attr('fill','url(#grad1)');
 
   enter.append('text')
     .style('opacity', 0)
@@ -50,8 +67,8 @@ function update (data){
 
   // UPDATE
   var update = node.transition()
-    .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
-  
+    .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+    .attr('r', function(d) { return d.r; });
   // update.bubble.size([$('.wrap').height(),$('.wrap').width()]);
   // update.select('svg')
   //   .attr('width', $('.wrap').width())

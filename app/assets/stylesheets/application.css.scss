@@ -9,7 +9,6 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *= require 'bootstrap-theme.min'
  *= require 'styles'
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
@@ -211,6 +210,7 @@ main {
     color: black;
     vertical-align: middle;
     display: table-cell;
+    z-index: 1001;
 }
 
 .x1 {
@@ -219,10 +219,21 @@ main {
     -moz-transform: scale(0.9);
     transform: scale(0.9);
     opacity: 0.6;
+    -webkit-animation: moveclouds 5s linear 3;
+/*    -moz-animation: moveclouds 5s linear infinite;
+    -o-animation: moveclouds 5s linear infinite;*/
+}
+
+/*.x1 {
+    left: 10%;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0.6;
     -webkit-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
     -moz-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
     -o-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
-}
+}*/
 
 .x2 {
     left: 40%;
