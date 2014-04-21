@@ -78,12 +78,9 @@ class ApplicationController < ActionController::Base
   end
 
   def techochamber
-    logger.info("made it to controller action")
-    @mentions = truncate_last_minute(WordTweet.get_tech_tweets)
-    logger.info("made it past @mentions")
-    logger.info(@mentions[0])
+    logger.info "made it to controller action"
     respond_to do |f|
-      f.csv { render text: to_csv(@mentions) }
+      f.csv { render text: to_csv(get_mentions) }
       f.json { render :json => @mentions.to_json.html_safe }
       f.html
     end
@@ -112,6 +109,10 @@ class ApplicationController < ActionController::Base
 
   def truncate_last_minute(mentions_array)
     mentions_array[0..-6]
+  end
+
+  def get_mentions
+    truncate_last_minute(WordTweet.tech_tweets)
   end
 
 end
