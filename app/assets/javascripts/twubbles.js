@@ -1,15 +1,34 @@
 $(document).ready(function(){
 if( $("body").hasClass("twubbles")) {
-  // var SIZE = 8;
+
+  // Controls the floating bubbles' text changing
+  var nextSadTweetText = "This is a lonely place";
+
+  var changeBubbleText = function(e,bubble) {
+    if(e.animationName == "moveclouds") {
+      $(this).children(":first").text(nextSadTweetText[Math.floor(Math.random()*nextSadTweetText.length)]);
+    }
+  }
+
+  function startListening() {
+    $('.x1')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
+    $('.x2')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
+    $('.x3')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
+    $('.x4')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
+    $('.x5')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
+  }
+
+  startListening();
+
+  // Start the code for the pop up bubbles
 
   var bubble = d3.layout.pack()
     .sort(null)
-    .size([970, 600])
+    .size([$('#bubbles').width(),$('#bubbles').height()])
     .padding(2)
-    .value(function(d) { return d.size; } );
+    .value(function(d) { return 2*d.size; } );
 
-  var svg = d3.select('#bubbles')
-    .append('svg');
+  var svg = d3.select('svg');
     // .attr('width', SIZE)
     // .attr('height', SIZE);
 
@@ -25,6 +44,7 @@ if( $("body").hasClass("twubbles")) {
 }
 
 function update (data){
+  nextSadTweetText = data['sad_tweets'];
 
   var data = bubble.nodes(data).filter( function(d) { return !d.children; });
 
@@ -38,9 +58,10 @@ function update (data){
 
   enter.append('circle')
     .attr('r', 0)
-    .style('fill', 'A4BADF')
+    // .style('fill', 'A4BADF')
     // .style('fill', function(d) { return color(d.name); })
-    .style('opacity', .9);
+    .style('opacity', .9)
+    .attr('fill','url(#grad1)');
 
   enter.append('text')
     .style('opacity', 0)
@@ -50,8 +71,8 @@ function update (data){
 
   // UPDATE
   var update = node.transition()
-    .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
-  
+    .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+    .attr('r', function(d) { return d.r; });
   // update.bubble.size([$('.wrap').height(),$('.wrap').width()]);
   // update.select('svg')
   //   .attr('width', $('.wrap').width())

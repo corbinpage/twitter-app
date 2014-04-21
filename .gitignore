@@ -33,6 +33,8 @@ dump.rdb
 /vendor/cache
 
 .DS_Store
+app/.DS_Store
+app/assets/.DS_Store
 
 config/initializers/env_vars.rb
 

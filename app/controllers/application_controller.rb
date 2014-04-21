@@ -26,14 +26,24 @@ class ApplicationController < ActionController::Base
 
   # Twubbles Page - One HTML for initial page load and then JSON updates
   def twubbles
-    @jsonbevs = {name: 'twubbles',children: twubbles_counts = 
-        WordType.joins(:tweets).where(text: 'twubbles').
-        where('tweets.created_at > ?',Time.now - 10.seconds).
-        group('words.text').count.map{|k,v| [{'name'=> k,'size'=> v}]}.
-        flatten}.to_json.html_safe
-        
+    tweet_text  = WordTweet.joins(:tweet)
+                            .joins(word: :word_type)
+                            .select('tweets.text as tweet_text','tweets.sentiment_score as tweet_score')
+                            .where("word_Types.text ='twubbles'")
+                            .where('word_tweets.created_at > ?',Time.now - 1.hour)
+                            .where('tweets.sentiment_score < ?',0)
+                            .order('tweets.sentiment_score')
+                            .map{|x|[x.tweet_text,x.tweet_score]}
+    @sad_tweets = tweet_text.first(tweet_text.count).sample(5).map{|x| x[0]}
+    @json = {name: 'twubbles',children: twubbles_counts = 
+        WordType.joins(:tweets).where(text: 'twubbles')
+        .where('tweets.created_at > ?',Time.now - 10.seconds)
+        .group('words.text')
+        .count.map{|k,v| [{'name'=> k,'size'=> v}]}
+        .flatten,
+        sad_tweets: @sad_tweets}.to_json.html_safe
     respond_to do |f|
-      f.json { render :json => @jsonbevs }
+      f.json { render :json => @json }
       f.html
     end
   end  
