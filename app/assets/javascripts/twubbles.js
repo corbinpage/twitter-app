@@ -2,17 +2,23 @@ $(document).ready(function(){
 if( $("body").hasClass("twubbles")) {
   // var SIZE = 8;
 
-  function changeTweetText(bubble) {
-    console.log("bubble help for: " + bubble);
-    // startListening();
+  var changeBubbleText = function(e,bubble) {
+    // This - the object
+    if(e.animationName == "moveclouds") {
+      console.log("moveclouds: "+this.innerHTML);
+      // Make AJAX Call
+    }
+    else if(e.animationName == "sideWays") {
+      console.log("sideWays"+this.innerHTML);
+    }
   }
 
   function startListening() {
-    var bubble1 = document.getElementById("x1");
-    bubble1.addEventListener('AnimationIteration', changeTweetText("update"));
-    bubble1.addEventListener('AnimationStart', changeTweetText("start"));
-    // anim.addEventListener('MSAnimationIteration', changeTweet(this));
-    // anim.addEventListener('animationiteration', changeTweet(this));
+    $('.x1')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
+    $('.x2')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
+    $('.x3')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
+    $('.x4')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
+    $('.x5')[0].addEventListener("webkitAnimationIteration", changeBubbleText, false);
   }
 
   startListening();

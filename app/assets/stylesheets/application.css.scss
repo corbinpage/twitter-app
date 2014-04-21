@@ -219,21 +219,10 @@ main {
     -moz-transform: scale(0.9);
     transform: scale(0.9);
     opacity: 0.6;
-    -webkit-animation: moveclouds 5s linear 3;
-/*    -moz-animation: moveclouds 5s linear infinite;
-    -o-animation: moveclouds 5s linear infinite;*/
-}
-
-/*.x1 {
-    left: 10%;
-    -webkit-transform: scale(0.9);
-    -moz-transform: scale(0.9);
-    transform: scale(0.9);
-    opacity: 0.6;
     -webkit-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
     -moz-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
     -o-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
-}*/
+}
 
 .x2 {
     left: 40%;
