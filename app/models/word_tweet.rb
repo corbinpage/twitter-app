@@ -16,6 +16,8 @@ class WordTweet < ActiveRecord::Base
       "to_char(word_tweets.created_at, 'DD/MM/YYY HH12:MI')"
     when "development"
       "strftime('%Y-%m-%d %H:%M',word_tweets.created_at)"
+    when "test"
+      "strftime('%Y-%m-%d %H:%M',word_tweets.created_at)"
     end
   end
 
