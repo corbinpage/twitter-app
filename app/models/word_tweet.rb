@@ -10,7 +10,7 @@ class WordTweet < ActiveRecord::Base
   def self.tech_tweets
   	self.joins(word: :word_type).
   	select("words.text as company, to_char(word_tweets.created_at, 'DD-MM-YYYY HH12:MI') as date,count(word_tweets.id) as mentions").
-    limit(3000).
+    limit(1000).
     order('date DESC').
   	where("word_types.text ='tech_companies'").
   	group('company,date').map{|x|[x.company, x.date, x.mentions]}
