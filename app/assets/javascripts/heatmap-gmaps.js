@@ -5,7 +5,7 @@
  * Dual-licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and the Beerware (http://en.wikipedia.org/wiki/Beerware) license.
  */ 
-
+console.log(test);
 if($("body").hasClass("heatmap")) {
 
 function HeatmapOverlay(map, cfg){
@@ -15,7 +15,7 @@ function HeatmapOverlay(map, cfg){
     me.conf = cfg;
     me.latlngs = [];
     me.bounds = null;
-    me.setMap(map);
+    // me.setMap(map);
   
   // google.maps.event.addListener(map, 'idle', function() { me.draw() });
 }
