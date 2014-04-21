@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
-# gem 'airbrake'
+gem 'coveralls', require: false
+gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'newrelic_rpm', group: :production
 gem 'god'
-# gem 'sidekiq', '2.16.1'
-# gem 'sinatra', require: false
-# gem 'slim'
 gem 'sqlite3'
 gem 'less-rails-bootstrap'
 gem 'webmock'
