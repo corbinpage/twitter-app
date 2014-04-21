@@ -13,21 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20140418183312) do
 
-  create_table "beverage_tweets", force: true do |t|
-    t.integer  "beverage_id"
-    t.integer  "tweet_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "beverage_tweets", ["beverage_id"], name: "index_beverage_tweets_on_beverage_id"
-  add_index "beverage_tweets", ["tweet_id"], name: "index_beverage_tweets_on_tweet_id"
-
-  create_table "beverages", force: true do |t|
-    t.string   "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -43,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140418183312) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "scans", force: true do |t|
     t.integer  "score"
@@ -54,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140418183312) do
     t.string   "category"
   end
 
-  add_index "scans", ["category"], name: "index_scans_on_category"
+  add_index "scans", ["category"], name: "index_scans_on_category", using: :btree
 
   create_table "tweets", force: true do |t|
     t.text     "text"
@@ -73,9 +60,9 @@ ActiveRecord::Schema.define(version: 20140418183312) do
     t.string   "country"
   end
 
-  add_index "tweets", ["created_at"], name: "index_tweets_on_created_at"
-  add_index "tweets", ["scan_id"], name: "index_tweets_on_scan_id"
-  add_index "tweets", ["twitter_id"], name: "index_tweets_on_twitter_id"
+  add_index "tweets", ["created_at"], name: "index_tweets_on_created_at", using: :btree
+  add_index "tweets", ["scan_id"], name: "index_tweets_on_scan_id", using: :btree
+  add_index "tweets", ["twitter_id"], name: "index_tweets_on_twitter_id", using: :btree
 
   create_table "word_tweets", force: true do |t|
     t.integer  "tweet_id"
@@ -84,8 +71,8 @@ ActiveRecord::Schema.define(version: 20140418183312) do
     t.datetime "updated_at"
   end
 
-  add_index "word_tweets", ["tweet_id"], name: "index_word_tweets_on_tweet_id"
-  add_index "word_tweets", ["word_id"], name: "index_word_tweets_on_word_id"
+  add_index "word_tweets", ["tweet_id"], name: "index_word_tweets_on_tweet_id", using: :btree
+  add_index "word_tweets", ["word_id"], name: "index_word_tweets_on_word_id", using: :btree
 
   create_table "word_types", force: true do |t|
     t.string   "text"
@@ -93,7 +80,7 @@ ActiveRecord::Schema.define(version: 20140418183312) do
     t.datetime "updated_at"
   end
 
-  add_index "word_types", ["text"], name: "index_word_types_on_text"
+  add_index "word_types", ["text"], name: "index_word_types_on_text", using: :btree
 
   create_table "words", force: true do |t|
     t.string   "text"
@@ -102,6 +89,6 @@ ActiveRecord::Schema.define(version: 20140418183312) do
     t.datetime "updated_at"
   end
 
-  add_index "words", ["text"], name: "index_words_on_text"
+  add_index "words", ["text"], name: "index_words_on_text", using: :btree
 
 end

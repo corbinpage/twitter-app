@@ -4,24 +4,23 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-default: &default
+development:
   adapter: postgresql
   encoding: utf8
-  username: joan
-  password: flatiron
-  host: localhost
+  user: twituser
   port: 5432
   pool: 10
-
-development:
-  <<: *default
   database: twitdb_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
+  adapter: postgresql
+  encoding: utf8
+  user: twituser
+  port: 5432
+  pool: 10
   database: twitdb_test
 
 # Do not keep production credentials in the repository,
@@ -31,5 +30,9 @@ test:
 #   sqlite3://myuser:mypass@localhost/full/path/to/somedatabase
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: utf8
+  user: twituser
+  port: 5432
+  pool: 10
   database: twitdb
