@@ -78,9 +78,9 @@ class ApplicationController < ActionController::Base
   end
 
   def techochamber
-    puts "made it to controller action"
+    logger.info("made it to controller action")
     @mentions = truncate_last_minute(WordTweet.get_tech_tweets)
-    puts "made it past @mentions"
+    logger.info("made it past @mentions")
     respond_to do |f|
       f.csv { render text: to_csv(@mentions) }
       f.json { render :json => @mentions.to_json.html_safe }
