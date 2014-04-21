@@ -78,7 +78,7 @@ class ApplicationController < ActionController::Base
   end
 
   def techochamber
-    @mentions = WordTweet.get_tech_tweets
+    @mentions = truncate_last_minute(WordTweet.get_tech_tweets)
     # binding.pry
     respond_to do |f|
       f.csv { render text: to_csv(@mentions) }
@@ -106,6 +106,10 @@ class ApplicationController < ActionController::Base
         # csv << word_tweet.attributes.values_at(*column_names)
       end
     end
+  end
+
+  def truncate_last_minute(mentions_array)
+    mentions_array[0..-6]
   end
 
 end
