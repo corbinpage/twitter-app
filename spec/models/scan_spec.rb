@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'spec_helper'
 
 # feature 'External request' do
 #   it 'queries' do
@@ -42,6 +41,40 @@ describe Scan do
 
 	it 'will not save nil objects' do
 		twitter_object = nil
+	end
+
+	describe "#parse_and_save_tweet" do
+		context 'when there is geolocation data' do
+		  it "can parse and save a tweet from twitter" do
+		  	geolocation = mock_model("TwitterGeo", coordinates: [40, -73])
+		  	geo_tweet_characteristics = {
+					full_text: "from the geo stream!", 
+					created_at: Time.now,
+					id: 10,
+				  geo?: true,
+					geo: geolocation
+				}
+
+		  	tweet_from_stream = mock_model("TwitterTweet",geo_tweet_characteristics)
+		  	subject.parse_and_save_tweet(tweet_from_stream)
+		  	expect(Tweet.find_by(text: "from the geo stream!")).to_not be_nil
+		  end	
+		end
+
+		context 'when there is NOT geolocation data' do
+		  it "can parse and save a tweet from twitter" do
+		  	non_geo_tweet_characteristics = {
+					full_text: "from the regular stream!", 
+					created_at: Time.now,
+					id: 10,
+ 					geo?: false
+ 				}
+
+		  	tweet_from_stream = mock_model("TwitterTweet",non_geo_tweet_characteristics)
+		  	subject.parse_and_save_tweet(tweet_from_stream)
+		  	expect(Tweet.find_by(text: "from the regular stream!")).to_not be_nil
+		  end
+		end
 	end
 	
 end

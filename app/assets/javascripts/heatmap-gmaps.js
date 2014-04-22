@@ -6,8 +6,6 @@
  * and the Beerware (http://en.wikipedia.org/wiki/Beerware) license.
  */ 
 
-if($("body").hasClass("heatmap")) {
-
 function HeatmapOverlay(map, cfg){
     var me = this;
 
@@ -17,7 +15,7 @@ function HeatmapOverlay(map, cfg){
     me.bounds = null;
     me.setMap(map);
   
-  // google.maps.event.addListener(map, 'idle', function() { me.draw() });
+  google.maps.event.addListener(map, 'idle', function() { me.draw() });
 }
 
 HeatmapOverlay.prototype = new google.maps.OverlayView();
@@ -165,6 +163,3 @@ HeatmapOverlay.prototype.addDataPoint = function(lat, lng, count){
 HeatmapOverlay.prototype.toggle = function(){
     this.heatmap.toggleDisplay();
 }
-
-
-};

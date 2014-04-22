@@ -3,12 +3,24 @@ class WordTweet < ActiveRecord::Base
   belongs_to :tweet
   belongs_to :word
 
-  def self.get_tech_tweets
+  def self.tech_tweets
   	self.joins(word: :word_type).
-  	select("words.text as company, to_char(word_tweets.created_at, 'DD-MM-YYYY HH12:MI') as date,count(word_tweets.id) as mentions").
-    order('date DESC').
-  	where("word_Types.text ='tech_companies'").
-  	group('company,date').map{|x|[x.company, x.date, x.mentions]}
+    	select("words.text as company, to_char(word_tweets.created_at, 'DD-MM-YYYY HH12:MI') as date,count(word_tweets.id) as mentions").
+      limit(1000).
+      order('date DESC').
+    	where("word_types.text ='tech_companies'").
+    	group('company,date').map{|x|[x.company, x.date, x.mentions]}
+  end
+
+  def self.recent_sad_tweets
+    joins(:tweet)
+      .joins(word: :word_type)
+      .select('tweets.text as tweet_text','tweets.sentiment_score as tweet_score')
+      .where("word_Types.text ='twubbles'")
+      .where('word_tweets.created_at > ?',Time.now - 1.hour)
+      .where('tweets.sentiment_score < ?',0)
+      .order('tweets.sentiment_score')
+      .map{|x|[x.tweet_text,x.tweet_score]}
   end
 
 end

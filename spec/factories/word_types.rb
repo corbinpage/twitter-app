@@ -3,6 +3,5 @@
 FactoryGirl.define do
   factory :word_type do
     text "MyString"
-    index "MyText"
   end
 end
