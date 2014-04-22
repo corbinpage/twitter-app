@@ -5,10 +5,12 @@
 #   gem 'sqlite3'
 #
 development:
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: utf8
+  user: twituser
+  port: 5432
   pool: 10
-  timeout: 5000
-  database: db/development.sqlite3
+  database: twitdb_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
