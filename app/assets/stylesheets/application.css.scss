@@ -19,6 +19,7 @@
  //= depend_on_asset "echo_chamber.jpg"
  //= depend_on_asset "echo_chamber2.jpg"
  //= depend_on_asset "echo_chamber3.jpg"
+ //= depend_on_asset "echo_chamber4.jpg"
  */
 @import "bootstrap";
 @import "bootstrap-theme.min";
@@ -71,7 +72,7 @@ body.twubbles {
 }
 
 body.techochamber {
-  background-image: image-url('echo_chamber3.jpg');
+  background-image: image-url('echo_chamber4.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
