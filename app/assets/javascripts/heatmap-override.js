@@ -62,16 +62,17 @@ $(document).ready(function(){
       setTimeout(getNewTweets,1000);  
     }
 
-    
     function getNewTweets(){
       console.log(after);
       $.getJSON("update.json?after=" + after, function(data){
           console.log(data)
           if(data['id'] != -1) { 
             if (data['has_geo']) {
+              console.log('heatmap');
               if (data[''])
             console.log(after);
             after = data['id'];
+            console.log(heatmap);
             heatmap.addDataPoint(data['lat'],data['lng'],100);
           }
         }

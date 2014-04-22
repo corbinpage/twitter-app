@@ -5,8 +5,6 @@
  * Dual-licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and the Beerware (http://en.wikipedia.org/wiki/Beerware) license.
  */ 
-console.log(test);
-if($("body").hasClass("heatmap")) {
 
 function HeatmapOverlay(map, cfg){
     var me = this;
@@ -15,9 +13,9 @@ function HeatmapOverlay(map, cfg){
     me.conf = cfg;
     me.latlngs = [];
     me.bounds = null;
-    // me.setMap(map);
+    me.setMap(map);
   
-  // google.maps.event.addListener(map, 'idle', function() { me.draw() });
+  google.maps.event.addListener(map, 'idle', function() { me.draw() });
 }
 
 HeatmapOverlay.prototype = new google.maps.OverlayView();
@@ -165,6 +163,3 @@ HeatmapOverlay.prototype.addDataPoint = function(lat, lng, count){
 HeatmapOverlay.prototype.toggle = function(){
     this.heatmap.toggleDisplay();
 }
-
-
-};
