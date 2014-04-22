@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'coveralls', require: false
 gem "codeclimate-test-reporter", group: :test, require: nil
-gem 'newrelic_rpm', group: :production
+gem 'newrelic_rpm', git: 'git@github.com:newrelic/rpm.git'
 gem 'god'
 gem 'sqlite3'
 gem 'less-rails-bootstrap'
