@@ -4,8 +4,10 @@ class Word < ActiveRecord::Base
   belongs_to  :word_type
 
   def self.recent_sad_words
-    joins(:tweets).where(text: 'twubbles')
-      .where('tweets.created_at > ?',Time.now - 10.seconds)
+    joins(:word_type)
+      .joins(:word_tweets)
+      .where("word_types.text = 'twubbles'")
+      .where('word_tweets.created_at > ?',Time.now - 10.seconds)
       .group('words.text')
       .count
       .map{|k,v| [{'name'=> k,'size'=> v}]}
