@@ -6,6 +6,9 @@
  * and the Beerware (http://en.wikipedia.org/wiki/Beerware) license.
  */ 
 
+if( $("body").hasClass("heatmap")) {
+
+
 function HeatmapOverlay(map, cfg){
     var me = this;
 
@@ -162,4 +165,5 @@ HeatmapOverlay.prototype.addDataPoint = function(lat, lng, count){
 
 HeatmapOverlay.prototype.toggle = function(){
     this.heatmap.toggleDisplay();
+}
 }
