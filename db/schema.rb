@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418183312) do
+ActiveRecord::Schema.define(version: 20140422174400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140418183312) do
 
   add_index "tweets", ["created_at"], name: "index_tweets_on_created_at", using: :btree
   add_index "tweets", ["scan_id"], name: "index_tweets_on_scan_id", using: :btree
+  add_index "tweets", ["sentiment_score"], name: "index_tweets_on_sentiment_score", using: :btree
   add_index "tweets", ["twitter_id"], name: "index_tweets_on_twitter_id", using: :btree
 
   create_table "word_tweets", force: true do |t|
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140418183312) do
     t.datetime "updated_at"
   end
 
+  add_index "word_tweets", ["created_at"], name: "index_word_tweets_on_created_at", using: :btree
   add_index "word_tweets", ["tweet_id"], name: "index_word_tweets_on_tweet_id", using: :btree
   add_index "word_tweets", ["word_id"], name: "index_word_tweets_on_word_id", using: :btree
 
@@ -90,5 +92,6 @@ ActiveRecord::Schema.define(version: 20140418183312) do
   end
 
   add_index "words", ["text"], name: "index_words_on_text", using: :btree
+  add_index "words", ["word_type_id"], name: "index_words_on_word_type_id", using: :btree
 
 end
