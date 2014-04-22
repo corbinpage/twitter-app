@@ -1,5 +1,4 @@
 
-if( $("body").hasClass("heatmap")) {
 
 var markers = [];
 var after = 1;
@@ -10,7 +9,7 @@ var myLatlng;
 
 $(document).ready(function(){
 
-    
+if($("body").hasClass("heatmap")) {    
     setMyLatlng();
 
     function setMyLatlng () {
@@ -164,5 +163,5 @@ $(document).ready(function(){
         }
       ]
     }
-});
 }
+});
