@@ -44,6 +44,7 @@
     <%= analytics_init if Rails.env.production? %>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link href='http://fonts.googleapis.com/css?family=Exo+2:400,200,800' rel='stylesheet' type='text/css'>
   </head>
 <body class="<%= controller_name %> <%= action_name %>" >
   <div id= "charts" class="wrap container">
@@ -64,7 +65,7 @@
 
 var m = [20, 20, 30, 20],
     w = 1000 - m[1] - m[3],
-    h = 600 - m[0] - m[2];
+    h = 730 - m[0] - m[2];
 
 var x,
     y,
