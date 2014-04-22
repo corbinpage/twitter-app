@@ -36,6 +36,8 @@ dump.rdb
 app/.DS_Store
 app/assets/.DS_Store
 
+config/database.yml
+
 config/initializers/env_vars.rb
 
 config/secrets.yml

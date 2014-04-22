@@ -161,10 +161,10 @@ h5 {
 }
 .portfolio-wrap {
   padding-top: 90px;
-  background-color: #efefef;
   color: #555;
   padding-bottom: 90px;
 }
+
 .portfolio-wrap h2 {
   text-transform: uppercase;
   font-size: 28px;
@@ -187,7 +187,7 @@ h5 {
   padding-top: 30px;
   color: #999;
   display: block;
-  max-width: 590px;
+  max-width: 700px;
   margin: 0 auto;
   font-size: 20px;
   line-height: 25px;
@@ -196,7 +196,7 @@ h5 {
   font-weight: 200;
 }
 .portfolio-wrap .items {
-  padding-top: 90px;
+  padding-top: 30px;
 }
 .portfolio-wrap .items .item {
   margin-bottom: 60px;
