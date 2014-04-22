@@ -1,4 +1,3 @@
-Twitter::Tweet.new(
 {:created_at=>"Mon Apr 14 23:46:41 +0000 2014",
  :id=>455854686768484352,
  :id_str=>"455854686768484352",
@@ -92,4 +91,4 @@ Twitter::Tweet.new(
  :favorited=>false,
  :retweeted=>false,
  :filter_level=>"medium",
- :lang=>"en"})
+ :lang=>"en"}
