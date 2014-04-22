@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
     else
       tweet_array = Tweet.where("id > ?", params[:after].to_i).order(created_at: :desc).limit(1)
       @tweet = tweet_array.empty? ? {id: -1} : tweet_array.first
+      binding.pry
     end
     render :json => @tweet
   end
@@ -26,56 +27,15 @@ class ApplicationController < ActionController::Base
 
   # Twubbles Page - One HTML for initial page load and then JSON updates
   def twubbles
-    tweet_text  = WordTweet.joins(:tweet)
-                            .joins(word: :word_type)
-                            .select('tweets.text as tweet_text','tweets.sentiment_score as tweet_score')
-                            .where("word_Types.text ='twubbles'")
-                            .where('word_tweets.created_at > ?',Time.now - 1.hour)
-                            .where('tweets.sentiment_score < ?',0)
-                            .order('tweets.sentiment_score')
-                            .map{|x|[x.tweet_text,x.tweet_score]}
-    @sad_tweets = tweet_text.first(tweet_text.count).sample(5).map{|x| x[0]}
-    @json = {name: 'twubbles',children: twubbles_counts = 
-        WordType.joins(:tweets).where(text: 'twubbles')
-        .where('tweets.created_at > ?',Time.now - 10.seconds)
-        .group('words.text')
-        .count.map{|k,v| [{'name'=> k,'size'=> v}]}
-        .flatten,
-        sad_tweets: @sad_tweets}.to_json.html_safe
+    tweet_text = WordTweet.recent_sad_tweets
+    @sad_tweets = tweet_text.sample(5).map{|x| x[0]}
     respond_to do |f|
-      f.json { render :json => @json }
+      f.json { render :json => twubbles_json(@sad_tweets) }
       f.html
     end
   end  
 
-  def twitter_bubbles
-    @jsonbevs = {name: 'twubbles',children: twubbles_counts = 
-        WordType.joins(:tweets).where(text: 'twubbles').
-        where('tweets.created_at > ?',Time.now - 10.seconds).
-        group('words.text').count.map{|k,v| [{'name'=> k,'size'=> v}]}.
-        flatten}.to_json.html_safe
-        
-    respond_to do |f|
-      f.json { render :json => @jsonbevs }
-      f.html { render 'twubbles'}
-    end
-  end
   # -------------------
-
-  def frameworks
-  end
-
-  def frameworks_update
-    data_hash = {id: 1}
-    language_counts = WordType.joins(words: :word_tweets)
-                              .where("word_Types.text ='languages'")
-                              .where('word_tweets.created_at > ?',Time.now - 1.minutes)
-                              .group('words.text')
-                              .count
-    language_counts.each {|k,v| data_hash[k.downcase.to_sym] = v}
-
-    render :json => data_hash
-  end
 
   def techochamber
     logger.info "made it to controller action"
@@ -95,6 +55,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def twubbles_json(sad_tweets)
+    {
+      name: 'twubbles',
+      children: twubbles_counts = Word.recent_sad_words,
+      sad_tweets: sad_tweets
+    }.to_json.html_safe    
+  end
+
   def to_csv(array)
     column_names = ["name", "date", "mentions"]
 
