@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
     else
       tweet_array = Tweet.where("id > ?", params[:after].to_i).order(created_at: :desc).limit(1)
       @tweet = tweet_array.empty? ? {id: -1} : tweet_array.first
-      binding.pry
     end
     render :json => @tweet
   end
