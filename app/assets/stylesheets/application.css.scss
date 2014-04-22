@@ -54,6 +54,11 @@
   height: 200px;
 }
 
+.example-gif {
+  height: 255px;
+  width: 390px;
+}
+
 #heatmapArea {
   margin-left: auto;
   margin-right: auto;
@@ -99,6 +104,13 @@ svg {
   height: 60px;
   width: 100%;
   background-color: black;
+  margin-bottom: 0px;
+}
+
+.techochamber-footer {
+  height: 180px;
+  width: 100%;
+  background-color: #ddd;
   margin-bottom: 0px;
 }
 
