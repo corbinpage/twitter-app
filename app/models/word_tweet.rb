@@ -13,14 +13,14 @@ class WordTweet < ActiveRecord::Base
   end
 
   def self.recent_sad_tweets
-    joins(:tweet)
+    self.joins(:tweet)
       .joins(word: :word_type)
-      .select('tweets.text as tweet_text','tweets.sentiment_score as tweet_score')
       .where("word_Types.text ='twubbles'")
       .where('word_tweets.created_at > ?',Time.now - 1.hour)
       .where('tweets.sentiment_score < ?',0)
-      .order('tweets.sentiment_score')
-      .map{|x|[x.tweet_text,x.tweet_score]}
+      .limit(5)
+      .order("RANDOM()")
+      .pluck('tweets.text')
   end
 
 end

@@ -1,10 +1,12 @@
+<!DOCTYPE html>
+<html>
 <style type="text/css">
 
-svg {
+/*svg {
   font-family: "Helvetica Neue", Helvetica;
   display:inline-block;
   text-align: center;
-}
+}*/
 
 .line {
   fill: none;
@@ -29,13 +31,25 @@ svg {
   outline: thin dashed green;            /* just so you can see the box */
 }
 
-</style>
-<div class="aspectwrapper">
-  <div id="charts">
-    
-  </div>
+.g {
+    background-color: white;
+}
 
-</div>
+</style>
+  <head>
+    <title>Twubbles</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
+    <%= analytics_init if Rails.env.production? %>
+    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+  </head>
+<body class="<%= controller_name %> <%= action_name %>" >
+  <div id= "charts" class="wrap container">
+
+  </div>
+</body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
@@ -45,7 +59,7 @@ var m = [20, 20, 30, 20],
 
 var x,
     y,
-    duration = 1500,
+    duration = 3000,
     delay = 500;
 
 var color = d3.scale.category10();
@@ -54,7 +68,8 @@ var svg = d3.select("#charts").append("svg")
     .attr("width", "100%")//w + m[1] + m[3])
     .attr("height", h + m[0] + m[2])
   .append("g")
-    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+    .attr("transform", "translate(" + m[3] + "," + m[0] + ")")
+    .style("opacity", 0.8);
 
 var mentions,
     names;

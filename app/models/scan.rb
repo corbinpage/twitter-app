@@ -9,34 +9,22 @@ class Scan < ActiveRecord::Base
   def run_twitter_stream_nyc
     @client = Tweet.initialize_streaming_twitter_client(:nyc)
     start_stream(:nyc, @client, locations: NYC_LOCATION)
-    loop do
-      sleep(10)
-      logger.info("NYC: " + GC.stat.inspect)
-    end
   end
 
   def run_twitter_stream_twubbles
     @client = Tweet.initialize_streaming_twitter_client(:twubbles)
     start_stream(:twubbles, @client, locations: NYC_LOCATION, track: TRACK_TWUBBLES)
-    loop do
-      sleep(10)
-      logger.info("TWUBBLES: " + GC.stat.inspect)
-    end
   end
 
   def run_twitter_stream_tech_companies
     @client = Tweet.initialize_streaming_twitter_client(:tech_companies)
     start_stream(:tech_companies, @client, locations: NYC_LOCATION, track: TRACK_TECH_COMPANIES)
-    loop do
-      sleep(10)
-      logger.info("TECH: " + GC.stat.inspect)
-    end
   end
 
   def start_stream(stream, client, filter)
     client.filter(filter) do |tweet|
       if tweet.is_a?(Twitter::Tweet)
-        puts "Tweet from #{stream}: #{tweet.id}"
+        puts "Tweet from #{stream}: #{tweet.text}"
         safely_parse_tweet(tweet)
       end
     end

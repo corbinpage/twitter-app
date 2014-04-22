@@ -16,6 +16,10 @@
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
  //= depend_on_asset "nyc_twubbles.jpg"
  //= depend_on_asset "nyc_skyline_v1.jpg"
+ //= depend_on_asset "echo_chamber.jpg"
+ //= depend_on_asset "echo_chamber2.jpg"
+ //= depend_on_asset "echo_chamber3.jpg"
+ //= depend_on_asset "echo_chamber4.jpg"
  */
 @import "bootstrap";
 @import "bootstrap-theme.min";
@@ -67,6 +71,15 @@ body.twubbles {
   height: 100%;
 }
 
+body.techochamber {
+  background-image: image-url('echo_chamber4.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+
 .wrap {
     height: 800px;
     height: auto !important;
@@ -103,6 +116,10 @@ svg {
 #twubbles-footer {
   width: 609px;
   position: fixed;
+}
+
+#charts {
+  margin-left: 10%;
 }
 
 circle1 {
