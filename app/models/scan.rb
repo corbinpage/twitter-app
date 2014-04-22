@@ -36,7 +36,7 @@ class Scan < ActiveRecord::Base
   def start_stream(stream, client, filter)
     client.filter(filter) do |tweet|
       if tweet.is_a?(Twitter::Tweet)
-        puts "Tweet from #{stream}: #{tweet.id}"
+        puts "Tweet from #{stream}: #{tweet.text}"
         safely_parse_tweet(tweet)
       end
     end
