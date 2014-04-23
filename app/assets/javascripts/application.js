@@ -13,9 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require d3.v3.min.js
 //= require twubbles
 //= require heatmap
 //= require heatmap-gmaps
 //= require heatmap-override
-//= require d3.v3.min.js
 //= require_self
