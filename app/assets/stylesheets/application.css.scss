@@ -107,6 +107,25 @@ svg {
   margin-bottom: 0px;
 }
 
+.hivepulse-footer {
+  height: 60px;
+  width: 100%;
+  background-color: black;
+  margin-bottom: 0px;
+}
+
+#hivepulse-footer {
+  width: 609px;
+  position: fixed;
+}
+
+.hivepulse-footer p {
+  color: #993D3D;
+}
+.hivepulse-footer p * {
+  color: #FF6666;
+}
+
 .techochamber-footer {
   height: 60px;
   width: 100%;
