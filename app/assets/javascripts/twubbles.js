@@ -1,9 +1,5 @@
-
-console.log("1")
 $(document).ready(function(){
-console.log("2")
 if( $("body").hasClass("twubbles")) {
-console.log("3")
   // Controls the floating bubbles' text changing
   var nextSadTweetText = "This is a lonely place";
 
@@ -42,7 +38,6 @@ console.log("3")
   function updateBubbles() {
   d3.json('twubbles.json', function(error, root) {
     update(root);
-    console.log("4")
   });
   setTimeout(updateBubbles, 1000);
 }
