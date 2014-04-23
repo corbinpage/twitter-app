@@ -1,6 +1,5 @@
 $(document).ready(function(){
 if( $("body").hasClass("twubbles")) {
-
   // Controls the floating bubbles' text changing
   var nextSadTweetText = "This is a lonely place";
 
