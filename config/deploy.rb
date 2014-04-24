@@ -47,7 +47,7 @@ end
 
 namespace :db do
   task :migrate do
-    run "cd #{release_path} && #{try_sudo} rake db:migrate RAILS_ENV=production"
+    run "cd #{release_path} && #{try_sudo} bundle exec rake db:migrate RAILS_ENV=production"
   end
 end
 
