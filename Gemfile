@@ -6,7 +6,7 @@ gem 'newrelic_rpm', git: 'git@github.com:newrelic/rpm.git'
 gem 'god'
 gem 'sqlite3'
 gem 'less-rails-bootstrap'
-gem 'webmock'
+gem 'webmock', group: :test
 gem 'heroku'
 gem 'capistrano', '2.15.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
