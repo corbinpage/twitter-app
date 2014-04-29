@@ -3,11 +3,11 @@
 [![Code Climate](https://codeclimate.com/github/twizards/twitter-app.png)](https://codeclimate.com/github/twizards/twitter-app)
 [![Coverage Status](https://coveralls.io/repos/twizards/twitter-app/badge.png?branch=master)](https://coveralls.io/r/twizards/twitter-app?branch=master)
 
-# Twitterapp
+# CarteTwittum
 
 ## Description
 
-Twizardry is a Rails application that streams and visualizes Twitter data to help you get in touch with New York City.
+CarteTwittum is a Rails application that streams and visualizes Twitter data to help you get in touch with New York City.
 
 ## Screenshots
 
@@ -40,7 +40,7 @@ The tech scene in New York can be very insular, and sometimes feels like a bit o
 
 ## Usage
 
-Go to [our site](http://107.170.117.122) and check out our visualizations!
+Go to [our site](http://www.cartetwittum.com/) and check out our visualizations!
 
 ## Development/Contribution
 
